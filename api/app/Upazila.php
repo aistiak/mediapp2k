@@ -13,15 +13,18 @@ class Upazila extends Model
         'bn_name'
     ];
 
-    protected $table = 'upazilas';
+    protected $table = 'geo_upazilas';
 
+    public function division()
+    {
+        return $this->belongsTo('App\District','geo_division_id');
+    }
     public function district()
     {
-        return $this->belongsTo('App\District','district_id');
+        return $this->belongsTo('App\District','geo_district_id');
     }
 
-    public function contact()
-    {
-        return $this->hasMany('App\Contact');
+    public function hospitals(){
+        return $this->hasMany('App\Hospital','upazila_id');
     }
 }

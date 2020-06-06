@@ -16,4 +16,8 @@ class Division extends Model
         return $this->hasMany('App\Upazila','geo_division_id');
     }
 
+    public function hospitals(){
+        return $this->hasMany('App\Hospital','division_id');
+    }
+
 }

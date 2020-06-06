@@ -18,4 +18,8 @@ class District extends Model
     {
         return $this->hasMany('App\Upazila', 'geo_district_id');
     }
+
+    public function hospitals(){
+        return $this->hasMany('App\Hospital','district_id');
+    }
 }
