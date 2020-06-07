@@ -20,16 +20,17 @@ use App\Http\Middleware\AdminMiddleware;
 
 Route::post('api/login','RegisterLoginPasswordResetController@login');
 
-Route::middleware('auth:api')->post('/user', function () {
-    $user = Auth()->user();
-    return $user;
-    return response()->json([
-		'user' =>[
-			'name' =>'rafi',
-			'age' =>23
-		]
-	]);
-});
+
+// Route::middleware('auth:api')->post('/user', function () {
+//     $user = Auth()->user();
+//     return $user;
+//     return response()->json([
+// 		'user' =>[
+// 			'name' =>'rafi',
+// 			'age' =>23
+// 		]
+// 	]);
+// });
 // })->middleware(AdminMiddleware::class);
 // Route::post('/register','AuthController@register');
 Route::prefix('hospital')->middleware([])->group(function(){

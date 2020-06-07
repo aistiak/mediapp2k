@@ -1,0 +1,19 @@
+{
+    "name": "istiak/jokes",
+    "description": "fetches jokes for the developer",
+    "require": {
+        "guzzlehttp/psr7": "^1.6"
+    },
+    "license": "MIT",
+    "autoload" : {
+    	"psr4":{
+    		"Laracademy\\":"src/"
+    	}
+    },
+    "extra" :{
+    	"providers" : [
+    		"Laracademy\\Commands\\ArtisanJokeServieProvider"
+    	]
+    }
+
+}

@@ -11,8 +11,13 @@
     "generate": "nuxt generate"
   },
   "dependencies": {
+    "@bazzite/nuxt-optimized-images": "^0.3.0",
+    "axios": "^0.19.2",
+    "node-fetch": "^2.6.0",
     "nuxt": "^2.0.0",
-    "@bazzite/nuxt-optimized-images": "^0.3.0"
+    "vue": "^2.6.11",
+    "vue-client-only": "^2.0.0",
+    "vue-meta": "^2.3.4"
   },
   "devDependencies": {}
 }

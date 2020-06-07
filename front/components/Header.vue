@@ -41,9 +41,10 @@
           </div><!--end .col-md-2-->
           <div class="col-md-10 col-sm-9 collapse_responsive">
             <div class="collapse navbar-collapse remove_padding" id="myNavbar">
-              <ul class="nav navbar-nav text-center">
+              <ul class="nav navbar-nav text-center"
+              >
                 <li>
-                  <a href="/">Home <i class="fa fa-angle-down"></i></a> <span class="responsive_menu"><i class="fa fa-angle-down"></i></span>
+                  <a href="/">Homee <i class="fa fa-angle-down"></i></a> <span class="responsive_menu"><i class="fa fa-angle-down"></i></span>
                   <ul class="dropdown-menu dropdown-menu-responsive">
                     <li><nuxt-link to="/">Home 01</nuxt-link></li>
                     <li><nuxt-link to="/index-2">Home 02</nuxt-link></li>
@@ -81,6 +82,7 @@
     export default {
       name: "Header",
       mounted() {
+        // alert(`hello`)
         //Fixed menu
         const menu_fixed = document.querySelector('.main_menu_area');
         const topOfNav = menu_fixed.offsetTop;
