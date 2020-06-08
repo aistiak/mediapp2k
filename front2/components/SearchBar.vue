@@ -46,11 +46,7 @@ export default {
 
    mounted(){
        
-       this.$store.dispatch(`dummy_action`).then(response=>{
-           alert(JSON.stringify(this.getDemo))
-       }).catch(error => {
-           alert(JSON.stringify(error))
-       })
+
    },
    computed: { ...mapGetters([`getDemo`]) },
 }

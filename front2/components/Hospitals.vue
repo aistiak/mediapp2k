@@ -4,7 +4,7 @@
       <div class="row">
         <div class="col-md-12">
           <div class="hero-section-title text-center">
-            <h1>Meet The Team X</h1>
+            <h1>Meet The Hospitals</h1>
           </div><!--end .hero-section-title-->
         </div><!--end .col-md-12-->
 

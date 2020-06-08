@@ -2,8 +2,10 @@
   <div>
     <!-- <Slider /> -->
     <!-- <Features /> -->
-    <Map />
+    <!-- <Map /> -->
+    <Hospitals/>
     <SearchBar/>
+    
     <About />
     <Services />
     <CallToAction />
@@ -32,6 +34,8 @@
   import CallToActionTwo from "~/components/CallToActionTwo";
   import BlogHome from "~/components/BlogHome";
   import ContactHome from "~/components/ContactHome";
+  import Hospitals from "~/components/Hospitals";
+
   import axios from "axios";
   export default {
     components: {
@@ -49,6 +53,7 @@
       ContactHome,
       SearchBar,
       Map,
+      Hospitals ,
 
     },
     mounted(){

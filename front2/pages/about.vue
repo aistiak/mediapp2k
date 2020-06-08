@@ -1,5 +1,6 @@
 <template>
   <div>
+    {{data}}
     <PageHeader title="About" />
     <AboutThree />
     <Promotion />
@@ -20,6 +21,7 @@
     import Team from "~/components/Team";
     import Clients from "~/components/Clients";
     import Promotion from "~/components/Promotion";
+    import axios from "axios"
     export default {
       components: {
         PageHeader,
@@ -30,11 +32,23 @@
         Clients,
         Promotion
       },
+      data() {
+        return {
+          data : `hello` 
+        }
+      },
       head(){
         return {
           title: "Loazzne | About"
         }
-      }
+      },
+      mounted(){
+          axios.get(`api/frontend/hospital/`).then(response => {
+            this.data = response.data
+          }).catch( error => {
+            alert(`error`)
+          })
+      },
     }
 </script>
 
