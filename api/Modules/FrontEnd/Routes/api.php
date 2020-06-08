@@ -29,3 +29,14 @@ Route::prefix('frontend')->group(function () {
     Route::get('/language/{id}', 'FrontEndController@lanGet');
     Route::get('/site-info/{id}', 'FrontEndController@SiteInfo');
 });
+// have to use api predix when calling from forntend 
+Route::prefix('frontend')->group(function () {
+    Route::get('/test',function(){
+        return "front ok" ;
+    });
+
+    Route::prefix('hospital')->group(function(){
+        Route::get('/','HospitalController@index');
+        Route::get('/{id}','HospitalController@detail');
+    });
+});

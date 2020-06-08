@@ -6,7 +6,7 @@ $factory->define(App\Hospital::class, function (Faker $faker) {
     return [
         'user_id' => App\User::orderByRaw('RAND()')->first()->id,
         'is_active' => 1 ,
-        'name' => $faker->name . " Hospital " ,
+        'name' => $faker->name . " yHospital " ,
         'phone_no' => $faker->unique()->tollFreePhoneNumber,
         'address' => $faker->unique()->streetAddress,
         'email' => $faker->unique()->safeEmail,
