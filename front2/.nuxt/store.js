@@ -5,7 +5,7 @@ Vue.use(Vuex)
 
 const VUEX_PROPERTIES = ['state', 'getters', 'actions', 'mutations']
 import store from "../store/store"
-// let store = {};
+
 
 (function updateModules () {
   // If store is an exported method = classic mode (deprecated)
@@ -19,6 +19,7 @@ import store from "../store/store"
 
   resolveStoreModules(require('..\\store\\demo.store.js'), 'demo.store.js')
   resolveStoreModules(require('..\\store\\hospital.module.js'), 'hospital.module.js')
+  resolveStoreModules(require('..\\store\\search.model.js'), 'search.model.js')
   resolveStoreModules(require('..\\store\\store.js'), 'store.js')
 
   // If the environment supports hot reloading...
@@ -28,6 +29,7 @@ import store from "../store/store"
     module.hot.accept([
       '..\\store\\demo.store.js',
       '..\\store\\hospital.module.js',
+      '..\\store\\search.model.js',
       '..\\store\\store.js',
     ], () => {
       // Update `root.modules` with the latest definitions.
@@ -40,9 +42,6 @@ import store from "../store/store"
 
 // createStore
 export const createStore = store instanceof Function ? store : () => {
-  // return new Vuex.Store(Object.assign({
-  //   strict: (process.env.NODE_ENV !== 'production')
-  // }, store))
   return store ;
 }
 

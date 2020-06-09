@@ -30,6 +30,7 @@ const mutations = {}
 
 import demo from "./demo.store"
 import hospital from "./hospital.module"
+import search from "./search.model"
 export default new  Vuex.Store ({
 
     state ,
@@ -40,6 +41,7 @@ export default new  Vuex.Store ({
     modules : {
         demo : demo ,
         hospital : hospital ,
+        search : search ,
     }
 
 })

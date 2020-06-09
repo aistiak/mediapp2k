@@ -39,4 +39,8 @@ Route::prefix('frontend')->group(function () {
         Route::get('/','HospitalController@index');
         Route::get('/{id}','HospitalController@detail');
     });
+    Route::prefix('location')->group(function(){
+        Route::get('/','LocationController@index');
+        
+    });
 });

@@ -3,8 +3,8 @@
     <!-- <Slider /> -->
     <!-- <Features /> -->
     <!-- <Map /> -->
+    <!-- <SearchBar/> -->
     <Hospitals/>
-    <SearchBar/>
     
     <About />
     <Services />

@@ -11,12 +11,13 @@ import { setContext, getLocation, getRouteData, normalizeError } from './utils'
 import { createStore } from './store.js'
 
 /* Plugins */
+
+// Component: <ClientOnly>
+Vue.component(ClientOnly.name, ClientOnly)
+/**/
 import axios from "axios"
 Vue.prototype.$http = axios 
 axios.defaults.baseURL = "http://127.0.0.1:8000/"
-// Component: <ClientOnly>
-Vue.component(ClientOnly.name, ClientOnly)
-
 // TODO: Remove in Nuxt 3: <NoSsr>
 Vue.component(NoSsr.name, {
   ...NoSsr,

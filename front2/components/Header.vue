@@ -1,6 +1,6 @@
 <template>
   <div>
-    <header class="header_area">
+    <!-- <header class="header_area">
     <div class="container">
       <div class="row">
         <div class="col-md-3 col-sm-4 col-xs-12">
@@ -11,8 +11,8 @@
               <li><a href="#"><i class="fa fa-youtube-play"></i></a></li>
               <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
             </ul>
-          </div><!--end .header_social-->
-        </div><!--end .col-md-3-->
+          </div>
+        </div>
         <div class="col-md-9 col-sm-8 col-xs-12">
           <div class="header_contact text-right">
             <ul class="hd_contact">
@@ -20,11 +20,13 @@
               <li><i class="icon-phone-call"></i> Call Now<a href=""> 666 888 000</a></li>
               <li><i class="icon-clock"></i> Open Hours<a href=""> Mon-Sat: 9am - 6pm</a></li>
             </ul>
-          </div><!--end .header_contact-->
-        </div><!--end .col-md-9-->
-      </div><!--end .row-->
-    </div><!--end .container-->
-  </header>
+          </div>
+        </div>
+      </div>
+    </div>
+ 
+ </header> -->
+
 
     <div class="main_menu_area">
       <div class="container">
