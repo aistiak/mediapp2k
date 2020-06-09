@@ -95,7 +95,13 @@ export default {
             })
         },
         search(){
-
+           
+            let payload = {
+                'selected_division' : this.selected_division == 'Divsion...' ? '' : this.selected_division ,
+                'selected_district' : this.selected_district == 'District...'? '' : this.selected_district,
+                'selected_upazila' :  this.selected_upazila  == 'Subdistrict...'? '' : this.selected_upazila,
+            }
+            this.$store.dispatch(`pass_search_info`,payload)
         },
    },
 }
