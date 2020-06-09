@@ -2,7 +2,7 @@
   <section class="team_member_area section_padding text-center">
           <div>
                <!-- <span>{{windowWidth}}</span> -->
-               <h4> {{total}} Hospitals available  </h4>
+               <h4> {{total}}  {{ type == 'hospital'? `Hospitals` : `Doctor` }} available  </h4>
                <span>
                  <a href="javascript:;" @click="prev" v-show="page > 1"> prev </a>        
                </span>
@@ -20,14 +20,14 @@
 
         </div><!--end .col-md-12-->
 
-        <div class="col-md-3 col-sm-6" v-for="(hospital,idx) in hospital_list" :key="idx">
+        <div class="col-md-3 col-sm-6" v-for="(item,idx) in item_list" :key="idx">
           <div class="team_member">
             <img src="/assets/images/team/team-1.jpg" alt="team 1">
             <div class="team_details">
-              <h3>{{hospital.name}}<span class="skills"></span></h3>
+              <h3>{{item.name}}<span class="skills"></span></h3>
               <h4>{{``}}<span class="skills"></span></h4>
               <ul class="team_socials">
-                 <h4>{{hospital.address}}<span class="skills"></span></h4>
+                 <h4>{{  type == 'hospital' ? item.address : item.hospital_name}}<span class="skills"></span></h4>
               </ul>
             </div><!--end .team_details-->
           </div><!--end .team_member-->
@@ -45,7 +45,8 @@
       name: "Team",
       data(){
         return {
-          hospital_list : [],
+          type : 'Hospital' ,
+          item_list : [],
           page : 1 ,
           limit : 4 ,
           last_page : 1 ,
@@ -59,7 +60,7 @@
         }
       },
       mounted(){
-        this.getHospitals(),
+        this.getItems(),
         this.$nextTick(() => {
             window.addEventListener('resize', this.onResize);
         })
@@ -86,7 +87,7 @@
           // todo 
           // responsive code hear 
           // if( this.windowWidth < 745 ){
-          //   this.hospital_list = [ this.hospital_list[0] ]
+          //   this.item_list = [ this.item_list[0] ]
           //   this.limit = 1 
           // }else{
           //   this.limit = 4 
@@ -94,22 +95,22 @@
         },
         prev(){
           this.page = this.page > 0 ? (this.page - 1 ) : this.page 
-          this.getHospitals(this.page)
+          this.getItems(this.page)
         },
         next(){
           this.page = this.page < this.last_page ? (this.page + 1) : this.page 
-          this.getHospitals(this.page)
+          this.getItems(this.page)
         },
 
-        getHospitals(page=1){
-          axios.get(`api/frontend/hospital/?page=${page}&limit=${this.limit}`,{
+        getItems(page=1){
+          axios.get(`api/frontend/hospital/?page=${page}&limit=${this.limit}&type=${this.type}`,{
             params : {
               'division_id' : this.division_id ,
               'district_id' : this.district_id ,
               'upazila_id'  : this.upazila_id  ,
             }
           }).then(response=>{
-             this.hospital_list = response.data?.data
+             this.item_list = response.data?.data
              this.total     = response.data?.meta?.total 
              this.last_page     = response.data?.meta?.last_page 
              this.current_page     = response.data?.meta?.current_page 
@@ -120,10 +121,11 @@
           })
         },
         respondToSearchFilterChange(){
+          this.type        = this.search_info.selected_type 
           this.division_id = this.search_info.selected_division
           this.district_id = this.search_info.selected_district
-          this.upazila_id = this.search_info.selected_upazila
-          this.getHospitals()
+          this.upazila_id  = this.search_info.selected_upazila
+          this.getItems()
         //  let  payload = {
         //     "division_id" : this.search_info.selected_division ,
         //     "district_id" : this.search_info.selected_district ,
@@ -134,7 +136,7 @@
         //       ...payload
         //     }
         //   }).then( response =>{
-        //      this.hospital_list = response.data?.data
+        //      this.item_list = response.data?.data
         //      this.last_page     = response.data?.meta?.last_page             
         //   }).catch( error => {
         //      alert(`error`)

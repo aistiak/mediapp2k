@@ -27,7 +27,7 @@ class HospitalController extends Controller
              "doctor" => "Modules\FrontEnd\Transformers\DoctorListResource",   
         ];
 
-        $type = $request->has('type') ? $request->type : 'hospital' ;
+        $type = $request->type == 'doctor' ? 'doctor' : 'hospital' ;
         $limit = $request->has('limit') ? $request->limit : 10 ; 
         $division_id = $request->has('division_id') ? $request->division_id : null ;
         $district_id = $request->has('district_id') ? $request->district_id : null ;

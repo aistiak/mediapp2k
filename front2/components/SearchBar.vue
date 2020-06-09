@@ -3,10 +3,10 @@
         <!-- {{districts}} -->
         <div class="row"> 
               <div class="col-md-2" style="border:solid 1px">
-                    <select class="custom-select" id="inputGroupSelect01">
+                    <select class="custom-select" id="inputGroupSelect01" v-model="selected_type">
                         <option selected >Choose...</option>
-                        <option value="1">Hospital</option>
-                        <option value="2">Doctor</option>
+                        <option value="hospital">Hospital</option>
+                        <option value="doctor">Doctor</option>
                         <!-- <option value="3">Three</option> -->
                     </select>
               </div>  
@@ -45,6 +45,7 @@ export default {
    name: 'SearchBar',
    data(){
        return {
+           selected_type : 'Choose...',
            divisions : [] ,
            selected_division : 'Divsion...' ,
            districts : [] ,
@@ -97,9 +98,10 @@ export default {
         search(){
            
             let payload = {
-                'selected_division' : this.selected_division == 'Divsion...' ? '' : this.selected_division ,
-                'selected_district' : this.selected_district == 'District...'? '' : this.selected_district,
-                'selected_upazila' :  this.selected_upazila  == 'Subdistrict...'? '' : this.selected_upazila,
+                'selected_type'     : this.selected_type     == 'Choose...'     ? '' : this.selected_type     ,
+                'selected_division' : this.selected_division == 'Divsion...'    ? '' : this.selected_division ,
+                'selected_district' : this.selected_district == 'District...'   ? '' : this.selected_district ,
+                'selected_upazila'  : this.selected_upazila  == 'Subdistrict...'? '' : this.selected_upazila  ,
             }
             this.$store.dispatch(`pass_search_info`,payload)
         },

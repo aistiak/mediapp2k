@@ -17,13 +17,13 @@ class DatabaseSeeder extends Seeder
         // $this->call(AccountTypeSeeder::class);
         // $this->call(AccountSeeder::class);
         
-        // DB::table('users')->insert([
-        //     'name' => 'admin',
-        //     'email' => 'admin@gmail.com',
-        //     'password' => Hash::make('secret'),
-        // ]);
-        // $this->call(HospitalSeeder::class);
-        // $this->call(DoctorSeeder::class);
+        DB::table('users')->insert([
+            'name' => 'admin',
+            'email' => 'admin@gmail.com',
+            'password' => Hash::make('secret'),
+        ]);
+        $this->call(HospitalSeeder::class);
+        $this->call(DoctorSeeder::class);
 
 
     }

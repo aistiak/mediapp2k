@@ -6,8 +6,8 @@ $factory->define(App\Hospital::class, function (Faker $faker) {
 
     $user = factory(\App\User::class,1)->create()->first();
     $division = App\Division::orderByRaw('RAND()')->first();
-    $district = $division->orderByRaw('RAND()')->first() ;
-    $upazila  = $district->orderByRaw('RAND()')->first() ;
+    $district = $division->districts()->orderByRaw('RAND()')->first() ;
+    $upazila  = $district->upazilas()->orderByRaw('RAND()')->first() ;
     
     return [
         // 'user_id' => App\User::orderByRaw('RAND()')->first()->id,
