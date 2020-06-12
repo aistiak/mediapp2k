@@ -19,11 +19,10 @@ use App\Http\Middleware\AdminMiddleware;
 
 
 Route::post('api/login','RegisterLoginPasswordResetController@login');
-
 // auth test
 
 Route::prefix('api')->middleware(['auth:api'])->group(function(){
-
+	Route::post('auth-user','RegisterLoginPasswordResetController@authUser');
 	Route::get('auth-test',function(){
 		return "auth ok" ;
 	});

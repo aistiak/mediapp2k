@@ -77,7 +77,9 @@ class RegisterLoginPasswordResetController extends Controller
             return "Woops! Something went wrong";
         }
     }
-
+    public function authUser(){
+        return auth()->user() ;
+    }
     public function login(Request $request)
     {
         // return $request->all();
