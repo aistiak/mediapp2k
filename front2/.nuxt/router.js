@@ -8,6 +8,7 @@ const _abebbb16 = () => interopDefault(import('..\\pages\\blog.vue' /* webpackCh
 const _d9a9ef2c = () => interopDefault(import('..\\pages\\blog-details.vue' /* webpackChunkName: "pages_blog-details" */))
 const _3e98179d = () => interopDefault(import('..\\pages\\contact.vue' /* webpackChunkName: "pages_contact" */))
 const _47b471f4 = () => interopDefault(import('..\\pages\\index-2.vue' /* webpackChunkName: "pages_index-2" */))
+const _0db1e8b4 = () => interopDefault(import('..\\pages\\login.vue' /* webpackChunkName: "pages_login" */))
 const _6d91309c = () => interopDefault(import('..\\pages\\service.vue' /* webpackChunkName: "pages_service" */))
 const _08dc7eb2 = () => interopDefault(import('..\\pages\\service-details.vue' /* webpackChunkName: "pages_service-details" */))
 const _2f7f688f = () => interopDefault(import('..\\pages\\index.vue' /* webpackChunkName: "pages_index" */))
@@ -48,6 +49,10 @@ export const routerOptions = {
     path: "/index-2",
     component: _47b471f4,
     name: "index-2"
+  }, {
+    path: "/login",
+    component: _0db1e8b4,
+    name: "login"
   }, {
     path: "/service",
     component: _6d91309c,
