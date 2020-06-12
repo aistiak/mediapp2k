@@ -4,7 +4,7 @@
     </div>
 </template>
 <script>
-
+  import auth from "../auth/auth"
   export default {
     components: {
 
@@ -15,6 +15,8 @@
       }
     },
     mounted () {
+      auth.setUpAuth()
+      
       this.$nextTick(() => {
         this.$nuxt.$loading.start()
         setTimeout(() => this.$nuxt.$loading.finish(), 500)

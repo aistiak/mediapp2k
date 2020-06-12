@@ -31,17 +31,19 @@ const mutations = {}
 import demo from "./demo.store"
 import hospital from "./hospital.module"
 import search from "./search.model"
+import user from "./user.module"
 export default new  Vuex.Store ({
 
     state ,
     getters ,
     actions , 
     mutations ,
-
+ 
     modules : {
         demo : demo ,
         hospital : hospital ,
         search : search ,
+        user : user ,
     }
 
 })

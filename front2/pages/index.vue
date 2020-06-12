@@ -35,7 +35,7 @@
   import BlogHome from "~/components/BlogHome";
   import ContactHome from "~/components/ContactHome";
   import Hospitals from "~/components/Hospitals";
-
+  import auth from "../auth/auth"
   import axios from "axios";
   export default {
     components: {
@@ -60,6 +60,7 @@
       // axios.get(`test`).then(response=>{
       //   alert( JSON.stringify(response.data))
       // })
+      
     }
   }
 </script>

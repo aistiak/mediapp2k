@@ -32,22 +32,41 @@
 </template>
 
 <script>
-  export default {
+ import axios from "axios"   
+ import auth from "../auth/auth"
+ export default {
     //Layout for Home 2
     layout: 'blank',
+    data() {
+        return {
+            email : `` ,
+            password : ``,
+        }   
+    },
     head(){
       return {
         title: "Mediapp | login ",
-        email : `` ,
-        password : ``,
       }
     },
     methods:{
+        // loading scrren 
         submit : function(e){
             e.preventDefault();
-
+            let payload = {
+                'email' : this.email,
+                'password': this.password ,
+            }
             // sumit email and passs word 
-            
+            axios.post(`api/login`,payload).then( response => {
+                // console.log(response)
+                // stop loading 
+                // save token and expire 
+                auth.loginHelper(response.data)
+                this.$router.push('/')
+            }).catch( error => {
+                 // stop loading    
+            })    
+
         }
     }
   }

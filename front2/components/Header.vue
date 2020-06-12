@@ -68,7 +68,7 @@
                 </li>
                 <li><nuxt-link to="/contact">Contact</nuxt-link></li>
                 <li class="header_right_btn">
-                  <a class="btn-yellow" href="#">BOOK TODAY</a>
+                  <a class="btn-yellow" href="#">{{is_loggedin}}</a>
                 </li>
               </ul>
             </div><!--end .collapse-->
@@ -80,8 +80,12 @@
 </template>
 
 <script>
+    import {mapGetters} from "vuex"
     export default {
       name: "Header",
+      computed:{
+        ...mapGetters(['is_loggedin'])
+      },
       mounted() {
         //Fixed menu
         const menu_fixed = document.querySelector('.main_menu_area');
