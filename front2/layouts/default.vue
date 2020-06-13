@@ -1,11 +1,8 @@
 <template>
   <div>
     <Header />
-    <br>
-    <br>
-    <br>
-    <br>
-    <SearchBar/>
+ 
+    <!-- <SearchBar/> -->
     <nuxt />
     <Footer />
   </div>
@@ -25,7 +22,7 @@
     },
     head(){
       return {
-        title: "Loazzne - Vue Nuxt Heating & Air Conditioning Services Template"
+        title: "Mediapp"
       }
     },
     mounted () {

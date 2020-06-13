@@ -1,12 +1,16 @@
 import axios from "axios"
 
 const state = {
-    hospitalDetail : {} 
+    hospitalDetail : {} ,
+    hospitalList :[]
 }
 
 const getters = {
     hospitalDetail(state){
          return state.hospitalDetail 
+    },
+    hospitalList(state){
+        return state.hospitalList 
     }
 }
 
@@ -26,6 +30,9 @@ const actions = {
 const mutations = {
     set_hospital_detail(state,payload){
         state.hospitalDetail = { ...payload }
+    },
+    set_hospital_list(state,payload){
+        state.hospitalList = payload
     }
 }
 

@@ -60,6 +60,7 @@
         }
       },
       mounted(){
+        // 
         this.getItems(),
         this.$nextTick(() => {
             window.addEventListener('resize', this.onResize);

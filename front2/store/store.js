@@ -32,6 +32,7 @@ import demo from "./demo.store"
 import hospital from "./hospital.module"
 import search from "./search.model"
 import user from "./user.module"
+import doctor from "./doctor.module"
 export default new  Vuex.Store ({
 
     state ,
@@ -44,6 +45,7 @@ export default new  Vuex.Store ({
         hospital : hospital ,
         search : search ,
         user : user ,
+        doctor : doctor ,
     }
 
 })

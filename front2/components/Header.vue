@@ -38,7 +38,7 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <a href="/" class="logo">
+            <a href="javascript:;" class="logo" @click="$router.push('/')" >
               <img src="/assets/images/logo.png" alt="Logo">
             </a>
           </div>

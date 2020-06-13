@@ -3,6 +3,7 @@
 namespace Modules\FrontEnd\Transformers;
 
 use Illuminate\Http\Resources\Json\Resource;
+use Modules\FrontEnd\Transformers\DoctorListResource;
 
 class HospitalDetailResource extends Resource
 {
@@ -18,7 +19,7 @@ class HospitalDetailResource extends Resource
             'id' => $this->id ,
             'name' => $this->name ,
             'address' => $this->address , 
-            'doctors' => $this->doctors 
+            'doctors' =>  DoctorListResource::collection( $this->doctors ) 
         ];
     }
 }

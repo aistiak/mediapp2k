@@ -16,26 +16,27 @@ class HospitalController extends Controller
      * @return Response
      */
     public $models = [
-        "hospital" =>  "App\Hospital",     
-        "doctor" =>  "App\Doctor",     
+
+        "hospital"           =>  "App\Hospital",     
+        "doctor"             =>  "App\Doctor",     
     ];    
 
     public $resources = [
-         "hospital" => "Modules\FrontEnd\Transformers\HospitalListResource",   
-         "hospital_detail" => "Modules\FrontEnd\Transformers\HospitalDetailResource",   
-         "doctor" => "Modules\FrontEnd\Transformers\DoctorListResource",   
-         "doctor_detail" => "Modules\FrontEnd\Transformers\DoctorListResource",   
+         "hospital"          => "Modules\FrontEnd\Transformers\HospitalListResource",   
+         "doctor"            => "Modules\FrontEnd\Transformers\DoctorListResource",   
+         "hospital_detail"   => "Modules\FrontEnd\Transformers\HospitalDetailResource",   
+         "doctor_detail"     => "Modules\FrontEnd\Transformers\DoctorListResource",    // todo 
     ];
 
     public function index(Request $request)
     {
 
 
-        $type = $request->type == 'doctor' ? 'doctor' : 'hospital' ;
-        $limit = $request->has('limit') ? $request->limit : 10 ; 
+        $type        = $request->type == 'doctor' ? 'doctor' : 'hospital' ;
+        $limit       = $request->has('limit')       ? $request->limit       : 10 ; 
         $division_id = $request->has('division_id') ? $request->division_id : null ;
         $district_id = $request->has('district_id') ? $request->district_id : null ;
-        $upazila_id = $request->has('upazila_id') ? $request->upazila_id : null ;
+        $upazila_id  = $request->has('upazila_id')  ? $request->upazila_id  : null ;
      
         // $hospitals = Hospital::when($division_id,function($q) use($division_id){$q->where('division_id','=',$division_id);})
         $hospitals = $this->models[ $type ]::when($division_id,function($q) use($division_id){$q->where('division_id','=',$division_id);})
@@ -49,7 +50,7 @@ class HospitalController extends Controller
 
     public function detail(Request $request) {
 
-        $type = $request->type == 'doctor' ? 'doctor' : 'hospital' ;
+        $type     = $request->type == 'doctor' ? 'doctor' : 'hospital' ;
         $hospital = $this->models[ $type ]::find($request->id) ;
         return new $this->resources[ $type.'_detail' ]( $hospital ) ;
     }

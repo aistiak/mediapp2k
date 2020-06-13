@@ -3,7 +3,11 @@
     <!-- <Slider /> -->
     <!-- <Features /> -->
     <!-- <Map /> -->
-    <!-- <SearchBar/> -->
+    <br>
+    <br>
+    <br>
+    <br>
+    <SearchBar/>
     <Hospitals/>
     
     <About />
