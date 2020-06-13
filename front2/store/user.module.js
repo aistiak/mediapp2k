@@ -11,7 +11,7 @@ const getters = {
 }
 
 const actions = {
-    [`fetch_auth_user`]({commit}){
+    fetch_auth_user({commit}){
         console.log('api/auth-user has been called ')
         return new Promise( (resolve , reject) => {
             axios.post(`api/auth-user`).then( response => {
@@ -27,12 +27,12 @@ const actions = {
 
 const mutations ={
 
-    ['set_login_status'](state,payload){
+    set_login_status(state,payload){
         console.log(payload)
         state.is_loggedin = payload 
     },
 
-    [`set_user`](state,payload){
+    set_user(state,payload){
         state.user = payload 
     }
 }

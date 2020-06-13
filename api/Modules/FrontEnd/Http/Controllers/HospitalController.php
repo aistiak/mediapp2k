@@ -15,17 +15,21 @@ class HospitalController extends Controller
      * Display a listing of the resource.
      * @return Response
      */
+    public $models = [
+        "hospital" =>  "App\Hospital",     
+        "doctor" =>  "App\Doctor",     
+    ];    
+
+    public $resources = [
+         "hospital" => "Modules\FrontEnd\Transformers\HospitalListResource",   
+         "hospital_detail" => "Modules\FrontEnd\Transformers\HospitalDetailResource",   
+         "doctor" => "Modules\FrontEnd\Transformers\DoctorListResource",   
+         "doctor_detail" => "Modules\FrontEnd\Transformers\DoctorListResource",   
+    ];
+
     public function index(Request $request)
     {
-        $models = [
-            "hospital" =>  "App\Hospital",     
-            "doctor" =>  "App\Doctor",     
-        ];    
 
-        $resources = [
-             "hospital" => "Modules\FrontEnd\Transformers\HospitalListResource",   
-             "doctor" => "Modules\FrontEnd\Transformers\DoctorListResource",   
-        ];
 
         $type = $request->type == 'doctor' ? 'doctor' : 'hospital' ;
         $limit = $request->has('limit') ? $request->limit : 10 ; 
@@ -34,18 +38,19 @@ class HospitalController extends Controller
         $upazila_id = $request->has('upazila_id') ? $request->upazila_id : null ;
      
         // $hospitals = Hospital::when($division_id,function($q) use($division_id){$q->where('division_id','=',$division_id);})
-        $hospitals = $models[$type]::when($division_id,function($q) use($division_id){$q->where('division_id','=',$division_id);})
+        $hospitals = $this->models[ $type ]::when($division_id,function($q) use($division_id){$q->where('division_id','=',$division_id);})
                     ->when($district_id,function($q) use($district_id){$q->where('district_id','=',$district_id);})    
                     ->when($upazila_id,function($q) use($upazila_id){$q->where('upazila_id','=',$upazila_id);})    
                     ->paginate($limit) ;
                     
-        return  $resources[$type]::collection( $hospitals );
+        return  $this->resources[ $type ]::collection( $hospitals );
     }
 
 
-    public function detail($id) {
+    public function detail(Request $request) {
 
-        $hospital = Hospital::find($id) ;
-        return new HospitalDetailResource( $hospital ) ;
+        $type = $request->type == 'doctor' ? 'doctor' : 'hospital' ;
+        $hospital = $this->models[ $type ]::find($request->id) ;
+        return new $this->resources[ $type.'_detail' ]( $hospital ) ;
     }
 }
