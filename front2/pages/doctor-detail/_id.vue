@@ -1,8 +1,8 @@
 <template>
   <div>
     <!-- <PageHeader title="Doctor Details" /> -->
-    this is dotor detail page 
-    <DoctorDetail :Doctor_id="this.$route.params.id" />
+    
+    <DoctorDetail :doctor_id="this.$route.params.id" />
   </div>
 </template>
 <script>

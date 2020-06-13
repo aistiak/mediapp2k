@@ -85,7 +85,7 @@
       methods:{
         gotoDetail({id}){
             if (this.type == 'doctor'){
-
+                 this.$router.push(`/doctor-detail/${id}`)
             }else { // hospital
                 this.$router.push(`/hospital-detail/${id}`)
             }
