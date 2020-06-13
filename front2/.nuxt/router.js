@@ -11,6 +11,7 @@ const _47b471f4 = () => interopDefault(import('..\\pages\\index-2.vue' /* webpac
 const _0db1e8b4 = () => interopDefault(import('..\\pages\\login.vue' /* webpackChunkName: "pages_login" */))
 const _6d91309c = () => interopDefault(import('..\\pages\\service.vue' /* webpackChunkName: "pages_service" */))
 const _08dc7eb2 = () => interopDefault(import('..\\pages\\service-details.vue' /* webpackChunkName: "pages_service-details" */))
+const _af00776e = () => interopDefault(import('..\\pages\\hospital-detail\\_id.vue' /* webpackChunkName: "pages_hospital-detail__id" */))
 const _2f7f688f = () => interopDefault(import('..\\pages\\index.vue' /* webpackChunkName: "pages_index" */))
 
 // TODO: remove in Nuxt 3
@@ -61,6 +62,10 @@ export const routerOptions = {
     path: "/service-details",
     component: _08dc7eb2,
     name: "service-details"
+  }, {
+    path: "/hospital-detail/:id?",
+    component: _af00776e,
+    name: "hospital-detail-id"
   }, {
     path: "/",
     component: _2f7f688f,

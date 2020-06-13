@@ -12,8 +12,10 @@ const getters = {
 
 const actions = {
     [`fetch_auth_user`]({commit}){
+        console.log('api/auth-user has been called ')
         return new Promise( (resolve , reject) => {
             axios.post(`api/auth-user`).then( response => {
+                
                 commit(`set_user`,response.data)
                 resolve(response)
             }).catch( error => {

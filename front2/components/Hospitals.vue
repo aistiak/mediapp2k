@@ -20,7 +20,7 @@
 
         </div><!--end .col-md-12-->
 
-        <div class="col-md-3 col-sm-6" v-for="(item,idx) in item_list" :key="idx">
+        <div class="col-md-3 col-sm-6" v-for="(item,idx) in item_list" :key="idx" @click="gotoDetail(item)">
           <div class="team_member">
             <img src="/assets/images/team/team-1.jpg" alt="team 1">
             <div class="team_details">
@@ -82,6 +82,13 @@
       },
 
       methods:{
+        gotoDetail({id}){
+            if (this.type == 'doctor'){
+
+            }else { // hospital
+                this.$router.push(`/hospital-detail/${id}`)
+            }
+        },
         onResize() {
           this.windowWidth = window.innerWidth
           // todo 

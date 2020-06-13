@@ -14,23 +14,28 @@ const loginHelper  = function(arg) {
 
 const setUpAuth = function(){
     if(localStorage.getItem(`token`)){ 
-        // alert(`set up auth `)
         // validate date 
-        if( new Date(localStorage.getItem('tokenExpiry')) > new Date(Date.now())  ) {
+        console.log(`tonek avaiable`)
+        if( new Date(localStorage.getItem('tokenExpiryKey')) > new Date(Date.now())  ) {
             axios.defaults.headers.common["Authorization"] = `Bearer ${localStorage.getItem(`token`)}` 
             // dispatch logged in user info        
             store.commit('set_login_status',true)
-            store.dispatch('fetch_auth_user').then(response => {
-                console.log(response)
-            }).catch( error => {
-                console.log(error)
-            })
-
+            store.dispatch('fetch_auth_user')
         }
+        return true 
     }
+    return false 
+}
+
+const clearAuth = function(){
+    localStorage.clear()
+    store.commit('set_login_status',false)
+    store.commit('set_user',{})
+
 }
 
 export default {
     loginHelper ,
     setUpAuth ,
+    clearAuth ,
 }
