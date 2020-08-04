@@ -6,6 +6,7 @@ use Closure;
 
 use Sentinel;
 use App\RoleUser;
+use Illuminate\Support\Facades\Auth;
 
 class AdminMiddleware
 {
@@ -18,12 +19,16 @@ class AdminMiddleware
      */
     public function handle($request, Closure $next)
     {
-        // return response()->json(['error'=>"Rafi"],400);
+        
+        
         $prefix = $request->route()->getPrefix();
         $prefix = substr($prefix, 1);
-
+        
         $user_id = Auth()->user()->id;
-        $role_id = RoleUser::where('user_id',$user_id)->first()->role_id;
+        
+        $role_id =  Auth()->user()->role->id ;
+        
+        
         $role = Sentinel::findRoleById($role_id);
 
         $models = [
@@ -37,6 +42,15 @@ class AdminMiddleware
 
         if ($request->isMethod('post')) {
             if ($role->hasAccess([$prefix.'.create']))
+            {
+                return $next($request);
+            }
+            else{
+                return response()->json(['error'=>"You have no access"],400);
+            }
+        }
+        elseif ($request->isMethod('get')) {
+            if (  $role->hasAccess([$prefix.'.view']) || $role->hasAccess([$prefix.'.viewall'])  )
             {
                 return $next($request);
             }

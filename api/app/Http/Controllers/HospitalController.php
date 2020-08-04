@@ -16,7 +16,7 @@ class HospitalController extends Controller
     public function index(Request $request)
     {
         // if has specific id then send detail
-        
+
         if($request->has('id')){
             if(Hospital::find($request->input('id'))){
                 return Hospital::find($request->input('id'));

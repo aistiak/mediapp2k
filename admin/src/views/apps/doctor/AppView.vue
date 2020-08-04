@@ -11,15 +11,15 @@
   <div id="page-user-view">
     
  
-    <vs-alert color="danger" title="User Not Found" :active.sync="role_not_found">
+    <vs-alert color="danger" title="User Not Found" :active.sync="app_data_not_found">
       <span>Hospital record with id: {{ $route.params.id }} not found. </span>
       <span>
         <span>Check </span><router-link :to="{name:'page-user-list'}" class="text-inherit underline">All Users</router-link>
       </span>
     </vs-alert>
 
-    <div id="user-data" v-if="!role_not_found">
-        
+        {{ app_data }}
+    <div id="user-data" v-if="app_data_not_found">
       <vx-card  class="mb-base">
           <h2> {{role_data.name}} </h2>
           <br>
@@ -132,8 +132,9 @@ export default {
       user_data: null,
       user_not_found: false,
       hospital_not_found: false,
+      app_data_not_found: false,
       role_not_found : false ,
-      hospital_data : {} ,
+      app_data : {} ,
       role_data: {} ,
       permitted_modules : [`user`,`hospital`,`role`] ,
       permitted_permission :[`view` , `viewall` , `create` , `update` , `update all` , `delete` , `delete all`],
@@ -197,13 +198,15 @@ export default {
       });
     },
     getHospitalDetail(){
+      alert(`FETCH_DOCTORS`)
         let payload = {
             'id' : this.$route.params.id 
         }
-        this.$store.dispatch(`GET_HOSPITAL_LIST`,payload).then(response=>{
-            this.hospital_data = response.data
+        this.$store.dispatch(`FETCH_DOCTORS`,payload).then(response=>{
+            this.app_data = response.data
+            this.app_data_not_found = false 
         }).catch(error=>{
-           this.hospital_not_found = true
+           this.app_data_not_found = true
         })
 
 

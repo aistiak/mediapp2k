@@ -10,7 +10,7 @@ class Post extends Model
         'shoulder',
         'headline',
         'hanger',
-        'athor_id',
+        'author_id',
         'reporter_id',
         'featured_image_id',
         'featured_video_id',

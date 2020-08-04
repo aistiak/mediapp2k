@@ -23,6 +23,7 @@ class User extends Authenticatable
         'name',
         'permissions',
         'type',
+        'role_id',
     ];
 
     /**
@@ -41,8 +42,18 @@ class User extends Authenticatable
     protected function role(){
         return $this->belongsTo('App\Role','role_id');
     }
+    // get doctor associated with the use id 
+    protected function doctor() {
+        return $this->hasOne('App\Doctor','user_id');
+    }
 
+    protected function hospital() {
+        return $this->hasOne('App\Hospital','user_id');
+    }
 
+    protected function patient() {
+        return $this->hasOne('App\Patient','user_id');
+    }
 
     // public function district()
     // {

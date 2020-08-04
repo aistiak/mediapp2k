@@ -13,7 +13,8 @@ import { createStore } from './store.js'
 /* Plugins */
 import axios from "axios"
 Vue.prototype.$http = axios 
-axios.defaults.baseURL = "http://127.0.0.1:8000/"
+// axios.defaults.baseURL = "http://127.0.0.1:8000/"
+axios.defaults.baseURL = "http://mediapp.arif-istiak.xyz/api/public/"
 // Component: <ClientOnly>
 Vue.component(ClientOnly.name, ClientOnly)
 

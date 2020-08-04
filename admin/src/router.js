@@ -259,17 +259,47 @@ const router = new Router({
             },
 
         },       
-        {   
-            path: '/apps/hospital/hospital-edit/:id',
-            name: 'app-hospital-edit',
-            component: () => import('@/views/apps/hospital/hospital-edit/HospitalEdit.vue'),
+        // ===============================DOCTOR====================//
+        {
+            path: '/apps/doctor/doctor-list',
+            name: 'app-doctor-list',
+            component: () => import('@/views/apps/doctor/app-list/AppList.vue'),
             meta: {
                 breadcrumb: [
                     { title: 'Home', url: '/' },
-                    { title: 'hospital' },
+                    { title: 'Doctor' },
+                    { title: 'List', active: true },
+                ],
+                pageTitle: 'Doctor List',
+                rule: 'editor'
+            },
+        },
+        {
+            path: '/apps/doctor/doctor-view/:id',
+            name: 'app-doctor-view',
+            component: () => import('@/views/apps/doctor/AppView.vue'),
+            meta: {
+                breadcrumb: [
+                    { title: 'Home', url: '/' },
+                    { title: 'Doctor' },
+                    { title: 'View', active: true },
+                ],
+                pageTitle: 'Doctor View',
+                rule: 'editor'
+            },
+
+        },       
+        {   
+            path: '/apps/doctor/doctor-edit/:id',
+            name: 'app-doctor-edit',
+            component: () => import('@/views/apps/doctor/app-edit/AppEdit.vue'),
+            meta: {
+                breadcrumb: [
+                    { title: 'Home', url: '/' },
+                    { title: 'Doctor' },
                     { title: 'Edit', active: true },
                 ],
-                pageTitle: 'hospital Edit',
+                pageTitle: 'doctor Edit',
                 rule: 'editor'
             },
         },     

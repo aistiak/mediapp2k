@@ -38,6 +38,6 @@ class CreatePollTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('poll');
+        Schema::dropIfExists('polls');
     }
 }

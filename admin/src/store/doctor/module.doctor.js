@@ -9,16 +9,31 @@ const getters = {
     }
 }
 const actions = {
-    [`FETCH_DOCTORS`]({commit}){
+
+    // [`FETCH_DOCTORS`]({commit}){
+    //     return new Promise((resolve,reject)=>{
+    //         axios.get(`doctor`).then(response=>{
+    //             resolve(response)
+    //             commit(`SET_DOCTORS`,response.data)
+    //         }).catch(error=>{
+    //             reject(error)
+    //         })
+    //     })
+    // },
+
+    [`FETCH_DOCTORS`]({commit},payload=undefined){
+        let url = payload ? `doctor?id=${payload.id}` : `doctor`  
+        console.log(url)
         return new Promise((resolve,reject)=>{
-            axios.get(`doctor`).then(response=>{
+            axios.get(url).then(response=> {
                 resolve(response)
-                commit(`SET_DOCTORS`,response.data)
+                // request ffor detail wont set commit 
+                if(!payload) commit(`SET_DOCTORS`,response.data)
             }).catch(error=>{
                 reject(error)
             })
-        })
-    }
+        });
+    },
 }
 
 const mutations = {

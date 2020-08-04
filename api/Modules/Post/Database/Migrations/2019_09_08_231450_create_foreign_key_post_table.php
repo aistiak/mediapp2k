@@ -17,7 +17,7 @@ class CreateForeignKeyPostTable extends Migration
             $table->foreign('featured_image_id')->references('id')->on('contents')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('featured_video_id')->references('id')->on('contents')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('reporter_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreign('athor_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('author_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('created_by')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('updated_by')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
         });

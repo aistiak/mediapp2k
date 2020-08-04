@@ -14,4 +14,8 @@ class Hospital extends Model
     function doctors(){
         return $this->hasMany('App\Doctor','hospital_id');
     }
+
+    function appointments(){
+        return $this->hasMany('App\Appointment','hospital_id') ;
+    }
 }

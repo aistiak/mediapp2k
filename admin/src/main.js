@@ -24,6 +24,7 @@ Vue.use(Vuesax)
 import axios from "axios"
 Vue.prototype.$http = axios
 axios.defaults.baseURL = "http://127.0.0.1:8000/"
+// axios.defaults.baseURL = "http://admin.mediapp.arif-istiak.xyz/public/"
 axios.defaults.headers.common["Authorization"] = `Bearer ${localStorage.getItem(`token`)}` 
 // my auth 
 Vue.use(Auth)

@@ -64,7 +64,7 @@ export default {
     return {
       role_not_found : false ,
       role_data: {} ,
-      permitted_modules : [`user`,`hospital`,`role`] ,
+      permitted_modules : [`user`,`hospital`,`role`,`doctor`] ,
       permitted_permission :[`view` , `viewall` , `create` , `update` , `update all` , `delete` , `delete all`],
       temp : [],
       activeTab: 0,

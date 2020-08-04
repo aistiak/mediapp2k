@@ -62,7 +62,23 @@ export default {
   ** Nuxt.js modules
   */
   modules: [
+    '@nuxtjs/axios',
+    '@nuxtjs/proxy'
   ],
+  axios: {
+    baseURL: 'http://admin.mediapp.arif-istiak.xyz',
+    proxy: true,
+    credentials: false
+  },
+  proxy: {
+    '/api': {
+      target: 'http://admin.mediapp.arif-istiak.xyz/public/',
+      pathRewrite: {
+        '^/api' : '/'
+        }
+      },
+
+  },
   /*
   ** optimizedImages
   */

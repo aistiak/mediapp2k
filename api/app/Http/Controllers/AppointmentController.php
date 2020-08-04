@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Appointment;
+use App\Hospital ;
 use Illuminate\Http\Request;
 
 class AppointmentController extends Controller
@@ -14,7 +15,33 @@ class AppointmentController extends Controller
      */
     public function index()
     {
-        //
+        // if super admin whill show all the appointments 
+        //    doctor  can only see his appointments
+        //    hospital  all the appointmens of the hospital doctos
+        //    patient can see his appointments 
+        // get the auth user , see type / role and retuen appointments 
+        $role = auth()->user()->role->slug ;
+
+        $auth_user = auth()->user() ;
+     
+        $appointments = [] ;
+
+        if( $role == 'super_admin'){
+
+            return  Appointment::paginate(10) ;
+
+        }else if( $role == "hospital") {
+
+            return $auth_user->hospital->appointments()->paginate(10) ;     
+        
+        }else if( $role == "doctor"){
+           
+            return $auth_user->doctor->appointments()->paginate(10) ;
+
+        }else if( $role == "patient" ){
+
+            return $auth_user->patient->appointments()->paginate(10) ;
+        }
     }
 
     /**
@@ -22,9 +49,21 @@ class AppointmentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
         //
+        $request->validate([
+            'doctor_id' => 'required',
+        ]);
+        
+        $auth_user = auth()->user() ;
+        $role = auth()->user()->role->slug ; 
+
+        if ( $role == "patient" ){
+            return "appointment created";
+        }
+        return "who are you ?";
+
     }
 
     /**
@@ -36,6 +75,7 @@ class AppointmentController extends Controller
     public function store(Request $request)
     {
         //
+
     }
 
     /**

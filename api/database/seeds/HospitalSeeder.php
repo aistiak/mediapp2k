@@ -12,6 +12,6 @@ class HospitalSeeder extends Seeder
     public function run()
     {
         //
-        factory(\App\Hospital::class,2000)->create();
+        factory(\App\Hospital::class,10)->create();
     }
 }

@@ -81,13 +81,13 @@ class RoleController extends Controller
                 'hospital.delete' => $request->hospital_delete,
                 'hospital.deleteall' => $request->hospital_deleteall,
 
-                // 'doctor.view'   => $request->doctor_view,   
-                // 'doctor.viewall'   => $request->doctor_viewall,   
-                // 'doctor.create' => $request->doctor_create,
-                // 'doctor.update' => $request->doctor_update,
-                // 'doctor.updateall' => $request->doctor_updateall,
-                // 'doctor.delete' => $request->doctor_delete,
-                // 'doctor.deleteall' => $request->doctor_deleteall,
+                'doctor.view'   => $request->doctor_view,   
+                'doctor.viewall'   => $request->doctor_viewall,   
+                'doctor.create' => $request->doctor_create,
+                'doctor.update' => $request->doctor_update,
+                'doctor.updateall' => $request->doctor_updateall,
+                'doctor.delete' => $request->doctor_delete,
+                'doctor.deleteall' => $request->doctor_deleteall,
 
 
 
@@ -120,13 +120,13 @@ class RoleController extends Controller
                 'hospital_delete' => $request->hospital_delete,
                 'hospital_deleteall' => $request->hospital_deleteall,
 
-                // 'doctor_view'   => $request->doctor_view,   
-                // 'doctor_viewall'   => $request->doctor_viewall,   
-                // 'doctor_create' => $request->doctor_create,
-                // 'doctor_update' => $request->doctor_update,
-                // 'doctor_updateall' => $request->doctor_updateall,
-                // 'doctor_delete' => $request->doctor_delete,
-                // 'doctor_deleteall' => $request->doctor_deleteall,
+                'doctor_view'   => $request->doctor_view,   
+                'doctor_viewall'   => $request->doctor_viewall,   
+                'doctor_create' => $request->doctor_create,
+                'doctor_update' => $request->doctor_update,
+                'doctor_updateall' => $request->doctor_updateall,
+                'doctor_delete' => $request->doctor_delete,
+                'doctor_deleteall' => $request->doctor_deleteall,
                
 
             ]);
@@ -181,13 +181,13 @@ class RoleController extends Controller
                 'hospital.delete' => $request->hospital_delete,
                 'hospital.deleteall' => $request->hospital_deleteall,
 
-                // 'doctor.view'   => $request->doctor_view,   
-                // 'doctor.viewall'   => $request->doctor_viewall,   
-                // 'doctor.create' => $request->doctor_create,
-                // 'doctor.update' => $request->doctor_update,
-                // 'doctor.updateall' => $request->doctor_updateall,
-                // 'doctor.delete' => $request->doctor_delete,
-                // 'doctor.deleteall' => $request->doctor_deleteall,
+                'doctor.view'   => $request->doctor_view,   
+                'doctor.viewall'   => $request->doctor_viewall,   
+                'doctor.create' => $request->doctor_create,
+                'doctor.update' => $request->doctor_update,
+                'doctor.updateall' => $request->doctor_updateall,
+                'doctor.delete' => $request->doctor_delete,
+                'doctor.deleteall' => $request->doctor_deleteall,
 
 
             ];
@@ -216,13 +216,13 @@ class RoleController extends Controller
                 'hospital_delete' => $request->hospital_delete,
                 'hospital_deleteall' => $request->hospital_deleteall,
 
-                // 'doctor_view'   => $request->doctor_view,   
-                // 'doctor_viewall'   => $request->doctor_viewall,   
-                // 'doctor_create' => $request->doctor_create,
-                // 'doctor_update' => $request->doctor_update,
-                // 'doctor_updateall' => $request->doctor_updateall,
-                // 'doctor_delete' => $request->doctor_delete,
-                // 'doctor_deleteall' => $request->doctor_deleteall,  
+                'doctor_view'   => $request->doctor_view,   
+                'doctor_viewall'   => $request->doctor_viewall,   
+                'doctor_create' => $request->doctor_create,
+                'doctor_update' => $request->doctor_update,
+                'doctor_updateall' => $request->doctor_updateall,
+                'doctor_delete' => $request->doctor_delete,
+                'doctor_deleteall' => $request->doctor_deleteall,  
 
             ]);
             // $log_user = Auth()->user();

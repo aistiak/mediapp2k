@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Http\Request;
-
+// use Illuminate\Support\Facades\Auth;
 // use Sentinel;
 
 /*
@@ -17,14 +17,14 @@ use Illuminate\Http\Request;
 
 use App\Http\Middleware\AdminMiddleware;
 
-
+// 	 	FOR BACKEND ADMIN PANEL 
 Route::post('api/login','RegisterLoginPasswordResetController@login');
 // auth test
 
 Route::prefix('api')->middleware(['auth:api'])->group(function(){
 	Route::post('auth-user','RegisterLoginPasswordResetController@authUser');
 	Route::get('auth-test',function(){
-		return "auth ok" ;
+		return auth()->user() ;
 	});
 
 });
@@ -61,6 +61,21 @@ Route::prefix('doctor')->middleware(['auth:api','admin'])->group(function(){
 	Route::delete('/{id}','DoctorController@destroy');
 });
 
+Route::prefix('appointment_setting')->middleware([])->group(function(){
+	Route::get('/','AppointmentSettingController@detail');
+	Route::post('/','AppointmentSettingController@store');
+});
+// for doctos and hospitals 
+// Route::prefix('appointment')->middleware([])->group(function(){
+
+Route::prefix('appointment')->middleware(['auth:api'])->group(function(){
+
+	Route::get('/','AppointmentController@index');
+	Route::post('/','AppointmentController@create');
+	Route::put('/','AppointmentController@store');
+	Route::delete('/{id}','AppointmentController@destroy');
+
+});
 
 // Route::prefix('contacts')->middleware(['auth:api','admin'])->group(function() {
 
