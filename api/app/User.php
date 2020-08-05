@@ -39,20 +39,24 @@ class User extends Authenticatable
     protected function contact(){
         return $this->hasOne('App\Contact');
     }
-    protected function role(){
+    public function role(){
         return $this->belongsTo('App\Role','role_id');
     }
     // get doctor associated with the use id 
-    protected function doctor() {
+    public function doctor() {
         return $this->hasOne('App\Doctor','user_id');
     }
 
-    protected function hospital() {
+    public function hospital() {
         return $this->hasOne('App\Hospital','user_id');
     }
 
-    protected function patient() {
+    public function patient() {
         return $this->hasOne('App\Patient','user_id');
+    }
+
+    public function appointments(){
+        return $this->hasMany('App\Appointment','user_id');
     }
 
     // public function district()

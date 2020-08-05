@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Appointment;
 use App\Hospital ;
+use Exception;
 use Illuminate\Http\Request;
 
 class AppointmentController extends Controller
@@ -23,7 +24,7 @@ class AppointmentController extends Controller
         $role = auth()->user()->role->slug ;
 
         $auth_user = auth()->user() ;
-     
+        // return $auth_user->id ;
         $appointments = [] ;
 
         if( $role == 'super_admin'){
@@ -40,7 +41,7 @@ class AppointmentController extends Controller
 
         }else if( $role == "patient" ){
 
-            return $auth_user->patient->appointments()->paginate(10) ;
+            return $auth_user->appointments()->paginate(10) ;
         }
     }
 
@@ -49,20 +50,68 @@ class AppointmentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function approve(Request $request){
+
+        $request->validate([
+            'approve' => 'required' ,
+            'appointment_id' => 'required' ,
+        ]);
+
+        $approve = $request->input('approve') == 0 ? 0 : 1 ;
+
+        
+        
+        if($appointment = \App\Appointment::find($request->input('appointment_id'))){
+            try {
+
+                $doctor = auth()->user()->doctor;
+                
+                if( $appointment->doctor_id != $doctor->id)  return response()->json(['error' => 'not your appointment doctor !'],400) ;
+
+                $appointment->approved = $request->input('approve');  
+                // $appointment->approve_by
+                $appointment->save() ;
+                
+                return response()->json(['data' =>  $appointment->approved  ]);  
+            
+             }catch(Exception $e) { return response()->json(['error' => 'not a doctor'],400);  }
+
+        }else{
+
+            return response()->json(['error' => 'appointment not found'],404) ;
+        }
+
+    } 
     public function create(Request $request)
     {
         //
         $request->validate([
             'doctor_id' => 'required',
+            'type' => 'required' ,
+            'date' => 'required' 
         ]);
+
         
         $auth_user = auth()->user() ;
         $role = auth()->user()->role->slug ; 
 
         if ( $role == "patient" ){
-            return "appointment created";
+            // return "appointment created";
+            $appointment                = new \App\Appointment ;
+            $appointment->user_id       = $auth_user->id ;
+            $appointment->doctor_id     = $request->input('doctor_id');
+            $appointment->hospital_id   = \App\Doctor::find($request->input('doctor_id'))->hospital->id ;
+            $appointment->date          = \Carbon\Carbon::parse(  $request->input('date')) ;
+            $appointment->type          = $request->input('type') ;
+
+            if( $appointment->save() ){
+                return response()->json(['data' => $appointment]);
+            }
+
         }
-        return "who are you ?";
+
+        return response()->json(['error' => 'you are not a valid user'],400);
 
     }
 
@@ -78,48 +127,12 @@ class AppointmentController extends Controller
 
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Appointment  $appointment
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Appointment $appointment)
-    {
-        //
-    }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Appointment  $appointment
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Appointment $appointment)
-    {
-        //
-    }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Appointment  $appointment
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Appointment $appointment)
-    {
-        //
-    }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Appointment  $appointment
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(Appointment $appointment)
     {
         //
+        return "this is delete" ;
     }
 }

@@ -68,10 +68,11 @@ Route::prefix('appointment_setting')->middleware([])->group(function(){
 // for doctos and hospitals 
 // Route::prefix('appointment')->middleware([])->group(function(){
 
-Route::prefix('appointment')->middleware(['auth:api'])->group(function(){
+Route::prefix('api/appointment')->middleware(['auth:api'])->group(function(){
 
 	Route::get('/','AppointmentController@index');
 	Route::post('/','AppointmentController@create');
+	Route::post('/approve','AppointmentController@approve');
 	Route::put('/','AppointmentController@store');
 	Route::delete('/{id}','AppointmentController@destroy');
 
