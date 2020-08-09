@@ -303,6 +303,51 @@ const router = new Router({
                 rule: 'editor'
             },
         },     
+        {
+            path : '/doctor/appointment/setting' ,
+            name : 'doctor-appointment-setting' ,
+            component : () => import('@/views/apps/appointments/Settings.vue') ,
+            meta: {
+                breadcrumb: [
+                    { title: 'Home', url: '/' },
+                    { title: 'Doctor' },
+                    { title: 'Appointment' },
+                    { title: 'Setting', active: true },
+                ],
+                pageTitle: 'Doctor Appointment Setting',
+                rule: 'editor'
+            },
+        },
+        {
+            path : '/doctor/appointment/list' ,
+            name : 'doctor-appointment-list' ,
+            component : () => import('@/views/apps/appointments/List.vue') ,
+            meta: {
+                breadcrumb: [
+                    { title: 'Home', url: '/' },
+                    { title: 'Doctor' },
+                    { title: 'Appointment' },
+                    { title: 'List', active: true },
+                ],
+                pageTitle: 'Doctor Appointment List',
+                rule: 'editor'
+            },
+        },
+        // {
+        //     path: '/doctor/appointment/list'  ,
+        //     name : 'doctor-appointment-list' ,
+        //     component : () => import('@/views/apps/appointments/List.vue') ,
+        //     meta : {
+        //         breadcrumb : [
+        //             {title : 'Home' , url : '/'} ,
+        //             {title : 'Doctor' } ,
+        //             {title : 'Appointment' } ,
+        //             {title : 'List' , active : true } ,
+        //         ]
+        //     },
+        //     pageTitle: 'Doctor Appointment List',
+        //     rule: 'editor'           
+        // },
         // =========================== role =======================
         {
             path: '/apps/role/role-list',

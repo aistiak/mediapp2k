@@ -60,10 +60,11 @@ Route::prefix('doctor')->middleware(['auth:api','admin'])->group(function(){
 	Route::put('/','DoctorController@store');
 	Route::delete('/{id}','DoctorController@destroy');
 });
-
-Route::prefix('appointment_setting')->middleware([])->group(function(){
+// TODO 
+Route::prefix('api/appointment_setting')->middleware(['auth:api'])->group(function(){
 	Route::get('/','AppointmentSettingController@detail');
 	Route::post('/','AppointmentSettingController@store');
+	Route::get('/test','AppointmentSettingController@test');
 });
 // for doctos and hospitals 
 // Route::prefix('appointment')->middleware([])->group(function(){

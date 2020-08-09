@@ -54,67 +54,67 @@ export default [
     icon: "PackageIcon",
     i18n: "Apps",
     items: [
-      {
-        url: "/apps/email",
-        name: "Email",
-        slug: "email",
-        icon: "MailIcon",
-        i18n: "Email",
-      },
-      {
-        url: "/apps/chat",
-        name: "Chat",
-        slug: "chat",
-        icon: "MessageSquareIcon",
-        i18n: "Chat",
-      },
-      {
-        url: "/apps/todo",
-        name: "Todo",
-        slug: "todo",
-        icon: "CheckSquareIcon",
-        i18n: "Todo",
-      },
-      {
-        url: "/apps/calendar/vue-simple-calendar",
-        name: "Calendar",
-        slug: "calendar-simple-calendar",
-        icon: "CalendarIcon",
-        tagColor: "success",
-        i18n: "Calendar",
-      },
-      {
-        url: null,
-        name: "eCommerce",
-        icon: "ShoppingCartIcon",
-        i18n: "eCommerce",
-        submenu: [
-          {
-            url: '/apps/eCommerce/shop',
-            name: "Shop",
-            slug: "ecommerce-shop",
-            i18n: "Shop",
-          },
-          {
-            url: '/apps/eCommerce/item/',
-            name: "Item Details",
-            slug: "ecommerce-item-detail-view",
-            i18n: "ItemDetails",
-          },
-          {
-            url: '/apps/eCommerce/wish-list',
-            name: "Wish List",
-            slug: "ecommerce-wish-list",
-            i18n: "WishList",
-          },
-          {
-            url: '/apps/eCommerce/checkout',
-            name: "Checkout",
-            slug: "ecommerce-checkout",
-            i18n: "Checkout",
-          },
-        ]
-      },
+      // {
+      //   url: "/apps/email",
+      //   name: "Email",
+      //   slug: "email",
+      //   icon: "MailIcon",
+      //   i18n: "Email",
+      // },
+      // {
+      //   url: "/apps/chat",
+      //   name: "Chat",
+      //   slug: "chat",
+      //   icon: "MessageSquareIcon",
+      //   i18n: "Chat",
+      // },
+      // {
+      //   url: "/apps/todo",
+      //   name: "Todo",
+      //   slug: "todo",
+      //   icon: "CheckSquareIcon",
+      //   i18n: "Todo",
+      // },
+      // {
+      //   url: "/apps/calendar/vue-simple-calendar",
+      //   name: "Calendar",
+      //   slug: "calendar-simple-calendar",
+      //   icon: "CalendarIcon",
+      //   tagColor: "success",
+      //   i18n: "Calendar",
+      // },
+      // {
+      //   url: null,
+      //   name: "eCommerce",
+      //   icon: "ShoppingCartIcon",
+      //   i18n: "eCommerce",
+      //   submenu: [
+      //     {
+      //       url: '/apps/eCommerce/shop',
+      //       name: "Shop",
+      //       slug: "ecommerce-shop",
+      //       i18n: "Shop",
+      //     },
+      //     {
+      //       url: '/apps/eCommerce/item/',
+      //       name: "Item Details",
+      //       slug: "ecommerce-item-detail-view",
+      //       i18n: "ItemDetails",
+      //     },
+      //     {
+      //       url: '/apps/eCommerce/wish-list',
+      //       name: "Wish List",
+      //       slug: "ecommerce-wish-list",
+      //       i18n: "WishList",
+      //     },
+      //     {
+      //       url: '/apps/eCommerce/checkout',
+      //       name: "Checkout",
+      //       slug: "ecommerce-checkout",
+      //       i18n: "Checkout",
+      //     },
+      //   ]
+      // },
       // ========= old user ================ 
       // {
       //   url: null,
@@ -185,6 +185,38 @@ export default [
           //   name: "View",
           //   slug: "app-user-view",
           //   i18n: "View",
+          // },
+          // {
+          //   url: '/apps/user/user-edit/268',
+          //   name: "Edit",
+          //   slug: "app-user-edit",
+          //   i18n: "Edit",
+          // },
+        ]
+      },
+      {
+        url: null,
+        name: "Appointments",
+        icon: "UserIcon",
+        i18n: "Appointments",
+        submenu: [
+          {
+            url: '/doctor/appointment/setting',
+            name: "Setting x",
+            slug: "doctor-appointment-setting",
+            i18n: "Setting",
+          },
+          {
+            url: '/doctor/appointment/list',
+            name: "List",
+            slug: "doctor-appointment-list",
+            i18n: "List",
+          },
+          // {
+          //   url: '/doctor/appointment/list',
+          //   name: "List",
+          //   slug: "doctor-appointment-list",
+          //   i18n: "List",
           // },
           // {
           //   url: '/apps/user/user-edit/268',
