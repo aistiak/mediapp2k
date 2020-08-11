@@ -1,11 +1,11 @@
 import axios from "axios"
 
-const state = {
+export const state = () => ({
     hospitalDetail : {} ,
     hospitalList :[]
-}
+})
 
-const getters = {
+export const getters = {
     hospitalDetail(state){
          return state.hospitalDetail 
     },
@@ -14,7 +14,7 @@ const getters = {
     }
 }
 
-const actions = {
+export const actions = {
     fetch_hopital_detail({commit},id) {
         return new Promise( (resolve,reject) => {
             axios.get(`api/frontend/hospital/${id}`).then( response => {
@@ -27,7 +27,7 @@ const actions = {
     }
 }
 
-const mutations = {
+export const mutations = {
     set_hospital_detail(state,payload){
         state.hospitalDetail = { ...payload }
     },
@@ -36,9 +36,9 @@ const mutations = {
     }
 }
 
-export default {
-    state ,
-    getters ,
-    mutations ,
-    actions ,
-}
+// export default {
+//     state ,
+//     getters ,
+//     mutations ,
+//     actions ,
+// }

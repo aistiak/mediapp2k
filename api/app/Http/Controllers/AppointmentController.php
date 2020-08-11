@@ -6,7 +6,7 @@ use App\Appointment;
 use App\Hospital ;
 use Exception;
 use Illuminate\Http\Request;
-
+use App\Http\Resources\AppointmentResource;
 class AppointmentController extends Controller
 {
     /**
@@ -21,10 +21,9 @@ class AppointmentController extends Controller
         //    hospital  all the appointmens of the hospital doctos
         //    patient can see his appointments 
         // get the auth user , see type / role and retuen appointments 
+        // return \App\Doctor::first()->appointments ;
         $role = auth()->user()->role->slug ;
-
         $auth_user = auth()->user() ;
-        // return $auth_user->id ;
         $appointments = [] ;
 
         if( $role == 'super_admin'){
@@ -33,15 +32,14 @@ class AppointmentController extends Controller
 
         }else if( $role == "hospital") {
 
-            return $auth_user->hospital->appointments()->paginate(10) ;     
+            return  AppointmentResource::collection($auth_user->hospital->appointments()->paginate(10));     
         
         }else if( $role == "doctor"){
-           
-            return $auth_user->doctor->appointments()->paginate(10) ;
+            return AppointmentResource::collection($auth_user->doctor->appointments()->paginate(10)) ;
 
         }else if( $role == "patient" ){
 
-            return $auth_user->appointments()->paginate(10) ;
+            return  AppointmentResource::collection($auth_user->appointments()->paginate(10)) ;
         }
     }
 
@@ -64,8 +62,13 @@ class AppointmentController extends Controller
         
         if($appointment = \App\Appointment::find($request->input('appointment_id'))){
             try {
+                
+                $role = auth()->user()->role->slug ;
 
-                $doctor = auth()->user()->doctor;
+                if( $role == 'hospital')
+                    $doctor = auth()->user()->hospital->appointments->find( $request->appointment_id )->doctor; 
+                else
+                    $doctor = auth()->user()->doctor;
                 
                 if( $appointment->doctor_id != $doctor->id)  return response()->json(['error' => 'not your appointment doctor !'],400) ;
 
@@ -75,7 +78,7 @@ class AppointmentController extends Controller
                 
                 return response()->json(['data' =>  $appointment->approved  ]);  
             
-             }catch(Exception $e) { return response()->json(['error' => 'not a doctor'],400);  }
+             }catch(Exception $e) { return response()->json(['error' => 'not a doctor / hospital '],400);  }
 
         }else{
 

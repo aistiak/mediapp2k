@@ -21,7 +21,7 @@ class Doctor extends Model
     }
 
     function appointments() {
-        return $this->hasMany('App\Appointment','doctor_id');
+        return $this->hasMany('App\Appointment','doctor_id')->with('patient');
     }     
 
     protected static function boot(){

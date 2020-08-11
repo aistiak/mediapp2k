@@ -1,9 +1,9 @@
 import axios from "axios"
 
-const state = {
+export const state = () => ({
     doctorDetail : {} ,
     doctorList :[]
-}
+})
 
 const getters = {
     doctorDetail(state){
@@ -36,9 +36,9 @@ const mutations = {
     }
 }
 
-export default {
-    state ,
-    getters ,
-    mutations ,
-    actions ,
-}
+// export default {
+//     state ,
+//     getters ,
+//     mutations ,
+//     actions ,
+// }

@@ -1,14 +1,14 @@
 import axios from "axios"
 
- const state ={
+export const state = () => ({
     demo : ``
-}
+})
   
-const getters = {
+export const getters = {
     getDemo(state) {return state.demo}
 }
 
-const actions = {
+export const actions = {
     [`dummy_action`]({commit}){
         return new Promise((resolve,reject)=>{
             axios.get(`test`).then(response=>{
@@ -21,7 +21,7 @@ const actions = {
     }
 }
 
-const mutations = {
+export const mutations = {
 
     [`demo_mutation`](state,payload){
         state.demo = payload
@@ -29,9 +29,9 @@ const mutations = {
 
 }
 
-export default {
-    state ,
-    getters,
-    actions ,
-    mutations,
-}
+// export default {
+//     state ,
+//     getters,
+//     actions ,
+//     mutations,
+// }

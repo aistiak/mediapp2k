@@ -86,8 +86,14 @@
     import auth from "../auth/auth"
     export default {
       name: "Header",
+      data() {
+        return {
+
+          // is_loggedin : false ,
+        }
+      } ,
       computed:{
-        ...mapGetters(['is_loggedin','user'])
+        ...mapGetters('user.module',['is_loggedin','user'])
       },
       methods:{
         logout : function(){

@@ -71,7 +71,7 @@
           window.removeEventListener('resize', this.onResize); 
       },
       computed:{
-        ...mapGetters(['search_info'])
+        ...mapGetters('search',['search_info']),
       },
       watch: {
         windowWidth(newWidth, oldWidth) {
@@ -111,7 +111,7 @@
         },
 
         getItems(page=1){
-          axios.get(`api/frontend/hospital/?page=${page}&limit=${this.limit}&type=${this.type}`,{
+          this.$axios.get(`api/frontend/hospital/?page=${page}&limit=${this.limit}&type=${this.type}`,{
             params : {
               'division_id' : this.division_id ,
               'district_id' : this.district_id ,
@@ -125,7 +125,7 @@
              this.page  = this.current_page
             //  alert(this.last_page)
           }).catch(error=>{
-            alert(`error`)
+            alert(`error in hospial`)
           })
         },
         respondToSearchFilterChange(){

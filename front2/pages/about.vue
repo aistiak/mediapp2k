@@ -43,10 +43,10 @@
         }
       },
       mounted(){
-          axios.get(`api/frontend/hospital/`).then(response => {
+          this.$axios.get(`api/frontend/hospital/`).then(response => {
             this.data = response.data
           }).catch( error => {
-            alert(`error`)
+            alert(`error in about`)
           })
       },
     }

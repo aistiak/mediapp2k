@@ -9,7 +9,11 @@ class Appointment extends Model
     //
     protected $table = "appointments" ;
 
-    function patient(){
-        return $this->belongsTo('App\Patient','user_id');
+    public function patient(){
+        return $this->belongsTo('App\User','user_id');
+    }
+
+    public function doctor(){
+        return $this->belongsTo('App\Doctor','doctor_id');
     }
 }

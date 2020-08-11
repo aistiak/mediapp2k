@@ -1,4 +1,5 @@
 
+require('dotenv').config()
 export default {
   mode: 'universal',
   /*
@@ -66,19 +67,22 @@ export default {
     '@nuxtjs/proxy'
   ],
   axios: {
-    baseURL: 'http://admin.mediapp.arif-istiak.xyz',
-    proxy: true,
+    // baseURL: 'http://localhost:8000',
+    baseURL: process.env.API_URL,
+    proxy: false,
     credentials: false
   },
   proxy: {
     '/api': {
-      target: 'http://admin.mediapp.arif-istiak.xyz/public/',
+      target: 'http://127.0.0.1:8000',
       pathRewrite: {
-        '^/api' : '/'
+        '^/api' : 'http://127.0.0.1:8000'
         }
       },
 
   },
+
+  
   /*
   ** optimizedImages
   */

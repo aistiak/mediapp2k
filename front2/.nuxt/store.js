@@ -4,8 +4,8 @@ import Vuex from 'vuex'
 Vue.use(Vuex)
 
 const VUEX_PROPERTIES = ['state', 'getters', 'actions', 'mutations']
-import store from "../store/store"
 
+let store = {};
 
 (function updateModules () {
   // If store is an exported method = classic mode (deprecated)
@@ -18,9 +18,11 @@ import store from "../store/store"
   store.modules = store.modules || {}
 
   resolveStoreModules(require('..\\store\\demo.store.js'), 'demo.store.js')
+  resolveStoreModules(require('..\\store\\doctor.module.js'), 'doctor.module.js')
   resolveStoreModules(require('..\\store\\hospital.module.js'), 'hospital.module.js')
-  resolveStoreModules(require('..\\store\\search.model.js'), 'search.model.js')
+  resolveStoreModules(require('..\\store\\search.js'), 'search.js')
   resolveStoreModules(require('..\\store\\store.js'), 'store.js')
+  resolveStoreModules(require('..\\store\\user.module.js'), 'user.module.js')
 
   // If the environment supports hot reloading...
 
@@ -28,9 +30,11 @@ import store from "../store/store"
     // Whenever any Vuex module is updated...
     module.hot.accept([
       '..\\store\\demo.store.js',
+      '..\\store\\doctor.module.js',
       '..\\store\\hospital.module.js',
-      '..\\store\\search.model.js',
+      '..\\store\\search.js',
       '..\\store\\store.js',
+      '..\\store\\user.module.js',
     ], () => {
       // Update `root.modules` with the latest definitions.
       updateModules()
@@ -42,7 +46,9 @@ import store from "../store/store"
 
 // createStore
 export const createStore = store instanceof Function ? store : () => {
-  return store ;
+  return new Vuex.Store(Object.assign({
+    strict: (process.env.NODE_ENV !== 'production')
+  }, store))
 }
 
 function normalizeRoot (moduleData, filePath) {

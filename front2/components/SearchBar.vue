@@ -40,7 +40,7 @@
 
 <script>
 import axios from "axios"
-import {mapGetters} from "vuex"
+import {mapGetters , mapActions} from "vuex"
 export default {
    name: 'SearchBar',
    data(){
@@ -69,47 +69,53 @@ export default {
       }
    },
    methods : {
+       ...mapActions({
+           'pass_search_info' : 'search/pass_search_info' 
+       }),
         getDivisions(){
-            axios.get(`api/frontend/location/`).then( response => {
+            this.$axios.get(`api/frontend/location/`).then( response => {
                 this.divisions = response.data?.data?.divisions
                 // this.selected_division = this.divisions[0]
             }).catch( error => {
-                alert(`error `)
+                alert(`error in division`)
             })
         },
         getDistricts(){
 
-            axios.get(`api/frontend/location/?division_id=${this.selected_division}`).then( response => {
+            this.$axios.get(`api/frontend/location/?division_id=${this.selected_division}`).then( response => {
                 this.districts = response.data?.data?.districts
                 // this.selected_division = this.divisions[0]
             }).catch( error => {
-                alert(`error `)
+                alert(`error is district`)
             })
         },
         getUpazilas(){
 
-            axios.get(`api/frontend/location/?district_id=${this.selected_district}`).then( response => {
+            this.$axios.get(`api/frontend/location/?district_id=${this.selected_district}`).then( response => {
                 this.upazilas = response.data?.data?.upazilas
                 // this.selected_division = this.divisions[0]
             }).catch( error => {
-                alert(`error `)
+                alert(`error in upazila`)
             })
         },
         search(){
-           
+            // console.log(this.$axios.defaults)
+            // console.log(process.env.API_URL)
+            // return 
             let payload = {
                 'selected_type'     : this.selected_type     == 'Choose...'     ? '' : this.selected_type     ,
                 'selected_division' : this.selected_division == 'Divsion...'    ? '' : this.selected_division ,
                 'selected_district' : this.selected_district == 'District...'   ? '' : this.selected_district ,
                 'selected_upazila'  : this.selected_upazila  == 'Subdistrict...'? '' : this.selected_upazila  ,
             }
-            this.$store.dispatch(`pass_search_info`,payload)
+            // this.$store.dispatch(`pass_search_info`,payload)
+            this.pass_search_info(payload)
         },
    },
 }
 </script>
 <style scoped>
    .container {
-       ;
+       
    }
 </style>

@@ -1,16 +1,16 @@
 import axios from "axios"
 
-const state = {
+export const state = ()=> ({
     is_loggedin : false ,
     user : {} ,
+})
+
+export const getters = {
+    is_loggedin : (state) => { return state.is_loggedin },
+    user:(state) => { return state.user }
 }
 
-const getters = {
-    is_loggedin(state) { return state.is_loggedin },
-    user(state) { return state.user }
-}
-
-const actions = {
+export const actions = {
     fetch_auth_user({commit}){
         console.log('api/auth-user has been called ')
         return new Promise( (resolve , reject) => {
@@ -25,7 +25,7 @@ const actions = {
     },
 }
 
-const mutations ={
+export const mutations ={
 
     set_login_status(state,payload){
         console.log(payload)
@@ -38,9 +38,9 @@ const mutations ={
 }
 
 
-export default {
-    state,
-    getters,
-    actions,
-    mutations
-}
+// export default {
+//     state,
+//     getters,
+//     actions,
+//     mutations
+// }
