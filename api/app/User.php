@@ -24,6 +24,7 @@ class User extends Authenticatable
         'permissions',
         'type',
         'role_id',
+
     ];
 
     /**
@@ -59,33 +60,21 @@ class User extends Authenticatable
         return $this->hasMany('App\Appointment','user_id');
     }
 
-    // public function district()
-    // {
-    //     return $this->belongsTo('App\District','district_id');
-    // }
-
-    // public function upazila()
-    // {
-    //     return $this->belongsTo('App\Upazila','subdistrict_id');
-    // }
-    //  public function visasall(){
-    //     return $this->hasMany('App\Models\Recruiting\Visa','user_id')->whereNotNull('okala_date');
-    // }
-    
-    //  public function income(){
-    //     return $this->hasMany('App\Models\MoneyIn\Income','customer_id');
-    // }
-    // public function expense(){
-    //     return $this->hasMany('App\Models\MoneyOut\Expense','vendor_id');
-    // }
-    // public function userinfo(){
-    //     return $this->belongsTo('App\Contact','user_id');
-    // }
-    //  public function invoice(){
-    //     return $this->hasMany('App\Models\MoneyIn\Invoice','customer_id');
-    // }
+    public function activation() {
+        return $this->hasOne('App\Activations','user_id');
+    }
     public function roleUser()
     {
         return $this->hasOne('App\RoleUser','user_id');
+    }
+    public static function boot(){
+        parent::boot() ;
+        User::created(function($model){
+            $model->activation()->save( \App\Activations::create([
+                'user_id'   => $model->id ,
+                'code'      => '' ,
+                // 'completed' => 1 ,
+            ]));
+        });
     }
 }

@@ -49,6 +49,7 @@ export default [
       },
     ]
   },
+
   {
     header: "Apps",
     icon: "PackageIcon",
@@ -143,31 +144,29 @@ export default [
       //   ]
       // },
       {
-        url: null,
-        name: "Hospital",
+        name:'Patients' ,
         icon: "UserIcon",
-        i18n: "Hospitals",
-        submenu: [
-          {
-            url: '/apps/hospital/hospital-list',
-            name: "List",
-            slug: "app-hospital-list",
-            i18n: "List",
-          },
-          // {
-          //   url: '/apps/hospital/hospital-view',
-          //   name: "View",
-          //   slug: "app-user-view",
-          //   i18n: "View",
-          // },
-          // {
-          //   url: '/apps/user/user-edit/268',
-          //   name: "Edit",
-          //   slug: "app-user-edit",
-          //   i18n: "Edit",
-          // },
-        ]
+        url : '/apps/patients/' ,
       },
+      {
+       name : 'Hospital' ,
+       icon : 'UserIcon' ,
+       url: '/hospitals'
+      },
+      // {
+      //   url: null,
+      //   name: "Hospital",
+      //   icon: "UserIcon",
+      //   i18n: "Hospitals",
+      //   submenu: [
+      //     {
+      //       url: '/apps/hospital/hospital-list',
+      //       name: "List",
+      //       slug: "app-hospital-list",
+      //       i18n: "List",
+      //     },
+      //   ]
+      // },
       {
         url: null,
         name: "Doctor",

@@ -16,11 +16,12 @@ class AppointmentSettingResource extends JsonResource
     {
         return [
             'id' => $this->id ,
+            'doctor_id' => $this->doctor_id ,
             'is_monthly'     => $this->is_monthly ,
             'is_weekly'     => $this->is_weekly ,
             'is_morning'    => $this->is_morning ,
             'is_evening'    => $this->is_evening ,
-            'mothly'        => json_decode( $this->monthly ) ,
+            'monthly'        => json_decode( $this->monthly ) ,
             'weekly'        => json_decode( $this->weekly ) ,
             'morning'       => json_decode( $this->morning ) ,
             'evening'       => json_decode( $this->evening) ,

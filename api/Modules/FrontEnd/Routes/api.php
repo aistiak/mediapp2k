@@ -43,4 +43,7 @@ Route::prefix('frontend')->group(function () {
         Route::get('/','LocationController@index');
         
     });
+    Route::prefix('appointment')->middleware(['auth:api'])->group(function(){
+        Route::get('/','AppointmentController@index') ;
+    });
 });

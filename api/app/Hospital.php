@@ -6,7 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Hospital extends Model
 {
+    protected $guarded = [] ; 
+    // protected $fillable = ['*'] ;
     //
+
     function user(){
         return $this->belongsTo('App\User','user_id');
     }

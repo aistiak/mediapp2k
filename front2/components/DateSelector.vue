@@ -1,0 +1,109 @@
+<template>
+    <div class="date-container">
+         this is date selector : 
+        <Datepicker v-model="appointment_form.date" placeholder="select-date" :disabled-dates="disabledDates"/>
+        <div>
+            <label>Type</label>
+            <select v-model="appointment_form.type">
+                <option value="morning" >Morning</option>
+                <option value="evening" >Evening</option>
+            </select>
+        </div>
+        <div>
+            <button @click="submit">book</button>
+        </div>
+    </div>
+</template>
+<script>
+import Datepicker from 'vuejs-datepicker';
+
+export default {
+    name : 'DateSelector' ,
+    props:[
+        'settings'
+    ],
+    components:{
+        Datepicker
+    },
+    data(){
+        return {
+            appointment_form : {
+                date : `` ,
+                type : `` ,
+                doctor_id : this.settings.doctor_id ,
+            },
+            disabledDates: {
+                to: new Date(), // Disable all dates up to specific date
+                from: this.future() , // Disable all dates after specific date
+                days: [], // Disable Saturday's and Sunday's
+                daysOfMonth: [], // Disable 29th, 30th and 31   st of each month
+                dates: [ // Disable an array of dates
+        
+                    // new Date(2016, 9, 17),
+                    // new Date(2016, 9, 18)
+                ],
+                ranges: [
+
+                    // { // Disable dates in given ranges (exclusive).
+                    //     from: new Date(2016, 11, 25),
+                    //     to: new Date(2016, 11, 30)
+                    // },
+
+                    // {
+                    //     from: new Date(2017, 1, 12),
+                    //     to: new Date(2017, 2, 25)
+                    // }
+                ],
+                // a custom function that returns true if the date is disabled
+                // this can be used for wiring you own logic to disable a date if none
+                // of the above conditions serve your purpose
+                // this function should accept a date and return true if is disabled
+                     customPredictor: function(date) {
+                // disables the date if it is a multiple of 5
+                    // if(date.getDate() % 5 == 0){
+                    //     return true
+                    // }
+                }
+            }
+        }
+    },
+    mounted(){
+        this.manageDates()
+    },
+    methods :{
+        submit : async function(){
+            try{
+               let res = await this.$axios.post(`api/appointment`,this.appointment_form)
+            }catch(e){
+
+            }            
+        },
+        future : function(arg=30) {
+            let date = new Date();
+            date.setDate(date.getDate() + arg);
+            return date 
+        }, 
+        manageDates : function(){
+            let arr = []  
+            for (let i = 0 ;i<32 ; i++){
+                let date = new Date();    
+                date.setDate(date.getDate()+i)
+                arr.push(date)
+            }
+            let ctx = this
+            arr = arr.filter(function(v){
+                let t  = v.toString().split(' ')
+                // ex : "Wed Dec 22 2021 09:26:51 GMT+0600 (Bangladesh Standard Time
+                return ctx.settings.monthly.indexOf(t[2]*1) == -1 && ctx.settings.weekly.indexOf(t[0]) == -1 
+            })
+            this.disabledDates.dates = arr 
+            return arr ;
+        },
+    }
+}
+</script>
+<style scoped>
+.date-container {
+    /* border : 1px solid grey ; */
+}
+</style>

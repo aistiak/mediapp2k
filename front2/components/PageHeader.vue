@@ -2,6 +2,7 @@
   <section class="breadcrumb_section text-center section_padding">
     <ul class="breadcrumb">
       <li><nuxt-link to="/">Home</nuxt-link></li>
+
       <li> {{ title }}</li>
     </ul>
     <h1>{{ title }}</h1>

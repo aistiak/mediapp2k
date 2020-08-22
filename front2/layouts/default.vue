@@ -14,6 +14,7 @@
   import Footer from "~/components/Footer";
   import auth from  "../auth/auth"
   import axios from "axios"
+  import {mapActions, mapGetters} from "vuex"
   export default {
     components: {
       Footer,
@@ -26,12 +27,19 @@
       }
     },
     mounted () {
-      auth.setUpAuth() 
+      this.refreshAuth()
+      // auth.setUpAuth() 
       this.$nextTick(() => {
         this.$nuxt.$loading.start()
         setTimeout(() => this.$nuxt.$loading.finish(), 500)
       })
     },
+    methods: {
+
+      ...mapActions({
+        'refreshAuth' : 'auth_patient/refreshAuth'
+      })
+    }
     
   }
 </script>

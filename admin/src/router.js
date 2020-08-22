@@ -186,79 +186,66 @@ const router = new Router({
                         rule: 'editor'
                     }
                 },
-                // ========================== USER =====================
-                // {
-                //     path: '/apps/user/user-list',
-                //     name: 'app-user-list',
-                //     component: () => import('@/views/apps/user/user-list/UserList.vue'),
-                //     meta: {
-                //         breadcrumb: [
-                //             { title: 'Home', url: '/' },
-                //             { title: 'User' },
-                //             { title: 'List', active: true },
-                //         ],
-                //         pageTitle: 'User List',
-                //         rule: 'editor'
-                //     },
-                // },
-                // {
-                //     path: '/apps/user/user-view/:userId',
-                //     name: 'app-user-view',
-                //     component: () => import('@/views/apps/user/UserView.vue'),
-                //     meta: {
-                //         breadcrumb: [
-                //             { title: 'Home', url: '/' },
-                //             { title: 'User' },
-                //             { title: 'View', active: true },
-                //         ],
-                //         pageTitle: 'User View',
-                //         rule: 'editor'
-                //     },
-                // },
-                // {
-                //     path: '/apps/user/user-edit/:userId',
-                //     name: 'app-user-edit',
-                //     component: () => import('@/views/apps/user/user-edit/UserEdit.vue'),
-                //     meta: {
-                //         breadcrumb: [
-                //             { title: 'Home', url: '/' },
-                //             { title: 'User' },
-                //             { title: 'Edit', active: true },
-                //         ],
-                //         pageTitle: 'User Edit',
-                //         rule: 'editor'
-                //     },
-                // },
-        // ===============================HOSPITAL====================//
-        {
-            path: '/apps/hospital/hospital-list',
-            name: 'app-hospital-list',
-            component: () => import('@/views/apps/hospital/hospital-list/HospitalList.vue'),
-            meta: {
-                breadcrumb: [
-                    { title: 'Home', url: '/' },
-                    { title: 'Hospital' },
-                    { title: 'List', active: true },
-                ],
-                pageTitle: 'Hospital List',
-                rule: 'editor'
-            },
-        },
-        {
-            path: '/apps/hospital/hospital-view/:id',
-            name: 'app-hospital-view',
-            component: () => import('@/views/apps/hospital/HospitalView.vue'),
-            meta: {
-                breadcrumb: [
-                    { title: 'Home', url: '/' },
-                    { title: 'Hospital' },
-                    { title: 'View', active: true },
-                ],
-                pageTitle: 'Hospital View',
-                rule: 'editor'
-            },
 
-        },       
+        // ===============================HOSPITAL====================//
+
+        {
+             path : '/hospitals' ,
+             name : 'hospitals' ,
+             component : () => import('@/views/apps/hospitals/index.vue') ,
+             meta : {
+                breadcrumb : [
+                    { title : 'Home' , url : '/'},
+                    { title : 'Hospitals'  , active: true},
+                ],
+                pageTitle : 'Hospital List' ,
+                rule : 'editor' ,
+             },   
+        },
+        // {
+        //     path: '/apps/hospital/hospital-list',
+        //     name: 'app-hospital-list',
+        //     component: () => import('@/views/apps/hospital/hospital-list/HospitalList.vue'),
+        //     meta: {
+        //         breadcrumb: [
+        //             { title: 'Home', url: '/' },
+        //             { title: 'Hospital' },
+        //             { title: 'List', active: true },
+        //         ],
+        //         pageTitle: 'Hospital List',
+        //         rule: 'editor'
+        //     },
+        // },
+        // {
+        //     path: '/apps/hospital/hospital-view/:id',
+        //     name: 'app-hospital-view',
+        //     component: () => import('@/views/apps/hospital/HospitalView.vue'),
+        //     meta: {
+        //         breadcrumb: [
+        //             { title: 'Home', url: '/' },
+        //             { title: 'Hospital' },
+        //             { title: 'View', active: true },
+        //         ],
+        //         pageTitle: 'Hospital View',
+        //         rule: 'editor'
+        //     },
+
+        // },   
+        // ===============================PATIENT===================//
+        {
+            path : '/apps/patients/',
+            name :'app-patient-list',   
+            component : () => import('@/views/apps/patient/List.vue'),
+            meta: {
+                breadcrumb: [
+                    { title: 'Home', url: '/' },
+                    { title: 'Patient' },
+                    // { title: 'List', active: true },
+                ],
+                pageTitle: 'Patient List',
+                rule: 'editor'
+            },
+        },    
         // ===============================DOCTOR====================//
         {
             path: '/apps/doctor/doctor-list',

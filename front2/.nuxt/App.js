@@ -13,8 +13,9 @@ import NuxtBuildIndicator from './components/nuxt-build-indicator'
 import _77180f1e from '..\\layouts\\blank.vue'
 import _6f6c098b from '..\\layouts\\default.vue'
 import _776e24fd from '..\\layouts\\home2.vue'
+import _2e8a6499 from '..\\layouts\\register.vue'
 
-const layouts = { "_blank": _77180f1e,"_default": _6f6c098b,"_home2": _776e24fd }
+const layouts = { "_blank": _77180f1e,"_default": _6f6c098b,"_home2": _776e24fd,"_register": _2e8a6499 }
 
 export default {
   render (h, props) {

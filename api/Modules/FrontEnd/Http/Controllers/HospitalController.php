@@ -42,6 +42,7 @@ class HospitalController extends Controller
         $hospitals = $this->models[ $type ]::when($division_id,function($q) use($division_id){$q->where('division_id','=',$division_id);})
                     ->when($district_id,function($q) use($district_id){$q->where('district_id','=',$district_id);})    
                     ->when($upazila_id,function($q) use($upazila_id){$q->where('upazila_id','=',$upazila_id);})    
+                    ->where('is_active','=',1)
                     ->paginate($limit) ;
                     
         return  $this->resources[ $type ]::collection( $hospitals );
@@ -51,7 +52,7 @@ class HospitalController extends Controller
     public function detail(Request $request) {
 
         $type     = $request->type == 'doctor' ? 'doctor' : 'hospital' ;
-        $hospital = $this->models[ $type ]::find($request->id) ;
-        return new $this->resources[ $type.'_detail' ]( $hospital ) ;
+        $data = $this->models[ $type ]::find($request->id) ;
+        return new $this->resources[ $type.'_detail' ]( $data ) ;
     }
 }

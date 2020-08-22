@@ -13,9 +13,9 @@ class Patient extends Model
         return $this->belongsTo('App\User','user_id');
     }
 
-    function appointments() {
-        return $this->hasMany('App\Appointment','user_id');
-    }
+    // function appointments() {
+    //     return $this->hasMany('App\Appointment','user_id'); // patient_id
+    // }
     
     
 }

@@ -53,6 +53,7 @@ export default {
   ** Plugins to load before mounting the App
   */
   plugins: [
+    '~/plugins/foo.js',
   ],
   /*
   ** Nuxt.js dev-modules
@@ -64,8 +65,48 @@ export default {
   */
   modules: [
     '@nuxtjs/axios',
-    '@nuxtjs/proxy'
+    '@nuxtjs/proxy',
+    '@nuxtjs/auth' ,
   ],
+
+  auth: {
+    redirect: {
+      login: '/login',
+      logout: '/',
+      callback: '/login',
+      home: '/index-2'
+    },
+    strategies: {
+      local: false,
+      password_grant: {
+        _scheme: 'local',
+        endpoints: {
+          login: {
+            url: '/oauth/token',
+            method: 'post',
+            propertyName: 'access_token'
+          },
+          logout: false,
+          user: {
+            url: '/api/user/info',
+            method: 'get',
+            propertyName: 'user'
+          }
+        },
+        tokenRequired: true,
+        tokenType: 'Bearer'
+      },
+      // local: {
+      //   endpoints: {
+      //     login: { url: '/oauth/token', method: 'post', propertyName: 'access_token' },
+      //     logout: false,
+      //     user: { url: '/api/user', method: 'get', propertyName: 'data' }
+      //   },
+      //   tokenRequired: true,
+      //   tokenType: 'Bearer'
+      // }
+    }
+  },
   axios: {
     // baseURL: 'http://localhost:8000',
     baseURL: process.env.API_URL,

@@ -6,14 +6,21 @@
                  <img src="/assets/images/comment-1.jpg"  alt="Cinque Terre"> 
                 <!-- picture -->
             </div>
+            <!-- {{doctorDetail}} -->
             <div class="col-md-9 " > 
                 <h3> {{doctorDetail.name}}</h3>
                 <h4> {{doctorDetail.hospital_name}}</h4>
             </div>
         </div>
+        <div @click="test">
+            test 
+        </div>
         <div class="row">
             <div class="col-md-6" align=""> 
-                appointment
+                appointment <br>
+                <no-ssr>
+                    <appointment-book v-if="doctorDetail.appointment_setting" :settings="doctorDetail.appointment_setting" />
+                </no-ssr>
             </div>
             <div class="col-md-6" align=""> 
                 others 
@@ -24,9 +31,15 @@
     </section>
 </template>
 <script>
-import { mapGetters } from "vuex"
+import axios from "axios"
+import { mapGetters , mapActions } from "vuex"
+// import Datepicker from 'vuejs-datepicker';
 export default {
     props: ['doctor_id'],
+    components :{
+        // Datepicker ,
+        'appointment-book' : () => import("./DateSelector") ,
+    },
     head(){
       return {
         title: "Doctor Detail "
@@ -37,21 +50,27 @@ export default {
            detail : {} ,
         }
     },
-    computed: { ...mapGetters(['doctorDetail']) },
+    computed: { ...mapGetters('doctor',['doctorDetail']) },
     mounted() {
 
         this.getDoctorDetail() 
     },
     methods :{ 
+        ...mapActions({
+            'fetch_doctor_detail' : 'doctor/fetch_doctor_detail' ,
+        }),
+
+        test : async function(){
+            // alert(`test`)
+            
+
+        },
         doctor_detail: function({id}){
             this.$router.push(`/doctor-detail/${id}`)
         },
         getDoctorDetail : function () {
-            this.$store.dispatch(`fetch_doctor_detail`,this.doctor_id).then( response => {
-                    
-            }).catch( error => {
-                
-            })
+            this.fetch_doctor_detail(this.doctor_id)
+
         },
     },
 }

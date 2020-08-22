@@ -115,6 +115,10 @@ const setupProgress = (axios) => {
     currentRequests--
 
     if (Axios.isCancel(error)) {
+      if (currentRequests <= 0) {
+        currentRequests = 0
+        $loading().finish()
+      }
       return
     }
 
@@ -135,10 +139,12 @@ const setupProgress = (axios) => {
 }
 
 export default (ctx, inject) => {
+  // runtimeConfig
+  const runtimeConfig = ctx.$config && ctx.$config.axios || {}
   // baseURL
   const baseURL = process.browser
-      ? 'http://127.0.0.1:8000'
-      : (process.env._AXIOS_BASE_URL_ || 'http://127.0.0.1:8000')
+    ? (runtimeConfig.browserBaseURL || runtimeConfig.baseURL || 'http://127.0.0.1:8000')
+      : (runtimeConfig.baseURL || process.env._AXIOS_BASE_URL_ || 'http://127.0.0.1:8000')
 
   // Create fresh objects for all default header scopes
   // Axios creates only one which is shared across SSR requests!

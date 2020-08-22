@@ -19,6 +19,8 @@ class Hospital extends JsonResource
             'name' => $this->name ,
             'email' => $this->email ,
             'cell' => $this->phone_no ,
+            'is_active' => $this->is_active ,
+            'is_enable' => $this->is_enable ,
         ];
     }
 }

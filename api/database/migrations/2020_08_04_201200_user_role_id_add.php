@@ -15,7 +15,7 @@ class UserRoleIdAdd extends Migration
     {
         //
         Schema::table('users',function(Blueprint $table){
-            $table->integer('role_id')->nullable() ;
+            // $table->integer('role_id')->nullable() ;
         });
 
         // Schema::table('users',function(Blueprint $table){

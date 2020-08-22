@@ -56,7 +56,7 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex"
+import { mapGetters , mapActions } from "vuex"
 export default {
     props: ['hospital_id'],
     head(){
@@ -69,21 +69,20 @@ export default {
            detail : {} ,
         }
     },
-    computed: { ...mapGetters(['hospitalDetail']) },
+    computed: { ...mapGetters('hospital',['hospitalDetail']) },
     mounted() {
 
         this.getHospitalDetail() 
     },
     methods :{ 
+        ...mapActions({
+            'fetch_hopital_detail' : 'hospital/fetch_hopital_detail' ,
+        }),
         doctor_detail: function({id}){
             this.$router.push(`/doctor-detail/${id}`)
         },
         getHospitalDetail : function () {
-            this.$store.dispatch(`fetch_hopital_detail`,this.hospital_id).then( response => {
-                
-            }).catch( error => {
-                
-            })
+          this.fetch_hopital_detail(this.hospital_id)
         },
     },
 }

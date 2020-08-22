@@ -17,9 +17,10 @@ let store = {};
   // Enforce store modules
   store.modules = store.modules || {}
 
+  resolveStoreModules(require('..\\store\\auth_patient.js'), 'auth_patient.js')
   resolveStoreModules(require('..\\store\\demo.store.js'), 'demo.store.js')
-  resolveStoreModules(require('..\\store\\doctor.module.js'), 'doctor.module.js')
-  resolveStoreModules(require('..\\store\\hospital.module.js'), 'hospital.module.js')
+  resolveStoreModules(require('..\\store\\doctor.js'), 'doctor.js')
+  resolveStoreModules(require('..\\store\\hospital.js'), 'hospital.js')
   resolveStoreModules(require('..\\store\\search.js'), 'search.js')
   resolveStoreModules(require('..\\store\\store.js'), 'store.js')
   resolveStoreModules(require('..\\store\\user.module.js'), 'user.module.js')
@@ -29,9 +30,10 @@ let store = {};
   if (process.client && module.hot) {
     // Whenever any Vuex module is updated...
     module.hot.accept([
+      '..\\store\\auth_patient.js',
       '..\\store\\demo.store.js',
-      '..\\store\\doctor.module.js',
-      '..\\store\\hospital.module.js',
+      '..\\store\\doctor.js',
+      '..\\store\\hospital.js',
       '..\\store\\search.js',
       '..\\store\\store.js',
       '..\\store\\user.module.js',

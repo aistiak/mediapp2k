@@ -9,8 +9,13 @@ const _d9a9ef2c = () => interopDefault(import('..\\pages\\blog-details.vue' /* w
 const _3e98179d = () => interopDefault(import('..\\pages\\contact.vue' /* webpackChunkName: "pages_contact" */))
 const _47b471f4 = () => interopDefault(import('..\\pages\\index-2.vue' /* webpackChunkName: "pages_index-2" */))
 const _0db1e8b4 = () => interopDefault(import('..\\pages\\login.vue' /* webpackChunkName: "pages_login" */))
+const _6cfa004c = () => interopDefault(import('..\\pages\\register\\index.vue' /* webpackChunkName: "pages_register_index" */))
 const _6d91309c = () => interopDefault(import('..\\pages\\service.vue' /* webpackChunkName: "pages_service" */))
 const _08dc7eb2 = () => interopDefault(import('..\\pages\\service-details.vue' /* webpackChunkName: "pages_service-details" */))
+const _471ab51e = () => interopDefault(import('..\\pages\\user\\appointment.vue' /* webpackChunkName: "pages_user_appointment" */))
+const _71e22b7b = () => interopDefault(import('..\\pages\\user\\profile.vue' /* webpackChunkName: "pages_user_profile" */))
+const _cfe3fc6c = () => interopDefault(import('..\\pages\\register\\components\\HospitalForm.vue' /* webpackChunkName: "pages_register_components_HospitalForm" */))
+const _4083a8ed = () => interopDefault(import('..\\pages\\register\\components\\PatientForm.vue' /* webpackChunkName: "pages_register_components_PatientForm" */))
 const _5d077fee = () => interopDefault(import('..\\pages\\doctor-detail\\_id.vue' /* webpackChunkName: "pages_doctor-detail__id" */))
 const _af00776e = () => interopDefault(import('..\\pages\\hospital-detail\\_id.vue' /* webpackChunkName: "pages_hospital-detail__id" */))
 const _2f7f688f = () => interopDefault(import('..\\pages\\index.vue' /* webpackChunkName: "pages_index" */))
@@ -56,6 +61,10 @@ export const routerOptions = {
     component: _0db1e8b4,
     name: "login"
   }, {
+    path: "/register",
+    component: _6cfa004c,
+    name: "register"
+  }, {
     path: "/service",
     component: _6d91309c,
     name: "service"
@@ -63,6 +72,22 @@ export const routerOptions = {
     path: "/service-details",
     component: _08dc7eb2,
     name: "service-details"
+  }, {
+    path: "/user/appointment",
+    component: _471ab51e,
+    name: "user-appointment"
+  }, {
+    path: "/user/profile",
+    component: _71e22b7b,
+    name: "user-profile"
+  }, {
+    path: "/register/components/HospitalForm",
+    component: _cfe3fc6c,
+    name: "register-components-HospitalForm"
+  }, {
+    path: "/register/components/PatientForm",
+    component: _4083a8ed,
+    name: "register-components-PatientForm"
   }, {
     path: "/doctor-detail/:id?",
     component: _5d077fee,

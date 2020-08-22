@@ -48,6 +48,9 @@
                 <li>
                   <a href="/">Home <i class="fa fa-angle-down"></i></a> <span class="responsive_menu"><i class="fa fa-angle-down"></i></span>
                   <ul class="dropdown-menu dropdown-menu-responsive">
+                    <li><nuxt-link to="user/profile">profile</nuxt-link></li>
+                    <li><nuxt-link to="user/appointment">appointments</nuxt-link></li>
+                    <li><nuxt-link to="register">register</nuxt-link></li>
                     <li><nuxt-link to="/">Home 01</nuxt-link></li>
                     <li><nuxt-link to="/index-2">Home 02</nuxt-link></li>
                   </ul>

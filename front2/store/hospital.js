@@ -17,7 +17,7 @@ export const getters = {
 export const actions = {
     fetch_hopital_detail({commit},id) {
         return new Promise( (resolve,reject) => {
-            axios.get(`api/frontend/hospital/${id}`).then( response => {
+            this.$axios.get(`api/frontend/hospital/${id}`).then( response => {
                 resolve(response)
                 commit(`set_hospital_detail`,response.data)
             }).catch( error => {

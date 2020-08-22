@@ -170,4 +170,58 @@ class RegisterLoginPasswordResetController extends Controller
             return response()->json(['error'=>'Sorry! The request is not valid'],400);
         }
     }
+
+    public function registerAccount(Request $request){
+        
+        $request->validate([
+
+            'type' => 'required',
+            'name' => 'required',
+            'email' => 'required|unique:users,email', // unique 
+            'password' => 'required',
+        ]);
+        // register as patient , hospital or doctor ,
+        $user = new \App\User ;
+        $user->name = $request->input('name');
+        $user->email = $request->input('email');
+        $user->password =  bcrypt( $request->input('password') );
+        $type = $request->input("type") ;    
+        if(  $type == "patient"){
+            // create a new user and bind to patient , role 
+            // $pateint = new \App\Patient ;
+            // approved none , activations none 
+            // based on approval config setting , 
+            // auto approval , email varification , maual approval 
+            // auto approval for now // approval will be handeled by service 
+            $user->role_id = 4 ;
+            $user->save();
+            $user->patient()->save(new \App\Patient) ;
+            // entry in approvals table for user 
+            $user->activation->update([ 'completed' => 1 ]);
+            // $approval =  \App\Activations::create([
+            //     'user_id' => $user->id ,
+            //     'completed' => 1 ,
+            //     'code' => "" ,
+            // ]) ;
+
+            return response()->json($user);
+
+        }else if( $type == "hospital"){
+            //   return "hospital" ;     
+              $request->validate([
+                  'hospital_name' => 'required' ,
+                //   'hospital_cell' => 'required' ,  
+              ]);   
+              // address later 
+              $user->role_id = 2 ; // hospital 
+              $user->save() ;
+            //   $user->activation()->update(['completed' => 1]) ;
+              $user->hospital()->save(\App\Hospital::create([
+                  'name' => $request->hospital_name     
+              ]) );  
+              
+              return $user ;
+        }
+        // return "ok";
+    }
 }

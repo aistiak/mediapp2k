@@ -34,6 +34,7 @@
 <script>
  import axios from "axios"   
  import auth from "../auth/auth"
+ import {mapGetters,mapActions} from "vuex" 
  export default {
     //Layout for Home 2
     layout: 'blank',
@@ -50,19 +51,46 @@
     },
     methods:{
         // loading scrren 
+        ...mapActions({
+          'login' : 'auth_patient/login' ,
+        }),
+        submit2 : async function(){
+
+            await this.$auth.loginWith('password_grant', {
+                data: {
+                    grant_type: 'password',
+                    client_id: process.env.PASSPORT_PASSWORD_GRANT_ID,
+                    client_secret: process.env.PASSPORT_PASSWORD_GRANT_SECRET,
+                    scope: '',
+                    username: this.email,
+                    password: this.password
+                }
+            }).catch(e => {
+                // this.$toast.error('Failed Logging In', {icon: "error_outline"});
+                alert(`error`)
+                console.log(e)
+            });
+
+
+        },
         submit : function(e){
-            e.preventDefault();
+          e.preventDefault()
             let payload = {
                 'email' : this.email,
                 'password': this.password ,
             }
             // sumit email and passs word 
-            axios.post(`api/login`,payload).then( response => {
+            
+            this.$axios.post(`api/login`,payload).then( response => {
                 // console.log(response)
                 // stop loading 
                 // save token and expire 
-                auth.loginHelper(response.data)
+                // console.log(auth.loginHelper)
+                // auth.loginHelper(response.data)
+                this.login(response.data)
                 this.$router.push('/')
+                
+                
             }).catch( error => {
                  // stop loading    
             })    

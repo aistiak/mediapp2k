@@ -5,19 +5,17 @@ export const state = () => ({
     doctorList :[]
 })
 
-const getters = {
-    doctorDetail(state){
-         return state.doctorDetail 
-    },
-    doctorList(state){
+export const getters = {
+    doctorDetail : (state) => state.doctorDetail ,
+    doctorList : (state) => {
         return state.doctorList 
     }
 }
 
-const actions = {
+export const actions = {
     fetch_doctor_detail({commit},id) {
         return new Promise( (resolve,reject) => {
-            axios.get(`api/frontend/hospital/${id}?type=doctor`).then( response => {
+            this.$axios.get(`api/frontend/hospital/${id}?type=doctor`).then( response => {
                 resolve(response)
                 commit(`set_doctor_detail`,response.data)
             }).catch( error => {
@@ -27,7 +25,7 @@ const actions = {
     }
 }
 
-const mutations = {
+export const mutations = {
     set_doctor_detail(state,payload){
         state.doctorDetail = { ...payload }
     },

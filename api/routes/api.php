@@ -19,6 +19,7 @@ use App\Http\Middleware\AdminMiddleware;
 
 // 	 	FOR BACKEND ADMIN PANEL 
 Route::post('api/login','RegisterLoginPasswordResetController@login');
+Route::post('api/register','RegisterLoginPasswordResetController@registerAccount');
 // auth test
 
 Route::prefix('api')->middleware(['auth:api'])->group(function(){
@@ -40,10 +41,12 @@ Route::prefix('api')->middleware(['auth:api'])->group(function(){
 // });
 // })->middleware(AdminMiddleware::class);
 // Route::post('/register','AuthController@register');
-Route::prefix('hospital')->middleware([])->group(function(){
+Route::prefix('hospital')->middleware(['auth:api'])->group(function(){
 	Route::get('/','HospitalController@index');
 	Route::post('/','HospitalController@store');
+	Route::post('status/{id}','HospitalController@toggleStatus');
 	Route::put('/','HospitalController@store');
+	Route::put('/approve/{id}','HospitalController@approve');
 	Route::delete('/{id}','HospitalController@destroy');
 });
 
@@ -78,7 +81,9 @@ Route::prefix('api/appointment')->middleware(['auth:api'])->group(function(){
 	Route::delete('/{id}','AppointmentController@destroy');
 
 });
-
+Route::prefix('api/patient')->middleware(['auth:api'])->group(function(){
+	Route::get('/','PatientController@index');
+});
 // Route::prefix('contacts')->middleware(['auth:api','admin'])->group(function() {
 
 // 	Route::post('/','ContactController@store');
