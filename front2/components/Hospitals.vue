@@ -11,7 +11,8 @@
                  <a href="javascript:;" @click="next" v-show="page < last_page"> next  </a>
                </span>
           </div>
-    <div class="container">
+<!-- <div class="container"> -->
+     <div >
       <div class="row">
         <div class="col-md-12">
           <div class="hero-section-title text-center">

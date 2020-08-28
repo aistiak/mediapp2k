@@ -21,4 +21,12 @@ class Hospital extends Model
     function appointments(){
         return $this->hasMany('App\Appointment','hospital_id') ;
     }
+
+    // after creation set role id to 2 
+    public static function boot(){
+        parent::boot();
+        Hospital::created(function($model){
+            $model->user->update(['role_id' => 2]);
+        });
+    }
 }

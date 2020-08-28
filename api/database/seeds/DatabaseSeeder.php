@@ -23,7 +23,7 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'admin@gmail.com',
         //     'password' => Hash::make('secret'),
         // ]);
-        // $this->call(HospitalSeeder::class);
+        $this->call(HospitalSeeder::class);
         // $this->call(DoctorSeeder::class);
         // $this->call(PatientSeeder::class);
 

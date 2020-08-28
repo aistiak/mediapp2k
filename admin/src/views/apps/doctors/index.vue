@@ -11,7 +11,7 @@
             </div>
             <div class="hospital-list">
         
-                <div v-for="(v,k) in hospitals.data" :key="k">
+                <div v-for="(v,k) in doctors.data" :key="k">
                     <div>
                         <div style="display:flex;align-items:baseline">
                             <span>
@@ -23,13 +23,13 @@
                                 <!-- <input type="checkbox" 
                                        :checked="v.is_active == 1" 
                                        @change="() => toggle_status(v.id)"> -->
-                               <vs-button  v-if="v.is_active == 1" icon-pack="feather" icon="icon-check-circle" type="flat" ></vs-button>
+                               <vs-button v-if="v.is_active == 1" icon-pack="feather" icon="icon-check-circle" type="flat" ></vs-button>
                                <vs-button v-else icon-pack="feather" icon="icon-circle" type="flat" ></vs-button>
                             </span>
 
                          </div>
-                        <div> {{ v.cell }} </div>
-                        <div> {{ v.email }} </div>
+                        <div> {{ v.hospital_name }} </div>
+                        <!-- <div> {{ 'v.email' }} </div> -->
                         <div>
                             <button v-show="v.is_enable !=1" @click="() => approve_request(v)"> Approve </button>
                         </div>
@@ -38,57 +38,56 @@
             </div>
             <div>
                 pagination 
-                <pagination  :data="hospitals.meta" @pagination-change-page="getList" />
+                <pagination  :data="doctors.meta" @pagination-change-page="getList" />
             </div>
         </div>
     </div>
 </template>
 <script>
-import axios from "axios" 
 import pagination from "laravel-vue-pagination"
+import axios from "axios"
 export default {
-    components : {
-        pagination ,
-    } ,
-    data () {
+    components:{pagination},
+    data(){
         return {
-            filter_type : `none` ,
-            hospitals : {
+            filter_type : `none`,
+            doctors  : {
                 data : [] ,
-                meta : {}
+                meta : {} ,
             } ,
         }
     },
-
-    mounted() {
+    mounted(){
         this.getList()
     },
 
-    methods :{
-        getList : async function(page=1) {
+    methods: {
+        getList : async function (page=1) {
             this.$vs.loading()
-            let res = await axios.get(`hospital?page=${page}&filter_type=${this.filter_type}`) 
-            this.hospitals = res.data  
-            console.log(res)   
+            try{                
+                let {data} = await axios.get(`doctor?page=${page}&filter_type=${this.filter_type}`) // list 
+                this.doctors = data      
+            }catch(e){ console.log(e) }
             this.$vs.loading.close()
         },
-        toggle_status : async function(id) {
-            this.$vs.loading()
-            await axios.post(`hospital/status/${id}`) 
-            await this.getList()
 
+        toggle_status : async function(id){
+            this.$vs.loading()
+            await axios.post(`doctor/status/${id}`) 
+            await this.getList()
         },
 
         approve_request : async function({id}){
             this.$vs.loading()
-            await axios.put(`hospital/approve/${id}`) 
+            await axios.put(`doctor/approve/${id}`) 
             await this.getList() // get list will close the loadder 
         },
-    }
 
+    } , 
 }
 </script>
-<style  scoped>
+
+<style scoped>
 .hospital-list {
     display: flex;
     flex-direction: column;

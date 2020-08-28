@@ -147,11 +147,20 @@ export default [
         name:'Patients' ,
         icon: "UserIcon",
         url : '/apps/patients/' ,
+        slug : 'patient-list'
       },
       {
-       name : 'Hospital' ,
+       name : 'Hospitals' ,
        icon : 'UserIcon' ,
-       url: '/hospitals'
+       url: '/hospitals' ,
+       slug : 'hospitals-list'
+      },
+      { 
+       name : 'Doctors' ,
+       icon : 'UserIcon' ,
+       url: '/doctors' ,
+       slug : 'doctor-list' ,
+       
       },
       // {
       //   url: null,
@@ -167,32 +176,20 @@ export default [
       //     },
       //   ]
       // },
-      {
-        url: null,
-        name: "Doctor",
-        icon: "UserIcon",
-        i18n: "Doctors",
-        submenu: [
-          {
-            url: '/apps/doctor/doctor-list',
-            name: "List",
-            slug: "app-hospital-list",
-            i18n: "List",
-          },
-          // {
-          //   url: '/apps/hospital/hospital-view',
-          //   name: "View",
-          //   slug: "app-user-view",
-          //   i18n: "View",
-          // },
-          // {
-          //   url: '/apps/user/user-edit/268',
-          //   name: "Edit",
-          //   slug: "app-user-edit",
-          //   i18n: "Edit",
-          // },
-        ]
-      },
+      // {
+      //   url: null,
+      //   name: "Doctor",
+      //   icon: "UserIcon",
+      //   i18n: "Doctors",
+      //   submenu: [
+      //     {
+      //       url: '/apps/doctor/doctor-list',
+      //       name: "List",
+      //       slug: "app-hospital-list",
+      //       i18n: "List",
+      //     },
+      //   ]
+      // },
       {
         url: null,
         name: "Appointments",

@@ -9,6 +9,8 @@ const _d9a9ef2c = () => interopDefault(import('..\\pages\\blog-details.vue' /* w
 const _3e98179d = () => interopDefault(import('..\\pages\\contact.vue' /* webpackChunkName: "pages_contact" */))
 const _47b471f4 = () => interopDefault(import('..\\pages\\index-2.vue' /* webpackChunkName: "pages_index-2" */))
 const _0db1e8b4 = () => interopDefault(import('..\\pages\\login.vue' /* webpackChunkName: "pages_login" */))
+const _71ab8f01 = () => interopDefault(import('..\\pages\\mediapp\\index.vue' /* webpackChunkName: "pages_mediapp_index" */))
+const _1e08637e = () => interopDefault(import('..\\pages\\mediapp2\\index.vue' /* webpackChunkName: "pages_mediapp2_index" */))
 const _6cfa004c = () => interopDefault(import('..\\pages\\register\\index.vue' /* webpackChunkName: "pages_register_index" */))
 const _6d91309c = () => interopDefault(import('..\\pages\\service.vue' /* webpackChunkName: "pages_service" */))
 const _08dc7eb2 = () => interopDefault(import('..\\pages\\service-details.vue' /* webpackChunkName: "pages_service-details" */))
@@ -60,6 +62,14 @@ export const routerOptions = {
     path: "/login",
     component: _0db1e8b4,
     name: "login"
+  }, {
+    path: "/mediapp",
+    component: _71ab8f01,
+    name: "mediapp"
+  }, {
+    path: "/mediapp2",
+    component: _1e08637e,
+    name: "mediapp2"
   }, {
     path: "/register",
     component: _6cfa004c,

@@ -50,16 +50,18 @@ Route::prefix('hospital')->middleware(['auth:api'])->group(function(){
 	Route::delete('/{id}','HospitalController@destroy');
 });
 
-Route::prefix('user')->middleware(['auth:api','admin'])->group(function(){
-	Route::get('/','HospitalController@index');
-	Route::post('/','HospitalController@store');
-	Route::put('/','HospitalController@store');
-	Route::delete('/{id}','HospitalController@destroy');
-});
+// Route::prefix('user')->middleware(['auth:api','admin'])->group(function(){
+// 	Route::get('/','HospitalController@index');
+// 	Route::post('/','HospitalController@store');
+// 	Route::put('/','HospitalController@store');
+// 	Route::delete('/{id}','HospitalController@destroy');
+// });
 
-Route::prefix('doctor')->middleware(['auth:api','admin'])->group(function(){
-	Route::get('/','DoctorController@index');
+Route::prefix('doctor')->middleware(['auth:api'])->group(function(){
+	Route::get('/','DoctorController@index'); // if has id then detail else list (role wise)
 	Route::post('/','DoctorController@store');
+	Route::post('status/{id}','DoctorController@toggleStatus');
+	Route::put('/approve/{id}','DoctorController@approve');
 	Route::put('/','DoctorController@store');
 	Route::delete('/{id}','DoctorController@destroy');
 });

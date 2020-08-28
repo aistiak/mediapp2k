@@ -191,7 +191,7 @@ const router = new Router({
 
         {
              path : '/hospitals' ,
-             name : 'hospitals' ,
+             name : 'hospitals-list' ,
              component : () => import('@/views/apps/hospitals/index.vue') ,
              meta : {
                 breadcrumb : [
@@ -201,6 +201,20 @@ const router = new Router({
                 pageTitle : 'Hospital List' ,
                 rule : 'editor' ,
              },   
+        },
+        {
+            path : '/doctors',
+            name : 'doctor-list' ,
+            component : () => import('@/views/apps/doctors/index.vue'),
+            meta : {
+                breadcrumb :[
+                    {title : 'Home' , url: '/'} ,
+                    {title : 'Doctors List' , active : true } ,
+                ] ,
+                pageTitle : 'Doctors List' ,
+                // rule : 'editor' ,
+                rule : 'editor' ,
+            }
         },
         // {
         //     path: '/apps/hospital/hospital-list',
@@ -234,7 +248,7 @@ const router = new Router({
         // ===============================PATIENT===================//
         {
             path : '/apps/patients/',
-            name :'app-patient-list',   
+            name :'patient-list',   
             component : () => import('@/views/apps/patient/List.vue'),
             meta: {
                 breadcrumb: [
@@ -247,49 +261,50 @@ const router = new Router({
             },
         },    
         // ===============================DOCTOR====================//
-        {
-            path: '/apps/doctor/doctor-list',
-            name: 'app-doctor-list',
-            component: () => import('@/views/apps/doctor/app-list/AppList.vue'),
-            meta: {
-                breadcrumb: [
-                    { title: 'Home', url: '/' },
-                    { title: 'Doctor' },
-                    { title: 'List', active: true },
-                ],
-                pageTitle: 'Doctor List',
-                rule: 'editor'
-            },
-        },
-        {
-            path: '/apps/doctor/doctor-view/:id',
-            name: 'app-doctor-view',
-            component: () => import('@/views/apps/doctor/AppView.vue'),
-            meta: {
-                breadcrumb: [
-                    { title: 'Home', url: '/' },
-                    { title: 'Doctor' },
-                    { title: 'View', active: true },
-                ],
-                pageTitle: 'Doctor View',
-                rule: 'editor'
-            },
 
-        },       
-        {   
-            path: '/apps/doctor/doctor-edit/:id',
-            name: 'app-doctor-edit',
-            component: () => import('@/views/apps/doctor/app-edit/AppEdit.vue'),
-            meta: {
-                breadcrumb: [
-                    { title: 'Home', url: '/' },
-                    { title: 'Doctor' },
-                    { title: 'Edit', active: true },
-                ],
-                pageTitle: 'doctor Edit',
-                rule: 'editor'
-            },
-        },     
+        // {
+        //     path: '/apps/doctor/doctor-list',
+        //     name: 'app-doctor-list',
+        //     component: () => import('@/views/apps/doctor/app-list/AppList.vue'),
+        //     meta: {
+        //         breadcrumb: [
+        //             { title: 'Home', url: '/' },
+        //             { title: 'Doctor' },
+        //             { title: 'List', active: true },
+        //         ],
+        //         pageTitle: 'Doctor List',
+        //         rule: 'editor'
+        //     },
+        // },
+        // {
+        //     path: '/apps/doctor/doctor-view/:id',
+        //     name: 'app-doctor-view',
+        //     component: () => import('@/views/apps/doctor/AppView.vue'),
+        //     meta: {
+        //         breadcrumb: [
+        //             { title: 'Home', url: '/' },
+        //             { title: 'Doctor' },
+        //             { title: 'View', active: true },
+        //         ],
+        //         pageTitle: 'Doctor View',
+        //         rule: 'editor'
+        //     },
+
+        // },       
+        // {   
+        //     path: '/apps/doctor/doctor-edit/:id',
+        //     name: 'app-doctor-edit',
+        //     component: () => import('@/views/apps/doctor/app-edit/AppEdit.vue'),
+        //     meta: {
+        //         breadcrumb: [
+        //             { title: 'Home', url: '/' },
+        //             { title: 'Doctor' },
+        //             { title: 'Edit', active: true },
+        //         ],
+        //         pageTitle: 'doctor Edit',
+        //         rule: 'editor'
+        //     },
+        // },     
         {
             path : '/doctor/appointment/setting' ,
             name : 'doctor-appointment-setting' ,
@@ -320,21 +335,7 @@ const router = new Router({
                 rule: 'editor'
             },
         },
-        // {
-        //     path: '/doctor/appointment/list'  ,
-        //     name : 'doctor-appointment-list' ,
-        //     component : () => import('@/views/apps/appointments/List.vue') ,
-        //     meta : {
-        //         breadcrumb : [
-        //             {title : 'Home' , url : '/'} ,
-        //             {title : 'Doctor' } ,
-        //             {title : 'Appointment' } ,
-        //             {title : 'List' , active : true } ,
-        //         ]
-        //     },
-        //     pageTitle: 'Doctor Appointment List',
-        //     rule: 'editor'           
-        // },
+
         // =========================== role =======================
         {
             path: '/apps/role/role-list',

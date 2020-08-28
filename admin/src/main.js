@@ -11,6 +11,7 @@
 import Vue from 'vue'
 import App from './App.vue'
 import Auth from './packages/Auth'
+// import Auth from './auth/authService'
 
 // Vuesax Component Framework
 import Vuesax from 'vuesax'

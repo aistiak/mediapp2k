@@ -69,6 +69,7 @@ class User extends Authenticatable
     }
     public static function boot(){
         parent::boot() ;
+        
         User::created(function($model){
             $model->activation()->save( \App\Activations::create([
                 'user_id'   => $model->id ,
