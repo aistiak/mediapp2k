@@ -5,7 +5,7 @@
 </template>
 <script>
 export default {
-    layout : 'blank' ,
+    layout : 'layout1' ,
     data() {
         return{
 

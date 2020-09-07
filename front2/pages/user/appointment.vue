@@ -37,7 +37,7 @@
 
 <script>
 export default {
-    layout : 'blank',
+    layout : 'layout1' ,
     data() {
         return {
             appointmentList : [] ,
@@ -57,10 +57,11 @@ export default {
 </script>
 <style scoped>
 .appointment-container {
+    min-height: 100vh;
+    margin:20px;
     display: flex;
- 
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
 }
 .appointment-container > div {
    

@@ -10,6 +10,7 @@ export const getters = {
 
 export const actions  = {
     [`pass_search_info`]({commit},payload){
+        console.log(`passing search info`)
         commit(`set_search_info`,payload)
     }
 }

@@ -15,7 +15,7 @@ class AppointmentController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
+    { 
         // if super admin whill show all the appointments 
         //    doctor  can only see his appointments
         //    hospital  all the appointmens of the hospital doctos
@@ -25,16 +25,17 @@ class AppointmentController extends Controller
         $role = auth()->user()->role->slug ;
         $auth_user = auth()->user() ;
         $appointments = [] ;
-
+        
         if( $role == 'super_admin'){
 
             return  Appointment::paginate(10) ;
 
         }else if( $role == "hospital") {
-
+            
             return  AppointmentResource::collection($auth_user->hospital->appointments()->paginate(10));     
         
         }else if( $role == "doctor"){
+           
             return AppointmentResource::collection($auth_user->doctor->appointments()->paginate(10)) ;
 
         }else if( $role == "patient" ){

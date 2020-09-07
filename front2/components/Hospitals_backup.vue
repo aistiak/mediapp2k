@@ -49,7 +49,7 @@
           type : 'Hospital' ,
           item_list : [],
           page : 1 ,
-          limit : 10 ,
+          limit : 4 ,
           last_page : 1 ,
           current_page : 1 ,
           total : 0 ,

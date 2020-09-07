@@ -1,21 +1,23 @@
 <template>
-    <section class="blog_details_section section_padding">
+    <!-- <section class="blog_details_section section_padding"> -->
     <div class="container">
-        <div class="row">
+        <div class="row has-border" >
             <div class="col-md-3" align="">  
                  <img src="/assets/images/comment-1.jpg"  alt="Cinque Terre"> 
                 <!-- picture -->
             </div>
             <!-- {{doctorDetail}} -->
             <div class="col-md-9 " > 
-                <h3> {{doctorDetail.name}}</h3>
-                <h4> {{doctorDetail.hospital_name}}</h4>
+                <div style="margin-top:20px">
+                    <h3> {{doctorDetail.name}}</h3>
+                    <h4> {{doctorDetail.hospital_name}}</h4>
+                </div>
             </div>
         </div>
         <div @click="test">
-            test 
+            <!-- test  -->
         </div>
-        <div class="row">
+        <div class="row has-border" style="margin-top:50px">
             <div class="col-md-6" align=""> 
                 appointment <br>
                 <no-ssr>
@@ -23,7 +25,7 @@
                 </no-ssr>
             </div>
             <div class="col-md-6" align=""> 
-                others 
+                <!-- others  -->
             </div>
         </div>
         
@@ -83,4 +85,14 @@ img {
   /* border-radius: 50%; */
   width: 200px;
 }
+.has-border  {
+    border : 1px solid lightgray ;
+    padding : 12px ;
+    margin:10px ;
+}
+.container {
+    margin-top: 2%;
+    margin-bottom: 10%;
+}
+
 </style>

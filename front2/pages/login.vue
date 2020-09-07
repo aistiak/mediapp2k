@@ -34,7 +34,7 @@
 <script>
  import axios from "axios"   
  import auth from "../auth/auth"
- import {mapGetters,mapActions} from "vuex" 
+ import {mapGetters,mapActions,mapMutations} from "vuex" 
  export default {
     //Layout for Home 2
     layout: 'blank',
@@ -50,6 +50,9 @@
       }
     },
     methods:{
+        ...mapMutations({
+          set_login_status : 'user.module/set_login_status' ,
+        }),
         // loading scrren 
         ...mapActions({
           'login' : 'auth_patient/login' ,
@@ -88,7 +91,8 @@
                 // console.log(auth.loginHelper)
                 // auth.loginHelper(response.data)
                 this.login(response.data)
-                this.$router.push('/')
+                this.set_login_status(true)
+                this.$router.push('/mediapp')
                 
                 
             }).catch( error => {

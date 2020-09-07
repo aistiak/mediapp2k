@@ -1,16 +1,19 @@
 <template>
     <div class="date-container">
-         this is date selector : 
-        <Datepicker v-model="appointment_form.date" placeholder="select-date" :disabled-dates="disabledDates"/>
+         Select Date : 
+         <div class="date-select">
+            <Datepicker v-model="appointment_form.date" placeholder="select-date" :disabled-dates="disabledDates"/>
+         </div>
         <div>
-            <label>Type</label>
+            <label>Sitting Time</label>
             <select v-model="appointment_form.type">
+                <option value="" >Select</option>
                 <option value="morning" >Morning</option>
                 <option value="evening" >Evening</option>
             </select>
         </div>
         <div>
-            <button @click="submit">book</button>
+            <button @click="submit">Request Appointment</button>
         </div>
     </div>
 </template>
@@ -105,5 +108,18 @@ export default {
 <style scoped>
 .date-container {
     /* border : 1px solid grey ; */
+}
+.date-select {
+    border : 2px solid lightgrey ; 
+}
+select {
+    border : 2px solid lightgrey ; 
+}
+button {
+    border : 1px solid grey ;
+    padding: 5px ;
+    /* width: 12vw; */
+    background-color: lightgreen;
+    margin-top:10px;
 }
 </style>

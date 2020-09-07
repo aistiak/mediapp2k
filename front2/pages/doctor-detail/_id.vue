@@ -12,6 +12,7 @@
   import PageHeader from "~/components/PageHeader";
   import DoctorDetail from "~/components/DoctorDetail";
   export default {
+    layout : 'layout1' ,
     components: {
       DoctorDetail,
       PageHeader

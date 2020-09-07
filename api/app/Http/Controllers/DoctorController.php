@@ -59,7 +59,16 @@ class DoctorController extends Controller
         
             return  DoctorResource::collection( $doctors ) ;
         
-        }
+        // }else if ($role == "doctor "){
+
+        //     $doctors =    $user->doctor    
+        //                   ->when($filter_type == 'active',function($q) { return $q->where('is_active','=',1) ; })  
+        //                   ->when($filter_type == 'deactive',function($q) { return $q->where('is_active','=',0) ; })  
+        //                   ->when($filter_type == 'requested',function($q) { return $q->where('is_enable','=',0) ; })  
+        //                   ->paginate($limit) ;
+        
+        //     return  DoctorResource::collection( $doctors ) ;
+        // }
         
 
         return response()->json(['error' => 'access denied ']) ;

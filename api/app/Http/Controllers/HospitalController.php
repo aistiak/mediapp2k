@@ -49,7 +49,7 @@ class HospitalController extends Controller
             return response()->json(['error' => 'you don`t gave access ']);
         Hospital::find($id)->update(['is_enable' => 1]) ;
         $hospital = Hospital::find($id) ;
-        // activate associated user 
+        // activate associated user
         $hospital->user->activation->update(['completed' => 1]);
         return response()->json(['success' => 'request approved']) ;    
     }

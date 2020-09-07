@@ -9,6 +9,7 @@
   import PageHeader from "~/components/PageHeader";
   import HospitalDetail from "~/components/HospitalDetail";
   export default {
+    layout : 'layout1' ,
     components: {
       HospitalDetail,
       PageHeader

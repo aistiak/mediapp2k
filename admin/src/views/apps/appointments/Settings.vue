@@ -2,13 +2,14 @@
     <div>
         <div class="container">
             <!-- monthly mweely sitting time ( morning evening allowted slot ) , action button -->
+            
             <div class="flex-container">
                 <div>
                     <label for="">Monthly <input type="checkbox" v-model="is_month" > </label>
                     <div class="month-container">
                         <div v-for="i in 31" :key="i">
                             <span @click=" () => manage_date(i) " :class="{'picked' : selected_dates.indexOf(i) !=-1 }">
-                                <a href="javascript:;">{{i}}</a>  
+                                <a href="javascript:;">{{i}}  </a>  
                             </span>
                         </div>
                     </div>
@@ -98,7 +99,7 @@ export default {
                 this.is_week  = data.is_weekly
                 this.is_morning = data.is_morning
                 this.is_evening = data.is_evening 
-                this.selected_dates = data.mothly  || []
+                this.selected_dates = data.monthly  || []
                 this.selected_days = data.weekly   || []
                 this.morning_start_time = data.morning.start
                 this.morning_end_time = data.morning.end

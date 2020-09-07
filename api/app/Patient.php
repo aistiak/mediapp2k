@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Patient extends Model
 {
     //
+    protected $fillable = ['is_enable'] ;
     protected $table = "patients" ;
 
     function user(){

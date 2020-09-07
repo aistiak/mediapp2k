@@ -1,9 +1,20 @@
 <template>
-  <section class="blog_details_section section_padding">
+  <!-- <section class="blog_details_section section_padding"> -->
     <div class="container">
-      <div  class="row">
+      <div class="row" style="margin-top:10%">
+          <div class="col-md-3" align="">  
+                <img src="/assets/images/team/team-1.jpg" alt="team 1">
+          </div>
+          <div class="col-md-9 " > 
+              <div style="margin-top:20px">
+                  <h3> {{hospitalDetail.name}}</h3>
+                  <!-- <h4> {{doctorDetail.hospital_name}}</h4> -->
+              </div>
+          </div>
+      </div>
+      <!-- <div  class="row">
           <div class="col-sm-12">
-              <h1> {{hospitalDetail.name}} </h1>
+              <h1> {{hospitalDetail.name }} </h1>
           </div> 
       </div>  
       <div class="row">
@@ -11,19 +22,14 @@
           <div class="blog_details_left">
             <div class="blog_left_box">
               <div class="bl_share_img">
-            
-              </div><!--end .bl_share_img-->
-
-            </div><!--end blog-left-box-->
-
-
-
-          </div><!--end blog-details-left-->
+              </div>
+            </div>
+          </div>
         </div>
         <div class="col-md-4">
-        </div>
-              
-      </div>
+        </div>   
+      </div> -->
+
       <br>
       <div class="row">
           <div class="col-sm-12"> 
@@ -40,7 +46,8 @@
 
         <div class="col-md-3 col-sm-6" v-for="(item,idx) in hospitalDetail.doctors" :key="idx" @click="doctor_detail(item)">
           <div class="team_member">
-            <img src="/assets/images/team/team-1.jpg" alt="team 1">
+            <!-- <img src="/assets/images/team/team-1.jpg" alt="team 1"> -->
+            <img src="/assets/images/comment-1.jpg"  alt="Cinque Terre">
             <div class="team_details">
               <h3>{{item.name}}<span class="skills"></span></h3>
               <h4>{{``}}<span class="skills"></span></h4>   
@@ -59,6 +66,7 @@
 import { mapGetters , mapActions } from "vuex"
 export default {
     props: ['hospital_id'],
+    
     head(){
       return {
         title: "Hospital Detail "
@@ -89,8 +97,5 @@ export default {
 </script>
 
 <style scoped>
- .bl_share_img {
-     
-     
- }
+
 </style>
