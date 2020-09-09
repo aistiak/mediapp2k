@@ -18,6 +18,7 @@ const _471ab51e = () => interopDefault(import('..\\pages\\user\\appointment.vue'
 const _71e22b7b = () => interopDefault(import('..\\pages\\user\\profile.vue' /* webpackChunkName: "pages_user_profile" */))
 const _cfe3fc6c = () => interopDefault(import('..\\pages\\register\\components\\HospitalForm.vue' /* webpackChunkName: "pages_register_components_HospitalForm" */))
 const _4083a8ed = () => interopDefault(import('..\\pages\\register\\components\\PatientForm.vue' /* webpackChunkName: "pages_register_components_PatientForm" */))
+const _0244f376 = () => interopDefault(import('..\\pages\\register\\components\\TypeSelection.vue' /* webpackChunkName: "pages_register_components_TypeSelection" */))
 const _5d077fee = () => interopDefault(import('..\\pages\\doctor-detail\\_id.vue' /* webpackChunkName: "pages_doctor-detail__id" */))
 const _af00776e = () => interopDefault(import('..\\pages\\hospital-detail\\_id.vue' /* webpackChunkName: "pages_hospital-detail__id" */))
 const _2f7f688f = () => interopDefault(import('..\\pages\\index.vue' /* webpackChunkName: "pages_index" */))
@@ -98,6 +99,10 @@ export const routerOptions = {
     path: "/register/components/PatientForm",
     component: _4083a8ed,
     name: "register-components-PatientForm"
+  }, {
+    path: "/register/components/TypeSelection",
+    component: _0244f376,
+    name: "register-components-TypeSelection"
   }, {
     path: "/doctor-detail/:id?",
     component: _5d077fee,

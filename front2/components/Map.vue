@@ -11,5 +11,12 @@
 </script>
 
 <style scoped>
-
+#map{
+  height: 100vh;
+}
+/* @media only screen and (max-width: 780px) {
+  #map{
+    height : 100vh ;
+  }
+} */
 </style>

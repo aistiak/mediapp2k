@@ -3,9 +3,9 @@
       
         <div class="appointment-container">
             <div class="appointment-filter" >
-                <div>
+                <!-- <div>
                     filter
-                </div>
+                </div> -->
                 <select name="" id="">
                     <option value=""> all </option>
                     <option value=""> approved </option>
@@ -90,5 +90,8 @@ select {
     display: flex; 
     justify-content: space-around;
 
+}
+select {
+    margin:10px;
 }
 </style>

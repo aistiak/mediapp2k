@@ -12,6 +12,7 @@
                     </div>
                     <div class="user-menu" v-show="show_menu">
                         <ul>
+                            <li @click="mobile_map_search">Search</li>
                             <li @click="() =>  $router.push(`/mediapp`) ">Home</li>
                             <li @click="() =>  $router.push(`/user/profile`) ">profile</li>
                             <li @click="() =>  $router.push(`/user/appointment`) ">appointments</li>
@@ -19,10 +20,50 @@
                         </ul>
                     </div>
                 </div>
-                <div  v-else @click="handel_login" style="margin-right:25px;cursor:pointer">
-                     <a href="javascript:;">login</a>
+
+                <div  v-else @click="handel_login" class="login_register" >
+
+                    <a href="javascript:;" 
+                        class="login" >
+                        login
+                    </a>
+
+                     <span>
+                         <span> | </span>
+                        <a href="javascript:;" 
+                           class="register">
+                           Register
+                        </a>
+                     </span>
+
                 </div>
+                <div class="mobile_login_register">
+
+                    <i v-show="!is_loggedin" 
+                       @click="() => show_menu=!show_menu"
+                       class="fa fa-bars">
+                    </i>
+
+                    <ul v-show="show_menu && !is_loggedin"  
+                        @click="handel_login">
+                        <li class="login"> 
+                            Login 
+                        </li>
+                        <li class="register"> 
+                            Register 
+                        </li>
+                        <li @click="mobile_map_search"> 
+                            Search 
+                        </li>
+                    </ul>
+
+                </div>
+
             </div>
+        </div>
+        <div class="floating_search" v-show="show_floating_search" >
+            <input type="Search" >
+             <i class="fa fa-close" @click="() => show_floating_search = false"></i>
         </div>
         <div>
             <nuxt/>
@@ -44,6 +85,7 @@ export default {
         return {
             show_menu : false ,
             loggedin : false ,
+            show_floating_search : false ,
         }
     },
     head(){
@@ -69,13 +111,17 @@ export default {
       ...mapActions({
         'refreshAuth' : 'auth_patient/refreshAuth'
       }),
-      handel_login : function() {
-          this.$router.push('/login')
-        //   this.loggedin = true
+      handel_login : function(event) {
+          if(event.target.className) 
+            this.$router.push(`/${event.target.className}`)
       } ,
 
       handel_logout : function(){
           this.set_login_status(false)
+      },
+      mobile_map_search : function() {
+          this.show_floating_search = true 
+          this.show_menu = false 
       },
     }    
 }
@@ -138,4 +184,55 @@ ul > li:hover {
     height  : 100vh ;
     background-color : #2F3B59 ;
 }
+.login_register{
+    margin-right:25px;
+    cursor:pointer;
+}
+.mobile_login_register {
+    display: none;
+}
+.floating_search{
+    display:none ;
+}
+@media only screen and (max-width: 780px) {
+    .login_register {
+        display:none;
+    }
+    .mobile_login_register {
+        display: block;
+        margin-right: 20px ;
+    }
+    .mobile_login_register > ul{
+        position : absolute ;
+        z-index: 100;
+        right: 2%;
+        background-color: rgb(85, 80, 80);
+        padding :20px ;
+        border-radius: 3px;
+    }
+    .floating_search{
+        display: block;
+        position: absolute;
+        width: 100%;
+        z-index: 90;
+        margin: 10px;
+        top: 8%;
+        width: 88%;
+        left: 6%;
+        /* border-bottom: 2px solid grey; */
+    }
+     .floating_search > input{
+         width : 90% ;
+         height : 5vh ;
+     }
+    .floating_search > i{
+            position: absolute;
+            top: 6%;
+            right: 4%;
+            font-size: 23px;
+
+    }
+}
+
+
 </style>
