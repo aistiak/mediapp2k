@@ -144,6 +144,18 @@ export default [
       //   ]
       // },
       {
+        name : 'Settings' ,
+        icon : 'SettingsIcon' ,
+        url  : '/apps/settings' ,
+        slug : 'settings'
+      },
+      // {
+      //   name : 'User' ,
+      //   icon : 'UserIcon' ,
+      //   url  : '/apps/user/list' ,
+      //   slug : 'user-list'
+      // },
+      {
         name:'Patients' ,
         icon: "UserIcon",
         url : '/apps/patients/' ,
@@ -244,28 +256,29 @@ export default [
           },
         ]
       } ,
-      {
-        url:'null' , 
-        name : 'user',
-        icon : 'UserIcon',
-        i18n: "User",
-        submenu :[
-          {
-            url:'/apps/user/user-list' , 
-            name : 'List',
-            slug : 'app-user-list',
-            icon : 'UserIcon',
+
+      // {
+      //   url:'null' , 
+      //   name : 'user',
+      //   icon : 'UserIcon',
+      //   i18n: "User",
+      //   submenu :[
+      //     {
+      //       url:'/apps/user/user-list' , 
+      //       name : 'List',
+      //       slug : 'app-user-list',
+      //       icon : 'UserIcon',
             
-          },
-          {
-            url:'/apps/user/user-create' , 
-            name : 'Create',
-            slug : 'app-user-create',
-            icon : 'UserIcon',
-            i18n: "create", 
-          },
-        ]
-      } ,
+      //     },
+      //     {
+      //       url:'/apps/user/user-create' , 
+      //       name : 'Create',
+      //       slug : 'app-user-create',
+      //       icon : 'UserIcon',
+      //       i18n: "create", 
+      //     },
+      //   ]
+      // } ,
 
     ]
   },

@@ -18,6 +18,7 @@ class PatientResource extends JsonResource
             'id' => $this->id ,
             'name' => $this->user->name ,
             'email' => $this->user->email ,
+            'is_active' => $this->is_active ,
         ];
     }
 }

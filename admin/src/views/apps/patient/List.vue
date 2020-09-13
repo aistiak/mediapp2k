@@ -10,6 +10,9 @@
         <div class="pateint-list">
             <div v-for="(v,k) in pateint_list.data" :key="k" >
                 {{v.name}}
+                <div v-show="!v.is_active">
+                    <button @click="() => approve(v) ">approve</button>
+                </div>
             </div>
         </div>
         <div class="pagination">    
@@ -35,7 +38,16 @@ export default {
         this.getList()
     },
     methods: { 
-
+        async approve(arg){
+           let response = await axios.post(`api/approval`,{
+               model : 'patient' ,
+               id    : arg.id    , 
+           })
+           // update state hear 
+        //    this.pateint_list.data = this.pateint_list.data.map( v => v.id !=arg.id || response )
+            // console.log(this.pateint_list.data.map( v => v.id !=arg.id? v : response.data ))
+           await this.getList() 
+        },
         getList : async function(page=1){
             try{
               let res = await axios.get(`api/patient?page=${page}`)

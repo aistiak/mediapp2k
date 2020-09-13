@@ -393,63 +393,101 @@ const router = new Router({
                 rule: 'editor'
             },
         },
-        // =========================== user 2 =======================
         {
-            path: '/apps/user/user-list',
-            name: 'app-user-list',
-            component: () => import('@/views/apps/user/app-list/AppList.vue'),
-            meta: {
-                breadcrumb: [
+            path: '/apps/user/list',
+            name : 'user-list' ,
+            component : () => import('@/views/apps/userx/index.vue') ,
+            meta : {
+                breadcrumb : [
                     { title: 'Home', url: '/' },
                     { title: 'User' },
                     { title: 'List', active: true },
-                ],
-                pageTitle: 'User List',
-                rule: 'editor'
-            },
-        },
+                ] ,
+                pageTitle : 'User List' ,
+                rule : 'editor' ,
+            }
+        },       
         {
-            path : '/apps/user/user-view/:id',
-            name : 'app-user-view',
-            component: () => import('@/views/apps/user/AppView.vue'),
-            meta: {
-                breadcrumb: [
-                    { title: 'Home', url: '/' },
-                    { title: 'User' },
-                    { title: 'View' },
-                ],
-                pageTitle: 'User View',
-                rule: 'editor'
-            },
-        },
+            path: '/apps/user/detail',
+            name : 'user-list' ,
+            component : () => import('@/views/apps/userx/detail.vue') ,
+            meta : {
+                breadcrumb : [] ,
+                pageTitle : 'User List' ,
+                rule : 'editor' ,
+            }
+        },       
         {
-            path : '/apps/user/user-edit/:id',
-            name : 'app-user-edit',
-            component: () => import('@/views/apps/user/app-edit/AppEdit.vue'),
-            meta: {
-                breadcrumb: [
+            path: '/apps/settings',
+            name : 'settings' ,
+            component : () => import('@/views/apps/settings/index.vue') ,
+            meta : {
+                breadcrumb : [
                     { title: 'Home', url: '/' },
-                    { title: 'User ' },
-                    { title: 'Edit'},
-                ],
-                pageTitle: 'User Edit',
-                rule: 'editor'
-            },
-        },
-        {
-            path : '/apps/user/user-create',
-            name : 'app-user-create',
-            component: () => import('@/views/apps/user/app-edit/AppCreate.vue'),
-            meta: {
-                breadcrumb: [
-                    { title: 'Home', url: '/' },
-                    { title: 'User' },
-                    { title: 'Create', active: true },
-                ],
-                pageTitle: 'User Create',
-                rule: 'editor'
-            },
-        },
+                    { title: 'Settings', active: true },
+                ] ,
+                pageTitle : 'Settings' ,
+                rule : 'editor' ,
+            }
+        },       
+        // =========================== user 2 =======================
+        // {
+        //     path: '/apps/user/user-list',
+        //     name: 'app-user-list',
+        //     component: () => import('@/views/apps/user/app-list/AppList.vue'),
+        //     meta: {
+        //         breadcrumb: [
+        //             { title: 'Home', url: '/' },
+        //             { title: 'User' },
+        //             { title: 'List', active: true },
+        //         ],
+        //         pageTitle: 'User List',
+        //         rule: 'editor'
+        //     },
+        // },
+
+        // {
+        //     path : '/apps/user/user-view/:id',
+        //     name : 'app-user-view',
+        //     component: () => import('@/views/apps/user/AppView.vue'),
+        //     meta: {
+        //         breadcrumb: [
+        //             { title: 'Home', url: '/' },
+        //             { title: 'User' },
+        //             { title: 'View' },
+        //         ],
+        //         pageTitle: 'User View',
+        //         rule: 'editor'
+        //     },
+        // },
+        // {
+        //     path : '/apps/user/user-edit/:id',
+        //     name : 'app-user-edit',
+        //     component: () => import('@/views/apps/user/app-edit/AppEdit.vue'),
+        //     meta: {
+        //         breadcrumb: [
+        //             { title: 'Home', url: '/' },
+        //             { title: 'User ' },
+        //             { title: 'Edit'},
+        //         ],
+        //         pageTitle: 'User Edit',
+        //         rule: 'editor'
+        //     },
+        // },
+        // {
+        //     path : '/apps/user/user-create',
+        //     name : 'app-user-create',
+        //     component: () => import('@/views/apps/user/app-edit/AppCreate.vue'),
+        //     meta: {
+        //         breadcrumb: [
+        //             { title: 'Home', url: '/' },
+        //             { title: 'User' },
+        //             { title: 'Create', active: true },
+        //         ],
+        //         pageTitle: 'User Create',
+        //         rule: 'editor'
+        //     },
+        // },
         // =============================================================================
         // UI ELEMENTS
         // =============================================================================

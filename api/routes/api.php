@@ -86,6 +86,11 @@ Route::prefix('api/appointment')->middleware(['auth:api'])->group(function(){
 Route::prefix('api/patient')->middleware(['auth:api'])->group(function(){
 	Route::get('/','PatientController@index');
 });
+
+// Approval controller
+Route::prefix('api/approval')->middleware(['auth:api'])->group(function(){
+	Route::post('/','ApprovalController@approve');
+});
 // Route::prefix('contacts')->middleware(['auth:api','admin'])->group(function() {
 
 // 	Route::post('/','ContactController@store');
