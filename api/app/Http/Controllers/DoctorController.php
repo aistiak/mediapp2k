@@ -59,7 +59,8 @@ class DoctorController extends Controller
         
             return  DoctorResource::collection( $doctors ) ;
         
-        // }else if ($role == "doctor "){
+        }
+        // else if ($role == "doctor "){
 
         //     $doctors =    $user->doctor    
         //                   ->when($filter_type == 'active',function($q) { return $q->where('is_active','=',1) ; })  
@@ -74,7 +75,7 @@ class DoctorController extends Controller
         return response()->json(['error' => 'access denied ']) ;
     }
 
-
+   
 
 
 

@@ -17,6 +17,14 @@ export default new AclCreate({
   globalRules: {
     admin: new AclRule("admin").generate(),
     editor: new AclRule("editor").or("admin").generate(),
+    doctor : new AclRule("doctor").generate() ,
+    hospital : new AclRule("hospital").generate() ,
+    super_admin : new AclRule("super_admin")
+                              // .or("admin")
+                              .or("doctor")
+                              // .or("hospital")
+                              // .or("editor")
+                              .generate() ,
     // public: new AclRule("public").or("admin").or("editor").generate(),
   }
 })

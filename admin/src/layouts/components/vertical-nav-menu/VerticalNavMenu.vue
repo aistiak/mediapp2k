@@ -59,11 +59,10 @@
 
         <!-- Header Shadow -->
         <div class="shadow-bottom" v-show="showShadowBottom" />
-
+        <button @click="foo">test</button>
         <!-- Menu Items -->
         <VuePerfectScrollbar ref="verticalNavMenuPs" class="scroll-area-v-nav-menu pt-2" :settings="settings" @ps-scroll-y="psSectionScroll" :key="$vs.rtl">
           <template v-for="(item, index) in menuItemsUpdated">
-
             <!-- Group Header -->
             <span v-if="item.header && !verticalNavMenuItemsMin" class="navigation-header truncate" :key="`header-${index}`">
               {{ $t(item.i18n) || item.header }}
@@ -71,7 +70,6 @@
             <!-- /Group Header -->
 
             <template v-else-if="!item.header">
-
               <!-- Nav-Item -->
               <v-nav-menu-item
                 v-if="!item.submenu"
@@ -211,6 +209,10 @@ export default {
     windowWidth()  { this.setVerticalNavMenuWidth() }
   },
   methods: {
+    foo(){
+      console.log(this.menuItemsUpdated)
+      console.log(this.navMenuItems)
+    },
     // handleWindowResize(event) {
     //   this.windowWidth = event.currentTarget.innerWidth;
     //   this.setVerticalNavMenuWidth()

@@ -91,11 +91,13 @@ class RegisterLoginPasswordResetController extends Controller
                 $token->save();
                 // $role_user = DB::table('role_users')->where('user_id',$user->id)->get();
                 // $role = DB::table('roles')->where('id',$role_user[0]->role_id)->get();
+                $role = $user->role->slug ; 
                 return response()->json([
                     'access_token' => $tokenResult->accessToken,
                     'expires_at'   =>  $tokenResult->token->expires_at,
                     'token_type'   => 'Bearer',
                     'user'      => $user,
+                    'role'      => $role ,
                     'userinfo' =>$user->userinfo,
                     //'permission'   => json_decode($role[0]->permissions2)
                 ]);

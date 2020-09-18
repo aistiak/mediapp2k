@@ -46,7 +46,10 @@ const router = new Router({
         // =============================================================================
                 {
                     path: '/',
-                    redirect: '/dashboard/analytics'
+                    redirect: '/dashboard/analytics' ,
+                    meta :{
+                        rule : '*' ,
+                    }
                 },
                 {
                     path: '/dashboard/analytics',
@@ -199,7 +202,7 @@ const router = new Router({
                     { title : 'Hospitals'  , active: true},
                 ],
                 pageTitle : 'Hospital List' ,
-                rule : 'editor' ,
+                rule : 'super_admin' ,
              },   
         },
         {
@@ -257,7 +260,7 @@ const router = new Router({
                     // { title: 'List', active: true },
                 ],
                 pageTitle: 'Patient List',
-                rule: 'editor'
+                rule: 'super_admin'
             },
         },    
         // ===============================DOCTOR====================//
@@ -317,7 +320,7 @@ const router = new Router({
                     { title: 'Setting', active: true },
                 ],
                 pageTitle: 'Doctor Appointment Setting',
-                rule: 'editor'
+                rule: 'doctor'
             },
         },
         {
@@ -332,7 +335,7 @@ const router = new Router({
                     { title: 'List', active: true },
                 ],
                 pageTitle: 'Doctor Appointment List',
-                rule: 'editor'
+                rule: 'doctor'
             },
         },
 

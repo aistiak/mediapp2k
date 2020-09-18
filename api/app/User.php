@@ -74,7 +74,7 @@ class User extends Authenticatable
             $model->activation()->save( \App\Activations::create([
                 'user_id'   => $model->id ,
                 'code'      => '' ,
-                // 'completed' => 1 ,
+                'completed' => 0 ,
             ]));
         });
     }

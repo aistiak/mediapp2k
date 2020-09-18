@@ -13,6 +13,12 @@
                 <div v-show="!v.is_active">
                     <button @click="() => approve(v) ">approve</button>
                 </div>
+                <div v-show="v.is_active && !v.is_enable">
+                    <button @click="() => toggleEnable(v.id) ">enable</button>
+                </div>
+                <div v-show="v.is_active && v.is_enable">
+                    <button @click="() => toggleEnable(v.id) ">disable</button>
+                </div>
             </div>
         </div>
         <div class="pagination">    
@@ -38,6 +44,13 @@ export default {
         this.getList()
     },
     methods: { 
+        async toggleEnable(id){
+            await axios.post(`api/toggle-enable`,{
+                model : `patient` ,
+                id 
+            })
+            await this.getList()
+        },
         async approve(arg){
            let response = await axios.post(`api/approval`,{
                model : 'patient' ,

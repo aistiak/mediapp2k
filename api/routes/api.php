@@ -91,6 +91,9 @@ Route::prefix('api/patient')->middleware(['auth:api'])->group(function(){
 Route::prefix('api/approval')->middleware(['auth:api'])->group(function(){
 	Route::post('/','ApprovalController@approve');
 });
+Route::prefix('api/toggle-enable')->middleware(['auth:api'])->group(function(){
+	Route::post('/','ApprovalController@toggleEnable');
+});
 // Route::prefix('contacts')->middleware(['auth:api','admin'])->group(function() {
 
 // 	Route::post('/','ContactController@store');
