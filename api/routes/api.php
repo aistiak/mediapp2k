@@ -104,6 +104,7 @@ Route::prefix('api/toggle-enable')->middleware(['auth:api'])->group(function(){
 Route::prefix('api/profile')->middleware(['auth:api'])->group(function(){
 	Route::get('/','ProfileController@detail');
 	Route::put('/','ProfileController@store');
+	Route::put('/security','ProfileController@security');
 });
 
 

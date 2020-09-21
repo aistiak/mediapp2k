@@ -12,7 +12,7 @@
                 </vs-tab>
                 <vs-tab label="Security">
                         <vs-input type="password" label="Password" placeholder="Disabled" v-model="form_data.password"/>
-                        <vs-button color="#5f845f" style="margin-top:20px"  @click="submitProfile">Save</vs-button>
+                        <vs-button color="#5f845f" style="margin-top:20px"  @click="submitPass">Save</vs-button>
                 </vs-tab>
                 <vs-tab label="Avatar">
                     <vs-upload></vs-upload>
@@ -56,8 +56,23 @@ export default {
             }catch(e){console.log(e)}
             this.$vs.loading.close()
         },
-        async submitProfile(){
-            alert(1)
+         submitProfile : async function(){
+           this.$vs.loading()
+           try{
+               let response = await axios.put(`api/profile`,this.form_data)
+               this.form_data = { ...response.data }
+           }catch(e){}
+           this.$vs.loading.close()
+            // console.log(response.data)
+        },
+        async submitPass() {
+            // validate password len and charecters 
+            if(this.form_data.password == '') return 
+            this.$vs.loading()
+            try {
+                await axios.put(`api/profile/security`,this.form_data)
+            }catch(e){}
+            this.$vs.loading.close()
         }
     },
 }

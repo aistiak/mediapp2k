@@ -1,8 +1,7 @@
 <template>
     <div>
-        {{user_role}}
         <!-- <Admin    v-show="user_role == `super_admin`"/> -->
-        <Hospital />
+        <Hospital  v-show="user_role == `hospital`" />
         <!-- <Doctor   v-show="user_role == `doctor`"/> -->
     </div>
 </template>
