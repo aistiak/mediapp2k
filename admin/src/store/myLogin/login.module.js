@@ -10,6 +10,7 @@ let auth = new Vue()
 const state = {
     loginNotification:'',
     isUserLoggedin:false,
+    role : '' ,
 }
 
 const getters = {
@@ -19,6 +20,10 @@ const getters = {
     isLoggedin(state){
         return state.isUserLoggedin
         //   return auth.$auth.isAuthenticated()  
+    },
+
+    user_role(state){
+        return state.role 
     },
  
 }
@@ -32,6 +37,7 @@ const actions = {
                 axios.defaults.headers.common["Authorization"] = 'Bearer '+ response.data.access_token
                 // this.isUserLoggedin = true 
                 commit(`SET_LOGIN_STATUS`,true)
+                commit(`SET_USER_ROLE`,response)
                 // alert('ok logged in :' + this.isUserLoggedin)
                 resolve(response)
             })
@@ -54,6 +60,9 @@ const actions = {
 }
 
 const mutations = {
+    ['SET_USER_ROLE'](state,payload){
+        state.role = payload.data.role 
+    },
     [`SET_LOGIN_NOTIFIACTION`](state,payload){
         state.loginNotification = payload
     } ,

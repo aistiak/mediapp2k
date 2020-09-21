@@ -57,13 +57,6 @@ export default [
     items: [
 
       {
-        name : 'Settings' ,
-        icon : 'SettingsIcon' ,
-        url  : '/apps/settings' ,
-        slug : 'settings'
-      },
-
-      {
         name:'Patients' ,
         icon: "UserIcon",
         url : '/apps/patients/' ,
@@ -89,12 +82,38 @@ export default [
         i18n: "Appointments",
         icon: "UserIcon",
       },
+
+
       {
-        name: "appointment-setting ",
-        url: '/doctor/appointment/setting',
-        slug: "doctor-appointment-setting",
-        i18n: "Appointment Setting",
-        icon: "UserIcon",
+        url: null,
+        name: "settings",
+        // tag: "2",
+        tagColor: "warning",
+        icon: "HomeIcon",
+        i18n: "Settings",
+        submenu: [
+          {
+            name: "profile",
+            url: '/settings/profile',
+            slug: "profile-setting",
+            i18n: "Profile ",
+            icon: "UserIcon",
+          },
+          {
+            name : 'approval' ,
+            icon : 'SettingsIcon' ,
+            url  : '/apps/settings' ,
+            i18n : "Approval ",
+            slug : 'settings'
+          },
+          {
+            name: "appointment",
+            url: '/doctor/appointment/setting',
+            slug: "doctor-appointment-setting",
+            i18n: "Appointment ",
+            icon: "UserIcon",
+          },
+        ]
       },
       // {
       //   url: null,

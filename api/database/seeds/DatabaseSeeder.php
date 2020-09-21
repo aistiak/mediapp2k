@@ -17,18 +17,18 @@ class DatabaseSeeder extends Seeder
         // $this->call(AccountTypeSeeder::class);
         // $this->call(AccountSeeder::class);
         
-        DB::table('users')->insert([
-            'name' => 'admin',
-            'role_id' => 1 ,
-            'email' => 'admin@gmail.com',
-            'password' => Hash::make('secret'),
-        ]);
-        DB::table('activations')->insert([
-            'user_id' => 1, 'completed' => 1 ,'code' => 1
-        ]);
-        $this->call(HospitalSeeder::class);
-        $this->call(DoctorSeeder::class);
-        $this->call(PatientSeeder::class);
+        // DB::table('users')->insert([
+        //     'name' => 'admin',
+        //     'role_id' => 1 ,
+        //     'email' => 'admin@gmail.com',
+        //     'password' => Hash::make('secret'),
+        // ]);
+        // DB::table('activations')->insert([
+        //     'user_id' => 1, 'completed' => 1 ,'code' => 1
+        // ]);
+        // $this->call(HospitalSeeder::class);
+        // $this->call(DoctorSeeder::class);
+        // $this->call(PatientSeeder::class);
 
 
     }

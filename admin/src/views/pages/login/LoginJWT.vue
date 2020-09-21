@@ -81,15 +81,15 @@ export default {
          console.log(response.data.role)
          console.log(typeof (response.data.role))
         //  console.log(this.$acl)
-         try{
+        //  try{
 
-           this.$acl.change(response.data.role)
-         }catch(e){
-           console.log(e)
-         }
+        //    this.$acl.change(response.data.role)
+        //  }catch(e){
+        //    console.log(e)
+        //  }
           // console.log( this.$acl.check('hospital') )
          this.$vs.loading.close()
-        //  this.$router.push({path: '/' });
+         this.$router.push({path: '/' });
          
       }).catch(error=>{
         this.$vs.loading.close()

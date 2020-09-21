@@ -101,7 +101,10 @@ Route::prefix('api/toggle-enable')->middleware(['auth:api'])->group(function(){
 // 	Route::delete('/{id}','ContactController@destroy');
 // });
 
-
+Route::prefix('api/profile')->middleware(['auth:api'])->group(function(){
+	Route::get('/','ProfileController@detail');
+	Route::put('/','ProfileController@store');
+});
 
 
 

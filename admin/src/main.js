@@ -121,7 +121,9 @@ import 'prismjs/themes/prism-tomorrow.css'
 // Feather font icon
 require('./assets/css/iconfont.css')
 
-
+// boostrap added by istiak 
+// import 'bootstrap'; 
+// import 'bootstrap/dist/css/bootstrap.min.css';
 // Vue select css
 // Note: In latest version you have to add it separately
 // import 'vue-select/dist/vue-select.css';

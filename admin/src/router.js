@@ -202,7 +202,7 @@ const router = new Router({
                     { title : 'Hospitals'  , active: true},
                 ],
                 pageTitle : 'Hospital List' ,
-                rule : 'super_admin' ,
+                rule : 'editor' ,
              },   
         },
         {
@@ -260,7 +260,7 @@ const router = new Router({
                     // { title: 'List', active: true },
                 ],
                 pageTitle: 'Patient List',
-                rule: 'super_admin'
+                rule: 'editor'
             },
         },    
         // ===============================DOCTOR====================//
@@ -307,22 +307,7 @@ const router = new Router({
         //         pageTitle: 'doctor Edit',
         //         rule: 'editor'
         //     },
-        // },     
-        {
-            path : '/doctor/appointment/setting' ,
-            name : 'doctor-appointment-setting' ,
-            component : () => import('@/views/apps/appointments/Settings.vue') ,
-            meta: {
-                breadcrumb: [
-                    { title: 'Home', url: '/' },
-                    { title: 'Doctor' },
-                    { title: 'Appointment' },
-                    { title: 'Setting', active: true },
-                ],
-                pageTitle: 'Doctor Appointment Setting',
-                rule: 'doctor'
-            },
-        },
+        // },  
         {
             path : '/doctor/appointment/list' ,
             name : 'doctor-appointment-list' ,
@@ -335,10 +320,39 @@ const router = new Router({
                     { title: 'List', active: true },
                 ],
                 pageTitle: 'Doctor Appointment List',
-                rule: 'doctor'
+                rule: 'editor'
             },
         },
-
+        
+        
+        {
+            path : '/doctor/appointment/setting' ,
+            name : 'doctor-appointment-setting' ,
+            component : () => import('@/views/apps/appointments/Settings.vue') ,
+            meta: {
+                breadcrumb: [
+                    { title: 'Home', url: '/' },
+                    { title: 'Setting' },
+                    { title: 'Appointment',active: true },
+                ],
+                pageTitle: 'Doctor Appointment Setting',
+                rule: 'editor'
+            },
+        },
+        {
+            path : '/settings/profile' ,
+            name : 'profile-setting' ,
+            component : () => import('@/views/apps/profile/index.vue') ,
+            meta: {
+                breadcrumb: [
+                    { title: 'Home', url: '/' },
+                    { title: 'Settings' },
+                    { title: 'Profile', active: true },
+                ],
+                pageTitle: 'Profile Setting',
+                rule: 'editor'
+            },
+        },
         // =========================== role =======================
         {
             path: '/apps/role/role-list',
