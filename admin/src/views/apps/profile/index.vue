@@ -1,8 +1,9 @@
 <template>
     <div>
-        <!-- <Admin    v-show="user_role == `super_admin`"/> -->
-        <Hospital  v-show="user_role == `hospital`" />
-        <!-- <Doctor   v-show="user_role == `doctor`"/> -->
+        <Admin    v-show="user_role == `super_admin`"/>
+        <!-- <Hospital  v-show="user_role == `hospital`" /> -->
+        <Hospital   />
+        <Doctor   v-show="user_role == `doctor`"/>
     </div>
 </template>
 <script>

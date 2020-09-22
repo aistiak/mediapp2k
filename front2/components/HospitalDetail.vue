@@ -3,7 +3,8 @@
     <div class="container">
       <div class="row" style="margin-top:10%">
           <div class="col-md-3" align="">  
-                <img src="/assets/images/team/team-1.jpg" alt="team 1">
+                <img v-if="hospitalDetail.avater" :src="hospitalDetail.avater.path" alt="team 1" style="width:20vw;height:40vh;">
+                <img v-else src="/assets/images/team/team-1.jpg" alt="team 1">
           </div>
           <div class="col-md-9 " > 
               <div style="margin-top:20px">

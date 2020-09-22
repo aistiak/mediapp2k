@@ -67,6 +67,9 @@ class User extends Authenticatable
     {
         return $this->hasOne('App\RoleUser','user_id');
     }
+    public function media(){
+        return $this->hasOne('App\Media','user_id') ;
+    }
     public static function boot(){
         parent::boot() ;
         

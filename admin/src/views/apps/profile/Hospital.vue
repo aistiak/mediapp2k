@@ -15,8 +15,15 @@
                         <vs-button color="#5f845f" style="margin-top:20px"  @click="submitPass">Save</vs-button>
                 </vs-tab>
                 <vs-tab label="Avatar">
-                    <vs-upload></vs-upload>
-                    <vs-button color="#5f845f" @click="getProfile">Save</vs-button>
+                    <!-- <vs-upload action="http://127.0.0.1:8000/api/contentmanager/store">
+
+                    </vs-upload> -->
+                    <input type="file" @change="avatarChanged">
+                    <!-- {{avatar_path}} -->
+                    <div v-if="avatar_path" style="padding:10px">
+                        <img :src="avatar_path" alt="" style="width:15vw;height:20vh;">
+                    </div>
+                    <vs-button color="#5f845f" @click="changeAvatar">Change</vs-button>
                 </vs-tab>
             </vs-tabs>
 
@@ -34,7 +41,11 @@ export default {
                 phone_no: '',
                 address : '' ,
                 password : '' ,
-            }
+                media : {
+                   path : '' ,      
+                },
+            },
+            avatar : `` ,
 
         }   
     },  
@@ -42,8 +53,28 @@ export default {
         // on mounted get details 
          this.getProfile()   
     },
-
+    computed :{
+        avatar_path () {
+            return  this.form_data.media.path 
+        }
+    },
     methods : {
+        async avatarChanged(e){
+            this.avatar = e.target.files 
+        },
+        async changeAvatar(){
+            let files = this.avatar 
+            if(!files.length ) return 
+            let formData = new FormData()
+            formData.append("file",files[0])
+            formData.append("title",'demo')
+            try{
+                let res = await axios.post(`api/profile/avatar`,formData,
+                {headers:{'Content-Type': 'multipart/form-data'}})
+                this.form_data.media = res.data 
+            }catch(e) {console.log(e)}
+
+        },
         async getProfile() {
             this.$vs.loading()
             try{
@@ -53,6 +84,7 @@ export default {
                 this.form_data.name = response.data.name
                 this.form_data.address = response.data.address
                 this.form_data.phone_no = response.data.phone_no
+                this.form_data.media = response.data.media
             }catch(e){console.log(e)}
             this.$vs.loading.close()
         },

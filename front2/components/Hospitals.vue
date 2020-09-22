@@ -23,9 +23,12 @@
 
         <div class="col-md-3 col-sm-6" v-for="(item,idx) in item_list" :key="idx" @click="gotoDetail(item)">
           <div class="team_member">
-            <img src="/assets/images/team/team-1.jpg" alt="team 1">
+            <img v-if="item.avatar" :src="item.avatar.path" alt="team 1">
+            <img v-else src="/assets/images/team/team-1.jpg" alt="team 1">
+       
+            <!-- <img  src="/assets/images/team/team-1.jpg" alt="team 1"> -->
             <div class="team_details">
-              <h3>{{item.name}}<span class="skills"></span></h3>
+              <h3>{{ item.id}} - {{item.name}}<span class="skills"></span></h3>
               <h4>{{``}}<span class="skills"></span></h4>
               <ul class="team_socials">
                  <h4>{{  type == 'hospital' ? item.address : item.hospital_name}}<span class="skills"></span></h4>
