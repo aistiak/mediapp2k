@@ -24,8 +24,13 @@ class ProfileController extends Controller
             if($user->media) $hospital['media'] = new MediaResource($user->media);
             return $hospital ;
         }else if( $role == 'doctor'){
-            return $user->doctor ;
+            // name , phone ,  
+            $doctor = $user->doctor ;
+            if($user->media) $doctor['media'] = new MediaResource($user->media) ; 
+            return $doctor;
         }else if( $role == 'super_admin'){
+            $user = auth()->user() ;
+            if($user->media) $user['media'] = new MediaResource($user->media) ;
             return $user ;
         }
     }
@@ -44,8 +49,13 @@ class ProfileController extends Controller
             return $hospital ;
 
         }else if( $role == 'doctor') {
-            return $role ;
-
+            $doctor = auth()->user()->doctor ;
+            $doctor->name = $request->name ;
+            $doctor->title = $request->title ;
+            $doctor->phone_no = $request->phone_no ;
+            $doctor->save() ;
+            return $doctor ;
+            
         }else if($role == 'super_admin' ){
             return $role ;
         }

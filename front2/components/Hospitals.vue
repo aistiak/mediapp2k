@@ -20,22 +20,42 @@
           </div>
 
         </div><!--end .col-md-12-->
+        <div v-if="type == `hospital` ">
+          <div   class="col-md-3 col-sm-6" v-for="(item,idx) in item_list" :key="idx" @click="gotoDetail(item)">
+            <div class="team_member">
+              <img v-if="item.avatar" :src="item.avatar.path" alt="team 1">
+              <img v-else src="/assets/images/team/team-1.jpg" alt="team 1">
+        
+              <!-- <img  src="/assets/images/team/team-1.jpg" alt="team 1"> -->
+              <div class="team_details">
+                <h3>{{ item.id}} - {{item.name}}<span class="skills"></span></h3>
+                <h4>{{``}}<span class="skills"></span></h4>
+                <ul class="team_socials">
+                  <h4>{{  type == 'hospital' ? item.address : item.hospital_name}}<span class="skills"></span></h4>
+                </ul>
+              </div><!--end .team_details-->
+            </div><!--end .team_member-->
+          </div><!--end .col-md-3-->
 
-        <div class="col-md-3 col-sm-6" v-for="(item,idx) in item_list" :key="idx" @click="gotoDetail(item)">
-          <div class="team_member">
-            <img v-if="item.avatar" :src="item.avatar.path" alt="team 1">
-            <img v-else src="/assets/images/team/team-1.jpg" alt="team 1">
-       
-            <!-- <img  src="/assets/images/team/team-1.jpg" alt="team 1"> -->
-            <div class="team_details">
-              <h3>{{ item.id}} - {{item.name}}<span class="skills"></span></h3>
-              <h4>{{``}}<span class="skills"></span></h4>
-              <ul class="team_socials">
-                 <h4>{{  type == 'hospital' ? item.address : item.hospital_name}}<span class="skills"></span></h4>
-              </ul>
-            </div><!--end .team_details-->
-          </div><!--end .team_member-->
-        </div><!--end .col-md-3-->
+        </div>
+        <div v-else>
+          <div   class="col-md-3 col-sm-6" v-for="(item,idx) in item_list" :key="idx" @click="gotoDetail(item)">
+            <div class="team_member">
+              <img v-if="item.avatar" :src="item.avatar.path" alt="team 1">
+              <img v-else src="/assets/images/team/team-1.jpg" alt="team 1">
+        
+              <!-- <img  src="/assets/images/team/team-1.jpg" alt="team 1"> -->
+              <div class="team_details">
+                <h3>{{ item.id}} - {{item.name}}<span class="skills"></span></h3>
+                <h2>{{``}}<span class="skills"></span></h2>
+                <ul class="team_socials">
+                  <h4>{{  type == 'hospital' ? item.address : item.hospital_name}}<span class="skills"></span></h4>
+                </ul>
+              </div><!--end .team_details-->
+            </div><!--end .team_member-->
+          </div><!--end .col-md-3-->
+        </div>
+     
       </div><!--end .row-->
 
     </div><!--end .container-->
