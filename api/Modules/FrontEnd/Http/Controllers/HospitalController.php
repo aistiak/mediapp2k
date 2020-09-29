@@ -30,7 +30,7 @@ class HospitalController extends Controller
 
     public function index(Request $request)
     {
-
+        // return "ok";
 
         $type        = $request->type == 'doctor' ? 'doctor' : 'hospital' ;
         $limit       = $request->has('limit')       ? $request->limit       : 10 ; 

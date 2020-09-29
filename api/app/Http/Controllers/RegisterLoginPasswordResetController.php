@@ -180,7 +180,7 @@ class RegisterLoginPasswordResetController extends Controller
             'type' => 'required',
             'name' => 'required',
             'email' => 'required|unique:users,email', // unique 
-            'password' => 'required',
+            'password' => 'required|min:6',
         ]);
         // register as patient , hospital or doctor ,
         $user = new \App\User ;
