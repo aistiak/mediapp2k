@@ -18,4 +18,14 @@ class UserController extends Controller
     public function destroy(Request $request){
 
     }
+
+    public function refresh(Request $request) {
+        
+        $user = auth()->user() ;
+        // patient 
+        // if($user->role_id == 4) { 
+        //     return $user->patient ;
+        // }
+        return $user ;    
+    }
 }

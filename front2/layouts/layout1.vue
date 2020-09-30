@@ -3,10 +3,10 @@
         <div class="mediapp-nav">
             <!-- this is nav -->
             <div class="logo" @click="() =>  $router.push(`/mediapp`) " >
-                logo  
+                logo 
             </div>
             <div >
-                <div v-if="is_loggedin"> 
+                <div v-if="auth_user.id"> 
                     <div class="user" @click=" () => show_menu = !show_menu">
                         user 
                     </div>
@@ -39,12 +39,12 @@
                 </div>
                 <div class="mobile_login_register">
 
-                    <i v-show="!is_loggedin" 
+                    <i v-show="!auth_user.id" 
                        @click="() => show_menu=!show_menu"
                        class="fa fa-bars">
                     </i>
 
-                    <ul v-show="show_menu && !is_loggedin"  
+                    <ul v-show="show_menu && !auth_user.id"  
                         @click="handel_login">
                         <li class="login"> 
                             Login 
@@ -94,24 +94,29 @@ export default {
       }
     },
     mounted () {
-      this.refreshAuth()
-      // auth.setUpAuth() 
+      this.fetchAuthUser()  
+     // auth.setUpAuth() 
       this.$nextTick(() => {
         this.$nuxt.$loading.start()
         setTimeout(() => this.$nuxt.$loading.finish(), 500)
       })
     },
     computed : {
-        ...mapGetters('user.module',['is_loggedin','user'])    
+        ...mapGetters('user.module',['is_loggedin','user']),    
+        ...mapGetters('auth_patient',['auth_user']),    
     } ,
     methods: {
       ...mapMutations({
           set_login_status : 'user.module/set_login_status'
       }),  
       ...mapActions({
-        'refreshAuth' : 'auth_patient/refreshAuth'
+        'refreshAuth' : 'auth_patient/refreshAuth',
+        'getAuthUser' : 'auth_patient/getAuthUser'
       }),
-      
+      fetchAuthUser() {
+          this.refreshAuth()
+          this.getAuthUser()
+      } ,
       handel_login : function(event) {
           if(event.target.className) 
             this.$router.push(`/${event.target.className}`)

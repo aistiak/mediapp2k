@@ -29,18 +29,11 @@ Route::prefix('api')->middleware(['auth:api'])->group(function(){
 	});
 
 });
-// Route::middleware('auth:api')->post('/user', function () {
-//     $user = Auth()->user();
-//     return $user;
-//     return response()->json([
-// 		'user' =>[
-// 			'name' =>'rafi',
-// 			'age' =>23
-// 		]
-// 	]);
-// });
-// })->middleware(AdminMiddleware::class);
-// Route::post('/register','AuthController@register');
+// auth user refresh 
+Route::middleware(['auth:api'])->post('api/auth_user/refresh',function(){
+	return auth()->user() ;
+}) ;
+
 Route::prefix('hospital')->middleware(['auth:api'])->group(function(){
 	Route::get('/','HospitalController@index');
 	Route::post('/','HospitalController@store');
