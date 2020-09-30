@@ -210,17 +210,29 @@ class RegisterLoginPasswordResetController extends Controller
 
         }else if( $type == "hospital"){
             //   return "hospital" ;     
-              $request->validate([
-                  'hospital_name' => 'required' ,
-                //   'hospital_cell' => 'required' ,  
-              ]);   
+              $request->validate(
+                [
+                    'hospital_name' => 'required' ,
+                    'division_id' => 'required' ,  
+                    
+                ],
+
+                [
+                    'hospital_name.required' => 'Hospital Name  is required' , 
+                    'division_id.required' => 'Division  field is required' 
+                ] 
+              
+            );   
               // address later 
               $user->role_id = 2 ; // hospital 
               $user->save() ;
             //   $user->activation()->update(['completed' => 1]) ;
-              $user->hospital()->save(\App\Hospital::create([
-                  'name' => $request->hospital_name     
-              ]) );  
+              $hospital['name'] = $request->name ;
+              $hospital['user_id'] = $user->id ;
+              $hospital['division_id'] = $request->division_id ;
+              $request->has('district_id') ? $hospital['district_id'] = $request->district_id : '';
+              $request->has('upazila_id') ? $hospital['upazila_id'] = $request->upazila_id : '';
+              $user->hospital()->save(\App\Hospital::create( $hospital ) );  
               
               return $user ;
         }

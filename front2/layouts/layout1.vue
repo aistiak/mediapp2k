@@ -111,6 +111,7 @@ export default {
       ...mapActions({
         'refreshAuth' : 'auth_patient/refreshAuth'
       }),
+      
       handel_login : function(event) {
           if(event.target.className) 
             this.$router.push(`/${event.target.className}`)

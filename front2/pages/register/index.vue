@@ -109,10 +109,10 @@ export default {
      transition-duration: 500ms;
  }
  .register-container {
-    border: 2px solid lightgrey;
+    /* border: 2px solid lightgrey; */
     margin: 10%;
     margin-top : 5% ;
-    height: 75vh;
+    /* height: 75vh; */
     display: flex;
     flex-direction: column;
     justify-content: flex-start;

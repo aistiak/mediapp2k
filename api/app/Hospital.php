@@ -28,5 +28,9 @@ class Hospital extends Model
         Hospital::created(function($model){
             $model->user->update(['role_id' => 2]);
         });
+
+        Hospital::deleting(function($model){
+            $model->user()->delete() ;
+        });
     }
 }

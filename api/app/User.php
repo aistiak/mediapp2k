@@ -80,5 +80,11 @@ class User extends Authenticatable
                 'completed' => 0 ,
             ]));
         });
+
+        User::deleting(function($model){
+            $model->hospital()->delete() ;
+            $model->doctor()->delete() ;
+            $model->patient()->delete() ;
+        });
     }
 }
