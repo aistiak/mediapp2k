@@ -7,7 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class Patient extends Model
 {
     //
-    protected $fillable = ['is_enable','is_active'] ;
+    protected $guarded = [] ;
+    // protected $fillable = ['is_enable','is_active'] ;
     protected $table = "patients" ;
 
     function user(){

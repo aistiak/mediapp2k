@@ -8,6 +8,7 @@ const _abebbb16 = () => interopDefault(import('..\\pages\\blog.vue' /* webpackCh
 const _d9a9ef2c = () => interopDefault(import('..\\pages\\blog-details.vue' /* webpackChunkName: "pages_blog-details" */))
 const _3e98179d = () => interopDefault(import('..\\pages\\contact.vue' /* webpackChunkName: "pages_contact" */))
 const _47b471f4 = () => interopDefault(import('..\\pages\\index-2.vue' /* webpackChunkName: "pages_index-2" */))
+const _2feabae9 = () => interopDefault(import('..\\pages\\index-old.vue' /* webpackChunkName: "pages_index-old" */))
 const _0db1e8b4 = () => interopDefault(import('..\\pages\\login.vue' /* webpackChunkName: "pages_login" */))
 const _71ab8f01 = () => interopDefault(import('..\\pages\\mediapp\\index.vue' /* webpackChunkName: "pages_mediapp_index" */))
 const _1e08637e = () => interopDefault(import('..\\pages\\mediapp2\\index.vue' /* webpackChunkName: "pages_mediapp2_index" */))
@@ -59,6 +60,10 @@ export const routerOptions = {
     path: "/index-2",
     component: _47b471f4,
     name: "index-2"
+  }, {
+    path: "/index-old",
+    component: _2feabae9,
+    name: "index-old"
   }, {
     path: "/login",
     component: _0db1e8b4,

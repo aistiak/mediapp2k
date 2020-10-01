@@ -7,7 +7,7 @@ use Modules\ContentManager\Entities\Content;
 use App\Lib\FileUpload;
 use App\Http\Resources\MediaResource ;
 use Modules\ContentManager\Transformers\Content as ContentResource;
-
+use App\Http\Resources\PatientDetailResource ;
 class ProfileController extends Controller
 {
     //
@@ -20,24 +20,33 @@ class ProfileController extends Controller
         $role = $user->role->slug ;
         // get detail by role
         if( $role == 'hospital') {
+
             $hospital = $user->hospital ; 
             if($user->media) $hospital['media'] = new MediaResource($user->media);
             return $hospital ;
+
         }else if( $role == 'doctor'){
             // name , phone ,  
             $doctor = $user->doctor ;
             if($user->media) $doctor['media'] = new MediaResource($user->media) ; 
             return $doctor;
+
         }else if( $role == 'super_admin'){
+
             $user = auth()->user() ;
             if($user->media) $user['media'] = new MediaResource($user->media) ;
             return $user ;
+
+        }else if( $role == 'patient' ){
+
+            return new PatientDetailResource( $user );    
         }
     }
 
     public function store(Request $request){
-        
-        $role = auth()->user()->role->slug ;
+
+        $user = auth()->user() ;
+        $role = $user->role->slug ;
 
         if($role == 'hospital'){
             $hospital = auth()->user()->hospital ;
@@ -58,16 +67,40 @@ class ProfileController extends Controller
             
         }else if($role == 'super_admin' ){
             return $role ;
+        }else if( $role == 'patient') {
+            $request->validate([
+                'name' => 'required' 
+            ]);
+            $user->update([
+                'name' => $request->name ,
+            ]);
+
+            $user->patient->update([
+                'address' => $request->address ,
+                'phone_no' => $request->phone_no ,
+            ]);
+            
+            return $user ;
         }
 
         return  "store";
     }
 
     public function security(Request $request){
+        
+        $request->validate([
+
+            // 'old_password' => 'required',
+            'new_password' => 'required',
+            'password_again' => 'required|same:new_password',
+        ]);
+        
         $id = auth()->user()->id ;
-        \App\User::find($id)->update(['password' => bcrypt($request->input('password')) ]) ;
+        
+        \App\User::find($id)->update(['password' => bcrypt($request->input('new_password')) ]) ;
+        
         // $user->password = bcrypt( $request->input('password')) ;
-        return response()->json(['success',200]) ;
+        return response()->json(['status' => 'success'],200) ;
     }   
 
     public function avatar(Request $request){

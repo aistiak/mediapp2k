@@ -107,7 +107,8 @@ export default {
     } ,
     methods: {
       ...mapMutations({
-          set_login_status : 'user.module/set_login_status'
+          set_login_status : 'user.module/set_login_status',
+          commit_auth_user : 'auth_patient/commit_auth_user',
       }),  
       ...mapActions({
         'refreshAuth' : 'auth_patient/refreshAuth',
@@ -124,6 +125,8 @@ export default {
 
       handel_logout : function(){
           this.set_login_status(false)
+          // clear auth user 
+          this.commit_auth_user({})
       },
       mobile_map_search : function() {
           this.show_floating_search = true 
