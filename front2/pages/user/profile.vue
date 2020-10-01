@@ -108,6 +108,13 @@
                     <button @click="submitAvatar">Save</button>
                 </div>  
             </div>
+            <div  style="margin-top:6%" v-show="errors.length">
+                <div class="alert alert-danger" role="alert">
+                    <p v-for="(v,k) in errors" :key="k">
+                        {{ v}}
+                    </p>
+                </div>
+            </div>
         </div>
 
     </div>
@@ -124,6 +131,8 @@ export default {
 
             selected_tab : `basic` ,
             
+            failure_alert : false ,
+
             form_data :{
                 phone_no : `` ,
                 address  : `` ,
@@ -147,11 +156,12 @@ export default {
                 this.form_data = res.data  
 
             }catch(e){
-                console.log(e)
+                this.setErrors(e)
             }
         },
         async submitDetail(type){
             // validatioin 
+            this.errors = [] 
             // submit 
             let form_data = {
                 name : this.form_data.name ,
@@ -163,10 +173,12 @@ export default {
                 await this.$axios.put(`api/profile`,form_data)
             
             }catch(e){
-                console.log(e)
+
+                this.setErrors(e)
             }
         },
         async submitPass(){
+            this.errors = [] 
             let form_data = {
                 old_password : this.form_data.old_password ,
                 new_password : this.form_data.new_password ,
@@ -175,12 +187,12 @@ export default {
             try {
                 await this.$axios.put(`api/profile/security`,form_data) 
             }catch(e){
-                console.log(e)
+                this.setErrors(e)
             }
         },
 
         async submitAvatar() {
-        
+            this.errors = [] 
             if(!this.form_data.avatar.length) return 
             let form_data = new FormData()
             form_data.append('file',this.form_data.avatar[0])
@@ -194,10 +206,18 @@ export default {
                 })
                 this.form_data.media = res.data 
             }catch(e){
-                console.log(e)
+                this.setErrors(e)
             }
         
         },
+        setErrors(e){
+            this.errors = []
+            let keys = Object.keys(e.response.data.errors)
+            for(const key of keys){
+                this.errors = [...this.errors, ...e.response.data.errors[key] ]
+            }
+            this.failure_alert = true 
+        }
 
     } ,
 }

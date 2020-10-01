@@ -69,7 +69,8 @@ class ProfileController extends Controller
             return $role ;
         }else if( $role == 'patient') {
             $request->validate([
-                'name' => 'required' 
+                'name' => 'required' , 
+                'phone_no' => 'required' 
             ]);
             $user->update([
                 'name' => $request->name ,
