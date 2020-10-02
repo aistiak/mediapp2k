@@ -68,9 +68,10 @@
         <div>
             <nuxt/>
         </div>
-        <div class="footer">
+        <Footer/>
+        <!-- <div class="footer">
             this is footer section 
-        </div>
+        </div> -->
     </div>
 </template>
 <script>
@@ -81,6 +82,9 @@ import auth from  "../auth/auth"
 import axios from "axios"
 import {mapActions, mapGetters , mapMutations } from "vuex"
 export default {
+    components:{
+        Footer : () => import("~/components/FooterMediapp") ,
+    },
     data(){
         return {
             show_menu : false ,
@@ -127,6 +131,8 @@ export default {
           this.set_login_status(false)
           // clear auth user 
           this.commit_auth_user({})
+
+          this.$router.push('/')
       },
       mobile_map_search : function() {
           this.show_floating_search = true 

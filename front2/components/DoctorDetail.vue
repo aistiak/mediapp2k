@@ -17,18 +17,18 @@
         <div @click="test">
             <!-- test  -->
         </div>
-        <div class="row has-border" style="margin-top:50px">
-            <div class="col-md-6" align=""> 
+        <div class="row has-border" style="margin-top:50px" >
+            <div class="col-md-6" align="" v-if="is_loggedin"> 
                 appointment <br>
                 <no-ssr>
                     <appointment-book v-if="doctorDetail.appointment_setting" :settings="doctorDetail.appointment_setting" />
                 </no-ssr>
             </div>
-            <div class="col-md-6" align=""> 
+            <div class="col-md-6" align="" v-else> 
                 <!-- others  -->
+                Login to book appointment 
             </div>
-        </div>
-        
+        </div>      
     </div>
     </section>
 </template>
@@ -52,7 +52,10 @@ export default {
            detail : {} ,
         }
     },
-    computed: { ...mapGetters('doctor',['doctorDetail']) },
+    computed: { 
+        ...mapGetters('doctor',['doctorDetail']) ,
+        ...mapGetters('user.module',['is_loggedin']) 
+    },
     mounted() {
 
         this.getDoctorDetail() 

@@ -30,6 +30,8 @@ export const mutations ={
     set_login_status(state,payload){
         console.log(payload)
         state.is_loggedin = payload 
+        if(!payload)
+            this.$axios.defaults.headers.common["Authorization"] = `` 
     },
 
     set_user(state,payload){
