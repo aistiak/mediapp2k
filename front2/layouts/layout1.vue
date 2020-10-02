@@ -3,7 +3,7 @@
         <div class="mediapp-nav">
             <!-- this is nav -->
             <div class="logo" @click="() =>  $router.push(`/mediapp`) " >
-                logo 
+                <img src="/assets/logos/cover-logo-01.png" alt="" style="height:30px;width:30px;">
             </div>
             <div >
                 <div v-if="auth_user.id"> 
@@ -52,7 +52,9 @@
                         <li class="register"> 
                             Register 
                         </li>
-                        <li @click="mobile_map_search"> 
+                        <!-- <li @click="mobile_map_search">  -->
+                        <li > 
+                            <a href="#app-seatch-bar"></a>
                             Search 
                         </li>
                     </ul>
@@ -94,7 +96,7 @@ export default {
     },
     head(){
       return {
-        title: "Mediapp"
+        title: "H24CARE"
       }
     },
     mounted () {

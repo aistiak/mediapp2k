@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div id="app-seatch-bar">
 
         <div class="flex-container">
             <div style="border:1px solid" >

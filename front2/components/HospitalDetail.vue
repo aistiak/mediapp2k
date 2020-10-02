@@ -1,38 +1,24 @@
 <template>
   <!-- <section class="blog_details_section section_padding"> -->
     <div class="container">
-      <div class="row" style="margin-top:10%">
-          <div class="col-md-3" align="">  
-                <img v-if="hospitalDetail.avater" :src="hospitalDetail.avater.path" alt="team 1" style="width:20vw;height:40vh;">
+      <div class="row" style="margin-top:5%">
+          <div class="col-md-12" align="">  
+                <img v-if="hospitalDetail.avater" :src="hospitalDetail.avater.path" alt="team 1" style="width:83vw;height:61vh;">
                 <img v-else src="/assets/images/team/team-1.jpg" alt="team 1">
           </div>
-          <div class="col-md-9 " > 
-              <div style="margin-top:20px">
-                  <h3> {{hospitalDetail.name}}</h3>
-                  <!-- <h4> {{doctorDetail.hospital_name}}</h4> -->
-              </div>
-          </div>
       </div>
-      <!-- <div  class="row">
-          <div class="col-sm-12">
-              <h1> {{hospitalDetail.name }} </h1>
-          </div> 
-      </div>  
-      <div class="row">
-        <div class="col-md-8">
-          <div class="blog_details_left">
-            <div class="blog_left_box">
-              <div class="bl_share_img">
-              </div>
-            </div>
-          </div>
+      <div class="row" style="margin-top:10px;">
+        <div class="col">
+           <h2 style="margin-left:12px;margin-bottom:20px;"> {{hospitalDetail.name}}</h2>
         </div>
-        <div class="col-md-4">
-        </div>   
-      </div> -->
+      </div>
+      <div class="row" style="margin-top:10px;margin-left:5px;">
+        <div class="col">
+           <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus, totam facere. Minus, recusandae fuga nihil beatae debitis dignissimos vitae possimus vero rem pariatur odit excepturi molestiae unde accusantium molestias reiciendis. </p>
+        </div>
+      </div>
 
-      <br>
-      <div class="row">
+      <div class="row" style="margin-top:30px;">
           <div class="col-sm-12"> 
               <h2>Doctors </h2>
           </div>

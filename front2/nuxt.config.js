@@ -13,7 +13,7 @@ export default {
       { hid: 'description', name: 'description', content: process.env.npm_package_description || '' }
     ],
     link: [
-      { rel: 'icon', type: 'image/png', href: '/assets/images/favicon.png' },
+      { rel: 'icon', type: 'image/png', href: '/assets/logos/icon-01.png' },
       { rel: "stylesheet", href: "https://fonts.googleapis.com/css?family=Josefin+Sans:100,300,400,600,600i,700" },
 
       { rel: "stylesheet", href: "/assets/css/bootstrap.min.css" },
