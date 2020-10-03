@@ -12,12 +12,14 @@
         <div class="others">
 
         </div>
+        <!-- <TeamMediapp/> -->
     </div>
 </template>
 <script>    
 import Map from "~/components/Map";
 import Hospitals from "~/components/Hospitals";
 import SearchBar from "~/components/SearchBar";
+import TeamMediapp from "~/components/TeamMediapp";
 // import NewSearchBar from "~/components/new/SearchBar";
 // import SearchResult from "~/components/new/SearchResult";
 
@@ -27,6 +29,7 @@ export default {
         Map , 
         Hospitals ,
         SearchBar ,
+        TeamMediapp ,
         NewSearchBar : () => import("~/components/new/SearchBar"),
         SearchResult : () => import("~/components/new/SearchResult"),
     },

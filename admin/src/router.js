@@ -49,6 +49,7 @@ const router = new Router({
                     redirect: '/dashboard/analytics' ,
                     meta :{
                         rule : '*' ,
+                        authRequired: true
                     }
                 },
                 {
@@ -57,6 +58,7 @@ const router = new Router({
                     component: () => import('./views/DashboardAnalytics.vue'),
                     meta: {
                         rule: 'editor',
+                        authRequired: true
                     }
                 },
                 {
@@ -64,7 +66,8 @@ const router = new Router({
                     name: 'dashboard-ecommerce',
                     component: () => import('./views/DashboardECommerce.vue'),
                     meta: {
-                        rule: 'admin'
+                        rule: 'admin' ,
+                        authRequired: true
                     }
                 },
 
@@ -197,6 +200,8 @@ const router = new Router({
              name : 'hospitals-list' ,
              component : () => import('@/views/apps/hospitals/index.vue') ,
              meta : {
+                
+                
                 breadcrumb : [
                     { title : 'Home' , url : '/'},
                     { title : 'Hospitals'  , active: true},
@@ -210,6 +215,8 @@ const router = new Router({
             name : 'doctor-list' ,
             component : () => import('@/views/apps/doctors/index.vue'),
             meta : {
+               
+                
                 breadcrumb :[
                     {title : 'Home' , url: '/'} ,
                     {title : 'Doctors List' , active : true } ,
@@ -254,6 +261,8 @@ const router = new Router({
             name :'patient-list',   
             component : () => import('@/views/apps/patient/List.vue'),
             meta: {
+                
+                
                 breadcrumb: [
                     { title: 'Home', url: '/' },
                     { title: 'Patient' },
@@ -313,6 +322,8 @@ const router = new Router({
             name : 'doctor-appointment-list' ,
             component : () => import('@/views/apps/appointments/List.vue') ,
             meta: {
+                
+                
                 breadcrumb: [
                     { title: 'Home', url: '/' },
                     { title: 'Doctor' },
@@ -330,6 +341,8 @@ const router = new Router({
             name : 'doctor-appointment-setting' ,
             component : () => import('@/views/apps/appointments/Settings.vue') ,
             meta: {
+                
+                
                 breadcrumb: [
                     { title: 'Home', url: '/' },
                     { title: 'Setting' },
@@ -344,6 +357,8 @@ const router = new Router({
             name : 'profile-setting' ,
             component : () => import('@/views/apps/profile/index.vue') ,
             meta: {
+                
+                
                 breadcrumb: [
                     { title: 'Home', url: '/' },
                     { title: 'Settings' },
@@ -359,6 +374,8 @@ const router = new Router({
             name: 'app-role-list',
             component: () => import('@/views/apps/role/app-list/AppList.vue'),
             meta: {
+                
+                
                 breadcrumb: [
                     { title: 'Home', url: '/' },
                     { title: 'Role' },
@@ -373,6 +390,8 @@ const router = new Router({
             name : 'app-role-view',
             component: () => import('@/views/apps/role/AppView.vue'),
             meta: {
+                
+                
                 breadcrumb: [
                     { title: 'Home', url: '/' },
                     { title: 'Role' },
@@ -387,6 +406,8 @@ const router = new Router({
             name : 'app-role-edit',
             component: () => import('@/views/apps/role/app-edit/AppEdit.vue'),
             meta: {
+                
+                
                 breadcrumb: [
                     { title: 'Home', url: '/' },
                     { title: 'Role' },
@@ -401,6 +422,8 @@ const router = new Router({
             name : 'app-role-create',
             component: () => import('@/views/apps/role/app-edit/AppCreate.vue'),
             meta: {
+                
+                
                 breadcrumb: [
                     { title: 'Home', url: '/' },
                     { title: 'Role' },
@@ -415,6 +438,8 @@ const router = new Router({
             name : 'user-list' ,
             component : () => import('@/views/apps/userx/index.vue') ,
             meta : {
+                
+                
                 breadcrumb : [
                     { title: 'Home', url: '/' },
                     { title: 'User' },
@@ -429,6 +454,8 @@ const router = new Router({
             name : 'user-list' ,
             component : () => import('@/views/apps/userx/detail.vue') ,
             meta : {
+                
+                
                 breadcrumb : [] ,
                 pageTitle : 'User List' ,
                 rule : 'editor' ,
@@ -439,6 +466,8 @@ const router = new Router({
             name : 'settings' ,
             component : () => import('@/views/apps/settings/index.vue') ,
             meta : {
+                
+                
                 breadcrumb : [
                     { title: 'Home', url: '/' },
                     { title: 'Settings', active: true },

@@ -17,7 +17,7 @@
 <script>
 import themeConfig from '@/../themeConfig.js'
 import jwt         from "@/http/requests/auth/jwt/index.js"
-
+import { mapGetters } from "vuex"
 export default {
   data() {
     return {
@@ -31,6 +31,9 @@ export default {
     '$vs.rtl'(val) {
       document.documentElement.setAttribute("dir", val ? "rtl" : "ltr")
     }
+  },
+  computed:{
+    ...mapGetters(['is_loggedin']) ,
   },
   methods: {
     toggleClassInBody(className) {
@@ -58,7 +61,8 @@ export default {
     },
     handleScroll() {
       this.$store.commit('UPDATE_WINDOW_SCROLL_Y', window.scrollY)
-    }
+    },
+
   },
   mounted() {
     this.toggleClassInBody(themeConfig.theme)
@@ -86,6 +90,7 @@ export default {
       //  await this.$auth.renewTokens() 
     }
     catch (e) { console.error(e) }
+
 
   },
   destroyed() {

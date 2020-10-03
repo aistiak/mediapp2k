@@ -56,6 +56,10 @@
                         <li > 
                             <a href="#app-seatch-bar"></a>
                             Search 
+                            <!-- <nuxt-link :to="{path: '/', hash: 'app-seatch-bar'}" 
+                                       v-scroll-to="{el: '#app-seatch-bar'}">
+                                       link
+                            </nuxt-link> -->
                         </li>
                     </ul>
 

@@ -82,6 +82,7 @@ export default {
   methods: {
     logout() {
 
+        this.$store.commit('LOGOUT_AUTH_USER')
         // if user is logged in via auth0
         if (this.$auth.profile) this.$auth.logOut();
 
@@ -96,6 +97,10 @@ export default {
         // If JWT login
         if(localStorage.getItem("accessToken")) {
           localStorage.removeItem("accessToken")
+          this.$router.push('/pages/login').catch(() => {})
+        }
+        if(localStorage.getItem("token")) {
+          localStorage.removeItem("token")
           this.$router.push('/pages/login').catch(() => {})
         }
 
