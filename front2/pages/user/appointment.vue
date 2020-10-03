@@ -2,6 +2,7 @@
     <div>
       
         <div class="appointment-container">
+            <label>Appointment Filter </label>
             <div class="appointment-filter" >
                 <!-- <div>
                     filter
@@ -13,9 +14,10 @@
                     <option value=""> old </option>
                 </select>
             </div>
-            <div class="appointment-list">
+            <div class="appointment-list" v-if="appointmentList.length">
                 <!-- list  -->
                 <!-- {{ appointmentList }} -->
+                <label> Appointment List  </label>
                 <div v-for="(v,k) in appointmentList" :key="k"  >
                     <div class="appointment-row" :class="{ 'green':v.approved }">
                         <span> {{k + 1}}</span>
@@ -30,6 +32,9 @@
                     </div>
                 </div>
             </div>
+            <div v-else>
+                No Appointments to show 
+            </div>
             
         </div>
     </div>
@@ -40,11 +45,13 @@ export default {
     layout : 'layout1' ,
     data() {
         return {
-            appointmentList : [] ,
+            appointmentList : [
+
+            ] ,
         }
     },
     mounted(){
-        this.getAppointmentList()
+        // this.getAppointmentList()
     },
     methods :{
         getAppointmentList : async function(){
@@ -68,7 +75,7 @@ export default {
 }
 .appointment-list {
     display: flex ;
-    flex-direction: column-reverse;
+    flex-direction: column;
     justify-content: stretch;
 }
 .appointment-row {
