@@ -2,12 +2,17 @@
     <div>
         <div>
             <div>
-                <select name="" id="" v-model="filter_type" @change="getList">
-                    <option value="none"> all </option>
-                    <option value="active"> active </option>
-                    <option value="deactive"> deactive </option>
-                    <option value="requested"> requested </option>
-                </select>
+                <div>
+                    <select name="" id="" v-model="filter_type" @change="getList">
+                        <option value="none"> all </option>
+                        <option value="active"> active </option>
+                        <option value="deactive"> deactive </option>
+                        <option value="requested"> requested </option>
+                    </select>
+                </div>
+                <div>
+                    <vs-button color="primary" @click="() => $router.push({ path : '/doctors/form'})">Add</vs-button>
+                </div>
             </div>
             <div class="hospital-list">
         

@@ -27,7 +27,7 @@ import 'firebase/auth'
 Vue.use(Router)
 
 const router = new Router({
-    mode: 'history',
+    mode: 'hash',
     // base: process.env.BASE_URL,
     scrollBehavior () {
         return { x: 0, y: 0 }
@@ -226,6 +226,24 @@ const router = new Router({
                 rule : 'editor' ,
             }
         },
+        {
+            path : '/doctors/form',
+            name : 'doctor-form' ,
+            component : () => import('@/views/apps/doctors/DoctorForm.vue'),
+            meta : {
+               
+                
+                breadcrumb :[
+                    {title : 'Home' , url: '/'} ,
+                    {title : 'Doctors ' , url : '/doctors' } ,
+                    {title : 'Form' , active : true } ,
+                ] ,
+                pageTitle : 'Doctors List' ,
+                // rule : 'editor' ,
+                rule : 'editor' ,
+            }
+        },
+
         // {
         //     path: '/apps/hospital/hospital-list',
         //     name: 'app-hospital-list',

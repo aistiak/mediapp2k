@@ -34,7 +34,7 @@ Router.prototype.push = function push (location, onComplete = emptyFn, onAbort) 
 Vue.use(Router)
 
 export const routerOptions = {
-  mode: 'history',
+  mode: 'hash',
   base: decodeURI('/'),
   linkActiveClass: 'nuxt-link-active',
   linkExactActiveClass: 'nuxt-link-exact-active',

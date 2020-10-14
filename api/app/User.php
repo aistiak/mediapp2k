@@ -7,7 +7,7 @@ use Laravel\Passport\HasApiTokens;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
-
+// user name would only change in case of Patient 
 class User extends Authenticatable
 {
     use HasApiTokens, Notifiable;

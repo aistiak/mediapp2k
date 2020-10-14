@@ -2,7 +2,7 @@
   <section class="team_member_area section_padding text-center">
           <div>
                <!-- <span>{{windowWidth}}</span> -->
-               <h4> {{total}}  {{ type == 'hospital'? `Hospitals` : `Doctor` }} available  </h4>
+               <h4> {{total}}  {{ type.toLowerCase() == 'hospital'? `Hospitals` : `Doctor` }} available  </h4>
                <span>
                  <a href="javascript:;" @click="prev" v-show="page > 1"> prev </a>        
                </span>

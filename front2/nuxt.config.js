@@ -141,5 +141,9 @@ export default {
     */
     extend (config, ctx) {
     }
+  },
+
+  router: {
+    mode: 'hash'
   }
 }

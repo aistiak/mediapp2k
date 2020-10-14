@@ -41,6 +41,7 @@ Route::prefix('hospital')->middleware(['auth:api'])->group(function(){
 	Route::put('/','HospitalController@store');
 	Route::put('/approve/{id}','HospitalController@approve');
 	Route::delete('/{id}','HospitalController@destroy');
+	Route::post('/add/doctor','HospitalController@addDoctor') ;
 });
 
 // Route::prefix('user')->middleware(['auth:api','admin'])->group(function(){

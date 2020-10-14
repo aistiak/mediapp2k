@@ -9,6 +9,7 @@ yarn-error.log*
 
 # Runtime data
 pids
+/.nuxt
 *.pid
 *.seed
 *.pid.lock

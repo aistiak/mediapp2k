@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Hospital;
+use App\Doctor ;
 use App\Http\Resources\Hospital as HospitalResource ;
 use Exception;
 use Illuminate\Http\Request;
@@ -68,6 +69,51 @@ class HospitalController extends Controller
         }catch(Exception $e) {
             return response()->json(['error' => 'something went wrong'],400) ;
         }
+    }
+
+    function addDoctor(Request $request){
+
+        $request->validate([
+            'name' => 'required' ,
+            'title' => 'required' ,
+            'email' => 'required:users' ,
+            'phone_no' => 'required' ,
+            'password' => 'required' ,
+            'password2' => 'required' ,
+        ]);
+
+        $auth_user = auth()->user() ;
+
+        if($auth_user->role->slug != 'hospital'){
+            return response()->json(['errors'=>['auth'=> 'you are not hospital']]);
+        }       
+            
+        // get hospital id , 
+        $user = \App\User::create([
+
+            'name' => $request->name , 
+            'email'=> $request->email ,
+            'role_id' => 3 ,
+            'password' => bcrypt($request->password) ,
+
+
+        ]);
+
+        $user->activation->update(['completed' => 1]) ;     
+        // create user      
+        $doctor = Doctor::create([
+
+            'user_id' => $user->id ,
+            'name' => '' ,
+            'title' => '' ,
+            'hospital_id' => $auth_user->id ,
+            'is_active' => 1 ,
+            'is_enable' => 1 ,
+        ]);
+        // create doctor
+        
+        return $doctor ;
+            
     }
 
 
