@@ -23,11 +23,13 @@ class HospitalDetailResource extends Resource
         }catch(Exception $e){}
 
         return [
+            
             'id' => $this->id ,
             'name' => $this->name ,
             'address' => $this->address , 
             'avater' => $avater ,
-            'doctors' =>  DoctorListResource::collection( $this->doctors ) 
+            'doctors' =>  DoctorListResource::collection( $this->doctors ) ,
+            'sliders' =>  MediaResource::collection( \App\Media::find(  json_decode( $this->slider_ids  ) ) ) 
         ];
     }
 }

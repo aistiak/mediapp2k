@@ -42,6 +42,17 @@ Route::prefix('hospital')->middleware(['auth:api'])->group(function(){
 	Route::put('/approve/{id}','HospitalController@approve');
 	Route::delete('/{id}','HospitalController@destroy');
 	Route::post('/add/doctor','HospitalController@addDoctor') ;
+
+	Route::prefix('slider')->group(function(){
+		
+		Route::get('/','HospitalSliderController@index');
+		
+		Route::post('/','HospitalSliderController@upload');
+		
+		Route::delete('/{id}','HospitalSliderController@destroy');
+	});
+
+
 });
 
 // Route::prefix('user')->middleware(['auth:api','admin'])->group(function(){

@@ -50,7 +50,7 @@ class HospitalController extends Controller
 
 
     public function detail(Request $request) {
-
+        
         $type     = $request->type == 'doctor' ? 'doctor' : 'hospital' ;
         $data = $this->models[ $type ]::find($request->id) ;
         return new $this->resources[ $type.'_detail' ]( $data ) ;

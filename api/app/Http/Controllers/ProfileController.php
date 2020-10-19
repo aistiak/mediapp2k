@@ -146,6 +146,7 @@ class ProfileController extends Controller
 	}
 
 	public function delFile($id){
+
 		$doc = \App\Media::findOrFail($id);
         $path           = 'uploads/';
         $file = $doc->file_name;
@@ -153,6 +154,8 @@ class ProfileController extends Controller
         $upload = $file_upload->remove($file,$path);
 		if($doc->delete()){
 			return $doc ;
-		}
+        }
+        
+        
 	}
 }

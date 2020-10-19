@@ -1,11 +1,21 @@
 <template>
   <!-- <section class="blog_details_section section_padding"> -->
     <div class="container">
-      <div class="row" style="margin-top:5%">
+
+      <!-- <div class="row" style="margin-top:5%">
           <div class="col-md-12" align="">  
                 <img v-if="hospitalDetail.avater" :src="hospitalDetail.avater.path" alt="team 1" style="width:83vw;height:61vh;">
                 <img v-else src="/assets/images/team/team-1.jpg" alt="team 1">
           </div>
+      </div> -->
+      <div class="row" style="margin-top:5%" v-if="slider">
+          <div class="col-md-12" align="">  
+                <img v-if="hospitalDetail.avater" :src="slider.path" alt="team 1" style="width:83vw;height:61vh;border:2px solid lightgrey;">
+                <img v-else src="/assets/images/team/team-1.jpg" alt="team 1">
+          </div>
+      </div>
+      <div class="hospital-service-list">
+        
       </div>
       <div class="row" style="margin-top:10px;">
         <div class="col">
@@ -62,12 +72,16 @@ export default {
     data(){
         return {
            detail : {} ,
+           counter : 1 ,
+           sliders : [] ,
+           slider : `` ,
         }
     },
     computed: { ...mapGetters('hospital',['hospitalDetail']) },
     mounted() {
 
         this.getHospitalDetail() 
+        this.startSlider() 
     },
     methods :{ 
         ...mapActions({
@@ -76,9 +90,18 @@ export default {
         doctor_detail: function({id}){
             this.$router.push(`/doctor-detail/${id}`)
         },
-        getHospitalDetail : function () {
-          this.fetch_hopital_detail(this.hospital_id)
+        getHospitalDetail : async function () {
+          let {data,errors} =  await this.fetch_hopital_detail(this.hospital_id)
+          this.sliders = data.sliders 
+          // console.log()
         },
+        startSlider(){
+          setInterval(this.intervalWork, 2000);
+        },
+        intervalWork(){
+          this.counter = this.counter + 1 
+          this.slider = this.sliders[ this.counter % this.sliders.length ]
+        }
     },
 }
 </script>

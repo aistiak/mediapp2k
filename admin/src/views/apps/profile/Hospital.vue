@@ -25,6 +25,23 @@
                     </div>
                     <vs-button color="#5f845f" @click="changeAvatar">Change</vs-button>
                 </vs-tab>
+
+                <vs-tab label="Slider">
+
+                    <input type="file" @change="setSlider">
+                    <button @click="uploadSlider">upload</button>
+                    <div class="slider-flex-container">
+                        <div v-for="(v,k) in sliders" :key="k">
+                            <!-- {{ v.id }} -->
+                            <img :src="v.path" alt="" height="200px" width="200px">
+                            <button @click="() => deleteSlider(v) ">delete</button>
+                        </div>
+                    </div>
+                </vs-tab>
+                <vs-tab label="services">
+                    <Services/>
+                </vs-tab>
+            
             </vs-tabs>
 
         </vx-card>
@@ -34,8 +51,14 @@
 import axios from "axios"
 export default {
     name : 'HospitalProfileSetting' ,
+    components:{
+        // Services : () => import('./Services') ,
+        Services : () => import('@/components/hospital/Services') ,
+    } ,
     data(){
         return {
+            slider  : [] ,
+            sliders : [] ,
             form_data : {
                 name: '',
                 phone_no: '',
@@ -44,6 +67,7 @@ export default {
                 media : {
                    path : '' ,      
                 },
+                
             },
             avatar : `` ,
 
@@ -52,6 +76,7 @@ export default {
     mounted (){
         // on mounted get details 
          this.getProfile()   
+         this.getSliders() 
     },
     computed :{
         avatar_path () {
@@ -59,9 +84,41 @@ export default {
         }
     },
     methods : {
+
+        setSlider(e) {
+
+            this.slider = e.target.files 
+        },
+
+        async getSliders() {
+
+            let {data,errors} = await axios.get(`hospital/slider`)
+            console.log(data) 
+            this.sliders = data  
+
+        } ,
+        async deleteSlider({id}) {
+            let {data,errors} = await axios.delete(`hospital/slider/${id}`) 
+            this.sliders = data 
+        },     
+        async uploadSlider() {
+            if(!this.slider.length) return 
+            let formData = new FormData() 
+            formData.append('file',this.slider[0])
+            try {
+                let {data,errors} =  await axios.post(`hospital/slider`,formData,{
+                    headers : { 'Content-Type': 'multipart/form-data' } 
+                }) 
+                this.sliders = data 
+            } catch(e){
+
+            }
+        },
+
         async avatarChanged(e){
             this.avatar = e.target.files 
         },
+
         async changeAvatar(){
             let files = this.avatar 
             if(!files.length ) return 
@@ -70,7 +127,7 @@ export default {
             formData.append("title",'demo')
             try{
                 let res = await axios.post(`api/profile/avatar`,formData,
-                {headers:{'Content-Type': 'multipart/form-data'}})
+                { headers:{'Content-Type': 'multipart/form-data'}  })
                 this.form_data.media = res.data 
             }catch(e) {console.log(e)}
 
@@ -110,5 +167,15 @@ export default {
 }
 </script>
 <style scoped>
-
+.slider-flex-container{
+    display : flex ; 
+    flex-direction : row ;
+    justify-content: space-around;
+    margin-top: 10%;
+    border : 2px solid lightgrey ;
+    padding : 5%;
+}
+.slider-flex-containe  img {
+    border : 2px solid lightgrey ;
+}
 </style>

@@ -21,7 +21,7 @@ class DoctorListResource extends Resource
         }catch(Exception $e){}
         return [
             'id'   =>  $this->id ,
-            'name' =>  $this->name , 
+            'name' =>  $this->user->name , 
             'hospital_name' =>  $this->hospital->name ,
             'appointment_setting' => new AppointmentSettingResource( $this->appointment_setting ),
             'avatar' => $avatar , 
