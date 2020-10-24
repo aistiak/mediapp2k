@@ -10,7 +10,7 @@
            <Hospitals/>
         </div>
         <div class="others">
-
+            <Services/>
         </div>
         <!-- <TeamMediapp/> -->
     </div>
@@ -32,6 +32,7 @@ export default {
         TeamMediapp ,
         NewSearchBar : () => import("~/components/new/SearchBar"),
         SearchResult : () => import("~/components/new/SearchResult"),
+        Services : () => import("~/components/new/Benefits") 
     },
     data(){
         return {
@@ -63,7 +64,7 @@ export default {
 }
 .others{
     width : 100% ;
-    height : 50vh ;
+    height : 100vh ;
     background-color: #3EAAFD;
     z-index: 10;
 

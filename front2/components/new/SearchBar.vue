@@ -114,6 +114,7 @@ export default {
 </script>
 
 <style scoped>
+
 .flex-container{
     display:flex ;
     flex-wrap: wrap;
@@ -135,5 +136,11 @@ export default {
       flex-wrap: wrap;
       justify-content: space-around;
     }
+}
+</style>
+<style >
+#app-seatch-bar {
+    padding-right: 4%;
+    text-align: center;
 }
 </style>

@@ -2,7 +2,7 @@
     <div class="mediapp-container">
         <div class="mediapp-nav">
             <!-- this is nav -->
-            <div class="logo" @click="() =>  $router.push(`/mediapp`) " >
+            <div class="logo" @click="() =>  $router.push(`/`) " >
                 <img src="/assets/logos/cover-logo-01.png" alt="" style="height:30px;width:30px;">
             </div>
             <div >
@@ -161,7 +161,7 @@ body{
     display: flex;
     justify-content: space-between;
     align-items: baseline;
-    height: 45px;
+    height: 50px;
     background-color: #2F3B59;
 }
 .mediapp-nav > div {

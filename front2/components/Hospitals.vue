@@ -1,72 +1,85 @@
 <template>
-  <section class="team_member_area section_padding text-center">
-          <div>
-               <!-- <span>{{windowWidth}}</span> -->
-               <h4> {{total}}  {{ type.toLowerCase() == 'hospital'? `Hospitals` : `Doctor` }} available  </h4>
-               <span>
-                 <a href="javascript:;" @click="prev" v-show="page > 1"> prev </a>        
-               </span>
-               <span>&nbsp;&nbsp;</span>
-               <span>
-                 <a href="javascript:;" @click="next" v-show="page < last_page"> next  </a>
-               </span>
-          </div>
-<!-- <div class="container"> -->
-     <div >
-      <div class="row">
-        <div class="col-md-12">
-          <div class="hero-section-title text-center">
-            <!-- <h4>Total {{total}} results found </h4> -->
-          </div>
-
-        </div><!--end .col-md-12-->
-        <div v-if="type == `hospital` ">
-          <div   class="col-md-3 col-sm-6" v-for="(item,idx) in item_list" :key="idx" @click="gotoDetail(item)">
-            <div class="team_member">
-              <img v-if="item.avatar" :src="item.avatar.path" alt="team 1">
-              <img v-else src="/assets/images/team/team-1.jpg" alt="team 1">
+  <section class="team_member_area section_padding text-center search-result">
+      <VclBulletList v-if="isLoading"/>
+      <div v-else>
         
-              <!-- <img  src="/assets/images/team/team-1.jpg" alt="team 1"> -->
-              <div class="team_details">
-                <h3>{{ item.id}} - {{item.name}}<span class="skills"></span></h3>
-                <h4>{{``}}<span class="skills"></span></h4>
-                <ul class="team_socials">
-                  <h4>{{  type == 'hospital' ? item.address : item.hospital_name}}<span class="skills"></span></h4>
-                </ul>
-              </div><!--end .team_details-->
-            </div><!--end .team_member-->
-          </div><!--end .col-md-3-->
-
+        <div>
+              <!-- <span>{{windowWidth}}</span> -->
+              <h4> {{total}}  {{ type.toLowerCase() == 'hospital'? `Hospitals` : `Doctor` }} available  </h4>
+              <span>
+                <a href="javascript:;" @click="prev" v-show="page > 1"> prev </a>        
+              </span>
+              <span>&nbsp;&nbsp;</span>
+              <span>
+                <a href="javascript:;" @click="next" v-show="page < last_page"> next  </a>
+              </span>
         </div>
-        <div v-else>
-          <div   class="col-md-3 col-sm-6" v-for="(item,idx) in item_list" :key="idx" @click="gotoDetail(item)">
-            <div class="team_member">
-              <img v-if="item.avatar" :src="item.avatar.path" alt="team 1">
-              <img v-else src="/assets/images/team/team-1.jpg" alt="team 1">
+  <!-- <div class="container"> -->
+      <div >
+        <div class="row">
+          <div class="col-md-12">
+            <div class="hero-section-title text-center">
+              <!-- <h4>Total {{total}} results found </h4> -->
+            </div>
+
+          </div><!--end .col-md-12-->
+          <div v-if="type == `hospital` ">
+            <div   class="col-md-3 col-sm-6" v-for="(item,idx) in item_list" :key="idx" @click="gotoDetail(item)">
+              <div class="team_member">
+                <img v-if="item.avatar" :src="item.avatar.path" alt="team 1">
+                <img v-else src="/assets/images/team/team-1.jpg" alt="team 1">
+          
+                <!-- <img  src="/assets/images/team/team-1.jpg" alt="team 1"> -->
+                <div class="team_details">
+                  <h3>{{ item.id}} - {{item.name}}<span class="skills"></span></h3>
+                  <h4>{{``}}<span class="skills"></span></h4>
+                  <ul class="team_socials">
+                    <h4>{{  type == 'hospital' ? item.address : item.hospital_name}}<span class="skills"></span></h4>
+                  </ul>
+                </div><!--end .team_details-->
+              </div><!--end .team_member-->
+            </div><!--end .col-md-3-->
+
+          </div>
+          <div v-else>
+            <div   class="col-md-3 col-sm-6" v-for="(item,idx) in item_list" :key="idx" @click="gotoDetail(item)">
+              <div class="team_member">
+                <img v-if="item.avatar" :src="item.avatar.path" alt="team 1">
+                <img v-else src="/assets/images/team/team-1.jpg" alt="team 1">
+          
+                <!-- <img  src="/assets/images/team/team-1.jpg" alt="team 1"> -->
+                <div class="team_details">
+                  <h3>{{ item.id}} - {{item.name}}<span class="skills"></span></h3>
+                  <h2>{{``}}<span class="skills"></span></h2>
+                  <ul class="team_socials">
+                    <h4>{{  type == 'hospital' ? item.address : item.hospital_name}}<span class="skills"></span></h4>
+                  </ul>
+                </div><!--end .team_details-->
+              </div><!--end .team_member-->
+            </div><!--end .col-md-3-->
+          </div>
+      
+        </div><!--end .row-->
+
+      </div><!--end .container-->
         
-              <!-- <img  src="/assets/images/team/team-1.jpg" alt="team 1"> -->
-              <div class="team_details">
-                <h3>{{ item.id}} - {{item.name}}<span class="skills"></span></h3>
-                <h2>{{``}}<span class="skills"></span></h2>
-                <ul class="team_socials">
-                  <h4>{{  type == 'hospital' ? item.address : item.hospital_name}}<span class="skills"></span></h4>
-                </ul>
-              </div><!--end .team_details-->
-            </div><!--end .team_member-->
-          </div><!--end .col-md-3-->
-        </div>
-     
-      </div><!--end .row-->
-
-    </div><!--end .container-->
+      </div>    
+  
+  
   </section>
 </template>
 
 <script>
+    import { VclFacebook, VclInstagram ,VclBulletList } from 'vue-content-loading';
     import axios from "axios"
     import {mapGetters} from "vuex"
     export default {
       name: "Team",
+      components : {
+        VclFacebook,
+        VclInstagram,
+        VclBulletList
+      },
       data(){
         return {
           type : 'Hospital' ,
@@ -78,9 +91,10 @@
           total : 0 ,
           windowWidth: 0 , 
           txt : ``,
-          division_id : `` ,
-          district_id : `` ,
-          upazila_id  : `` ,
+          division_id : ``  ,
+          district_id : ``  ,
+          upazila_id  : ``  ,
+          isLoading : false ,
         }
       },
       mounted(){
@@ -135,6 +149,7 @@
         },
 
         getItems(page=1){
+          this.isLoading = true 
           this.$axios.get(`api/frontend/hospital/?page=${page}&limit=${this.limit}&type=${this.type}`,{
             params : {
               'division_id' : this.division_id ,
@@ -147,8 +162,10 @@
              this.last_page     = response.data?.meta?.last_page 
              this.current_page     = response.data?.meta?.current_page 
              this.page  = this.current_page
+             this.isLoading = false 
             //  alert(this.last_page)
           }).catch(error=>{
+            this.isLoading = false 
             alert(`error in hospial`)
           })
         },
@@ -180,4 +197,10 @@
 
 <style scoped>
 
+</style>
+<style scoped>
+
+.search-result{
+  padding-right : 6% ;
+}
 </style>

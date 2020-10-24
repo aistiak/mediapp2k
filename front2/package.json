@@ -19,6 +19,7 @@
     "dotenv": "^8.2.0",
     "nuxt": "^2.0.0",
     "vue": "^2.6.11",
+    "vue-content-loading": "^1.6.0",
     "vuejs-datepicker": "^1.6.2"
   },
   "devDependencies": {}
