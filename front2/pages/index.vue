@@ -64,7 +64,7 @@ export default {
 }
 .others{
     width : 100% ;
-    height : 100vh ;
+    height : 50% ;
     background-color: #3EAAFD;
     z-index: 10;
 
@@ -85,6 +85,9 @@ export default {
       flex-direction: column;
       flex-wrap: wrap;
       justify-content: space-around;
+    }
+    .others {
+        height : 100%;
     }
 }
 </style>

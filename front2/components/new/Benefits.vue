@@ -48,5 +48,7 @@
 </script>
 
 <style scoped>
-
+.service_benefits_box {
+  background-color:  white ;
+}
 </style>

@@ -13,7 +13,7 @@
                     <div class="user-menu" v-show="show_menu">
                         <ul>
                             <li @click="mobile_map_search">Search</li>
-                            <li @click="() =>  $router.push(`/mediapp`) ">Home</li>
+                            <li @click="() =>  $router.push(`/`) ">Home</li>
                             <li @click="() =>  $router.push(`/user/profile`) ">profile</li>
                             <li @click="() =>  $router.push(`/user/appointment`) ">appointments</li>
                             <li @click="handel_logout">logout</li>
