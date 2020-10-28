@@ -163,6 +163,7 @@ body{
     align-items: baseline;
     height: 50px;
     background-color: #2F3B59;
+    box-shadow: 5px 5px 5px  ;
 }
 .mediapp-nav > div {
   color : white ;
@@ -185,7 +186,7 @@ body{
     width  :40px;
 }
 .user-menu {
-position: absolute;
+    position: absolute;
     background-color: rgb(136 115 115);
     text-align: center;
     width: 15vw;
@@ -194,7 +195,8 @@ position: absolute;
     border: 1px solid grey;
     min-width: 200px;
     border-radius: 4px;
-    box-shadow: 1px 1px 1px 1px #222;
+    box-shadow: 5px 5px 5px #222;
+    border: 2px solid #222;
 }
 ul > li:hover {
     cursor : pointer ;

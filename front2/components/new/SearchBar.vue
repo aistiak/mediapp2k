@@ -119,6 +119,7 @@ export default {
     display:flex ;
     flex-wrap: wrap;
     justify-content: space-around;
+    box-shadow: 5px 5px 5px ;
 }
 .flex-container>div {
     flex-grow: 1;

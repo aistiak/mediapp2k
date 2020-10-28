@@ -51,4 +51,11 @@
 .service_benefits_box {
   background-color:  white ;
 }
+.service_benefits_box {
+    box-shadow: 5px 5px 5px;
+    border: 2px solid;
+}
+.service_benefits_box:hover {
+  box-shadow: 10px 10px 10px ;
+}
 </style>

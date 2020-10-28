@@ -26,7 +26,7 @@
           <div v-if="type == `hospital` ">
             <div   class="col-md-3 col-sm-6" v-for="(item,idx) in item_list" :key="idx" @click="gotoDetail(item)">
               <div class="team_member">
-                <img v-if="item.avatar" :src="item.avatar.path" alt="team 1">
+                <img v-if="item.avatar" :src="item.avatar.path" alt="team 1" class="avatar">
                 <img v-else src="/assets/images/team/team-1.jpg" alt="team 1">
           
                 <!-- <img  src="/assets/images/team/team-1.jpg" alt="team 1"> -->
@@ -195,12 +195,26 @@
     }
 </script>
 
-<style scoped>
 
-</style>
 <style scoped>
 
 .search-result{
   padding-right : 6% ;
 }
+</style>
+<style >
+.team_member {
+  border : 1px solid black ;
+  box-shadow: 5px 5px 5px ;
+  margin : 5px;
+  /* padding : 5px ; */
+}
+.team_member:hover {
+  box-shadow: 5px 5px 10px;
+  border : 2px solid black ; 
+}
+/* .team_member > .avatar {
+  height : 250px; 
+  width :  282px;
+} */
 </style>
