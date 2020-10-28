@@ -184,6 +184,10 @@ body{
 .user {
     height :40px;
     width  :40px;
+    box-shadow: 5px 5px 5px #222;
+    border: 2px solid black;
+    height: 50px;
+    width: 50px;
 }
 .user-menu {
     position: absolute;
