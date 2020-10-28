@@ -20,6 +20,7 @@
     "nuxt": "^2.0.0",
     "vue": "^2.6.11",
     "vue-content-loading": "^1.6.0",
+    "vue-easy-slider": "^5.3.4",
     "vuejs-datepicker": "^1.6.2"
   },
   "devDependencies": {}

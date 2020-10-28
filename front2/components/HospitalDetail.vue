@@ -8,12 +8,30 @@
                 <img v-else src="/assets/images/team/team-1.jpg" alt="team 1">
           </div>
       </div> -->
-      <div class="row" style="margin-top:5%" v-if="slider">
+      <!-- vue-easy-slider start  -->
+      <div class="row" style="margin-top:5% ; margin-bottom : 5% ; border:1px solid ; box-shadow: 5px 5px 5px ;">
+        <slider animation="fade">
+          <slider-item
+            v-for="(v, index) in sliders"
+            :key="index"
+            @click="() => {}"
+          >
+            <img :src="v.path" alt="" style="width:83vw;height:61vh;border:2px solid lightgrey;" >
+            <p style="line-height: 280px; font-size: 5rem; text-align: center;">Page{{ index + 1 }}</p>
+          </slider-item>
+        </slider>
+      </div>
+
+      <!-- vue-easy-slider end  -->
+
+      <!-- slider start  -->
+      <!-- <div class="row" style="margin-top:5%" v-if="slider">
           <div class="col-md-12" align="">  
                 <img v-if="hospitalDetail.avater" :src="slider.path" alt="team 1" style="width:83vw;height:61vh;border:2px solid lightgrey;">
                 <img v-else src="/assets/images/team/team-1.jpg" alt="team 1">
           </div>
-      </div>
+      </div> -->
+      <!-- slider end  -->
       <div class="hospital-service-list">
         
       </div>
@@ -61,9 +79,14 @@
 
 <script>
 import { mapGetters , mapActions } from "vuex"
+import { Slider, SliderItem } from 'vue-easy-slider'
 export default {
+    name : 'HospitalDetailPage' ,
     props: ['hospital_id'],
-    
+    components : {
+      Slider ,
+      SliderItem ,
+    },
     head(){
       return {
         title: "Hospital Detail "
@@ -75,6 +98,12 @@ export default {
            counter : 1 ,
            sliders : [] ,
            slider : `` ,
+
+           list: [
+              { backgroundColor: '#3f51b5', width: '100%', height: '100%' },
+              { backgroundColor: '#eee', width: '100%', height: '100%' },
+              { backgroundColor: '#f44336', width: '100%', height: '100%' },
+           ]
         }
     },
     computed: { ...mapGetters('hospital',['hospitalDetail']) },
