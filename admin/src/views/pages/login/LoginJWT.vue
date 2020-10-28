@@ -1,36 +1,41 @@
 <template>
   <div>
     <vs-input
-        v-validate="'required|email|min:3'"
-        data-vv-validate-on="blur"
-        name="email"
-        icon-no-border
-        icon="icon icon-user"
-        icon-pack="feather"
-        label-placeholder="Email"
-        v-model="email"
-        class="w-full"/>
-    <span class="text-danger text-sm">{{ errors.first('email') }}</span>
+      v-validate="'required|email|min:3'"
+      data-vv-validate-on="blur"
+      name="email"
+      icon-no-border
+      icon="icon icon-user"
+      icon-pack="feather"
+      label-placeholder="Email"
+      v-model="email"
+      class="w-full"
+    />
+    <span class="text-danger text-sm">{{ errors.first("email") }}</span>
 
     <vs-input
-        data-vv-validate-on="blur"
-        v-validate="'required|min:6|max:10'"
-        type="password"
-        name="password"
-        icon-no-border
-        icon="icon icon-lock"
-        icon-pack="feather"
-        label-placeholder="Password"
-        v-model="password"
-        class="w-full mt-6" />
-    <span class="text-danger text-sm">{{ errors.first('password') }}</span>
+      data-vv-validate-on="blur"
+      v-validate="'required|min:6|max:10'"
+      type="password"
+      name="password"
+      icon-no-border
+      icon="icon icon-lock"
+      icon-pack="feather"
+      label-placeholder="Password"
+      v-model="password"
+      class="w-full mt-6"
+    />
+    <span class="text-danger text-sm">{{ errors.first("password") }}</span>
 
     <div class="flex flex-wrap justify-between my-5">
-        <vs-checkbox v-model="checkbox_remember_me" class="mb-3">Remember Me</vs-checkbox>
-        <router-link to="/pages/forgot-password">Forgot Password?</router-link>
+      <vs-checkbox v-model="checkbox_remember_me" class="mb-3"
+        >Remember Me</vs-checkbox
+      >
+      <router-link to="/pages/forgot-password">Forgot Password?</router-link>
     </div>
     <div class="flex flex-wrap justify-between mb-3">
-      <vs-button  type="border" @click="registerUser">Register</vs-button>
+      <vs-button type="border" @click="registerUser">Register</vs-button>
+      <!-- <vs-button :disabled="!validateForm" @click="myloginJWT">Login</vs-button> -->
       <vs-button :disabled="!validateForm" @click="myloginJWT">Login</vs-button>
     </div>
   </div>
@@ -40,100 +45,101 @@
 export default {
   data() {
     return {
-      email: 'admin@gmail.com',
-      password: 'secret',
-      checkbox_remember_me: false
-    }
+      email: "admin@gmail.com",
+      password: "secret",
+      checkbox_remember_me: false,
+    };
   },
   computed: {
     validateForm() {
-      return !this.errors.any() && this.email != '' && this.password != '';
+      return !this.errors.any() && this.email != "" && this.password != "";
     },
   },
   methods: {
     checkLogin() {
       // If user is already logged in notify
       if (this.$store.state.auth.isUserLoggedIn()) {
-
         // Close animation if passed as payload
         // this.$vs.loading.close()
 
         this.$vs.notify({
-          title: 'Login Attempt',
-          text: 'You are already logged in!',
-          iconPack: 'feather',
-          icon: 'icon-alert-circle',
-          color: 'warning'
-        })
+          title: "Login Attempt",
+          text: "You are already logged in!",
+          iconPack: "feather",
+          icon: "icon-alert-circle",
+          color: "warning",
+        });
 
-        return false
+        return false;
       }
-      return true
+      return true;
     },
-    myloginJWT(){
+    myloginJWT() {
       let payload = {
-        'email' : this.email ,
-        'password' : this.password ,
-      }
-      this.$vs.loading()
-      this.$store.dispatch('LOGIN_USER',payload).then(response=>{
-         // redirect to dashboard 
-         console.log(response.data.role)
-         console.log(typeof (response.data.role))
-        //  console.log(this.$acl)
-        //  try{
+        email: this.email,
+        password: this.password,
+      };
+      this.$vs.loading();
+      this.$store
+        .dispatch("LOGIN_USER", payload)
+        .then((response) => {
+          // alert(1);
+          // redirect to dashboard
+          console.log(response.data.role);
+          console.log(typeof response.data.role);
+          //  console.log(this.$acl)
+          //  try{
 
-        //    this.$acl.change(response.data.role)
-        //  }catch(e){
-        //    console.log(e)
-        //  }
+          //    this.$acl.change(response.data.role)
+          //  }catch(e){
+          //    console.log(e)
+          //  }
           // console.log( this.$acl.check('hospital') )
-         this.$vs.loading.close()
-         this.$router.push({path: '/' });
-         
-      }).catch(error=>{
-        this.$vs.loading.close()
-        // console.log(error)
-        // alert(`wrong cred`)
-      })
+          this.$vs.loading.close();
+          this.$router.push({ path: "/dashboard" });
+          // this.$router.push({ name: "dashboard-analytics" });
+        })
+        .catch((error) => {
+          this.$vs.loading.close();
+          console.log(error);
+          // alert(`wrong cred`)
+        });
     },
     loginJWT() {
-
-      if (!this.checkLogin()) return 
+      if (!this.checkLogin()) return;
 
       // Loading
-      this.$vs.loading()
+      this.$vs.loading();
 
       const payload = {
         checkbox_remember_me: this.checkbox_remember_me,
         userDetails: {
           email: this.email,
-          password: this.password
-        }
-      }
+          password: this.password,
+        },
+      };
 
-
-      this.$store.dispatch('auth/loginJWT', payload)
+      this.$store
+        .dispatch("auth/loginJWT", payload)
         .then(() => {
-           this.$vs.loading.close()
+          this.$vs.loading.close();
         })
-        .catch(error => {
-          this.$vs.loading.close()
+        .catch((error) => {
+          this.$vs.loading.close();
           this.$vs.notify({
-            title: 'Error',
+            title: "Error",
             text: error.message,
-            iconPack: 'feather',
-            icon: 'icon-alert-circle',
-            color: 'danger'
-          })
-        })
+            iconPack: "feather",
+            icon: "icon-alert-circle",
+            color: "danger",
+          });
+        });
     },
     registerUser() {
-      if (!this.checkLogin()) return
-      this.$router.push('/pages/register').catch(() => {})
-    }
-  }
-}
-
+      if (!this.checkLogin()) return;
+      this.$router.push("/pages/register").catch(() => {});
+    },
+  },
+};
 </script>
 

@@ -4,75 +4,86 @@ import axios from "axios"
 // import { SET_LOGIN_NOTIFIACTION ,SET_USER_PERMISSION} from "./mutations.type"
 import Vue from 'vue'
 import Auth from '../../packages/Auth'
+import router from '@/router'
 // import router from '../router'
 Vue.use(Auth)
 let auth = new Vue()
 const state = {
-    loginNotification:'',
-    isUserLoggedin:false,
-    role : '' ,
+    loginNotification: '',
+    isUserLoggedin: false,
+    role: '',
 }
 
 const getters = {
-    loginNotification(state){
+    loginNotification(state) {
         return state.loginNotification
     },
-    isLoggedin(state){
+    isLoggedin(state) {
         return state.isUserLoggedin
         //   return auth.$auth.isAuthenticated()  
     },
 
-    user_role(state){
-        return state.role 
+    user_role(state) {
+        return state.role
     },
- 
+
 }
 
 const actions = {
-    [`LOGIN_USER`]({commit},data) {
+
+    [`LOGIN_USER`]({ commit }, data) {
         return new Promise((resolve, reject) => {
-            axios.post("api/login",data)
-            .then(response => { 
-                auth.$auth.setToken(response.data.access_token, Date.parse(response.data.expires_at.date))
-                axios.defaults.headers.common["Authorization"] = 'Bearer '+ response.data.access_token
-                // this.isUserLoggedin = true 
-                commit(`SET_LOGIN_STATUS`,true)
-                commit(`SET_USER_ROLE`,response)
-                // alert('ok logged in :' + this.isUserLoggedin)
-                resolve(response)
-            })
-            .catch(error => {
-                commit(`SET_LOGIN_NOTIFIACTION`,error.response.data)
-                reject(error)
-            });
+            axios.post("api/login", data)
+                .then(response => {
+                    auth.$auth.setToken(response.data.access_token, Date.parse(response.data.expires_at.date))
+                    axios.defaults.headers.common["Authorization"] = 'Bearer ' + response.data.access_token
+                    // this.isUserLoggedin = true 
+                    commit(`SET_LOGIN_STATUS`, true)
+                    commit(`SET_USER_ROLE`, response)
+                    // alert('ok logged in :' + this.isUserLoggedin)
+                    console.log(router.currentRoute.query.to)
+                    // router.push({ name: 'dashboard-analytics' })
+                    // router.push(router.currentRoute.query.to || '/')
+                    resolve(response)
+                })
+                .catch(error => {
+                    commit(`SET_LOGIN_NOTIFIACTION`, error.response.data)
+                    reject(error)
+                });
         });
     },
-    ['LOGOUT_USER']({commit}){
+
+    ['LOGOUT_USER']({ commit }) {
         // this.isUserLoggedin = false 
-        commit(`SET_LOGIN_STATUS`,false)
+        commit(`SET_LOGIN_STATUS`, false)
         auth.$auth.logout()
         auth.$auth.destroyToken()
     },
-    ['MANAGE_LOGIN_STATUS']({commit},payload){
-        commit(`SET_LOGIN_STATUS`,payload)
+    ['MANAGE_LOGIN_STATUS']({ commit }, payload) {
+        commit(`SET_LOGIN_STATUS`, payload)
     }
-    
+
 }
 
 const mutations = {
-    ['SET_USER_ROLE'](state,payload){
-        state.role = payload.data.role 
+    ['SET_USER_ROLE'](state, payload) {
+        state.role = payload.data.role
     },
-    [`SET_LOGIN_NOTIFIACTION`](state,payload){
+    [`SET_LOGIN_NOTIFIACTION`](state, payload) {
         state.loginNotification = payload
-    } ,
-    [`SET_LOGIN_STATUS`](state,payload){
-        if(payload){
+    },
+    [`SET_LOGIN_STATUS`](state, payload) {
+        let localStorageKey = "loggedIn"
+        if (payload) {
             state.isUserLoggedin = payload
-        }else{
+
+            localStorage.setItem(localStorageKey, 'true');
+        } else {
             auth.$auth.logout()
             auth.$auth.destroyToken()
             state.isUserLoggedin = payload
+            localStorage.setItem(localStorageKey, 'false');
+
         }
     }
 

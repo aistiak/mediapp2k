@@ -29,29 +29,30 @@ Vue.use(Router)
 const router = new Router({
     mode: 'hash',
     // base: process.env.BASE_URL,
-    scrollBehavior () {
+    scrollBehavior() {
         return { x: 0, y: 0 }
     },
     routes: [
 
         {
-    // =============================================================================
-    // MAIN LAYOUT ROUTES
-    // =============================================================================
+            // =============================================================================
+            // MAIN LAYOUT ROUTES
+            // =============================================================================
             path: '',
             component: () => import('./layouts/main/Main.vue'),
             children: [
-        // =============================================================================
-        // Theme Routes
-        // =============================================================================
+                // =============================================================================
+                // Theme Routes
+                // =============================================================================
                 {
                     path: '/',
-                    redirect: '/dashboard/analytics' ,
-                    meta :{
-                        rule : '*' ,
+                    redirect: '/dashboard/analytics',
+                    meta: {
+                        rule: '*',
                         authRequired: true
                     }
                 },
+
                 {
                     path: '/dashboard/analytics',
                     name: 'dashboard-analytics',
@@ -66,15 +67,15 @@ const router = new Router({
                     name: 'dashboard-ecommerce',
                     component: () => import('./views/DashboardECommerce.vue'),
                     meta: {
-                        rule: 'admin' ,
+                        rule: 'admin',
                         authRequired: true
                     }
                 },
 
 
-        // =============================================================================
-        // Application Routes
-        // =============================================================================
+                // =============================================================================
+                // Application Routes
+                // =============================================================================
                 {
                     path: '/apps/todo',
                     redirect: '/apps/todo/all',
@@ -128,7 +129,7 @@ const router = new Router({
                     meta: {
                         breadcrumb: [
                             { title: 'Home', url: '/' },
-                            { title: 'eCommerce'},
+                            { title: 'eCommerce' },
                             { title: 'Shop', active: true },
                         ],
                         pageTitle: 'Shop',
@@ -142,7 +143,7 @@ const router = new Router({
                     meta: {
                         breadcrumb: [
                             { title: 'Home', url: '/' },
-                            { title: 'eCommerce', url:'/apps/eCommerce/shop'},
+                            { title: 'eCommerce', url: '/apps/eCommerce/shop' },
                             { title: 'Wish List', active: true },
                         ],
                         pageTitle: 'Wish List',
@@ -156,7 +157,7 @@ const router = new Router({
                     meta: {
                         breadcrumb: [
                             { title: 'Home', url: '/' },
-                            { title: 'eCommerce', url:'/apps/eCommerce/shop'},
+                            { title: 'eCommerce', url: '/apps/eCommerce/shop' },
                             { title: 'Checkout', active: true },
                         ],
                         pageTitle: 'Checkout',
@@ -183,8 +184,8 @@ const router = new Router({
                     meta: {
                         breadcrumb: [
                             { title: 'Home', url: '/' },
-                            { title: 'eCommerce'},
-                            { title: 'Shop', url: {name: 'ecommerce-shop'} },
+                            { title: 'eCommerce' },
+                            { title: 'Shop', url: { name: 'ecommerce-shop' } },
                             { title: 'Item Details', active: true },
                         ],
                         parent: "ecommerce-item-detail-view",
@@ -193,368 +194,386 @@ const router = new Router({
                     }
                 },
 
-        // ===============================HOSPITAL====================//
+                // ===============================HOSPITAL====================//
+                {
+                    path: '/home-page',
+                    name: 'home-page',
+                    component: () => import('./views/apps/home/index.vue'),
+                    meta: {
+                        rule: 'editor',
+                        // authRequired: true
+                    }
+                },
+                {
+                    path: '/dashboard',
+                    name: 'dashboard',
+                    component: () => import('./views/DashboardAnalytics.vue'),
+                    meta: {
+                        rule: 'editor',
+                        // authRequired: true
+                    }
+                },
+                {
+                    path: '/hospitals',
+                    name: 'hospitals-list',
+                    component: () => import('@/views/apps/hospitals/index.vue'),
+                    meta: {
 
-        {
-             path : '/hospitals' ,
-             name : 'hospitals-list' ,
-             component : () => import('@/views/apps/hospitals/index.vue') ,
-             meta : {
-                
-                
-                breadcrumb : [
-                    { title : 'Home' , url : '/'},
-                    { title : 'Hospitals'  , active: true},
-                ],
-                pageTitle : 'Hospital List' ,
-                rule : 'editor' ,
-             },   
-        },
-        {
-            path : '/doctors',
-            name : 'doctor-list' ,
-            component : () => import('@/views/apps/doctors/index.vue'),
-            meta : {
-               
-                
-                breadcrumb :[
-                    {title : 'Home' , url: '/'} ,
-                    {title : 'Doctors List' , active : true } ,
-                ] ,
-                pageTitle : 'Doctors List' ,
-                // rule : 'editor' ,
-                rule : 'editor' ,
-            }
-        },
-        {
-            path : '/doctors/form',
-            name : 'doctor-form' ,
-            component : () => import('@/views/apps/doctors/DoctorForm.vue'),
-            meta : {
-               
-                
-                breadcrumb :[
-                    {title : 'Home' , url: '/'} ,
-                    {title : 'Doctors ' , url : '/doctors' } ,
-                    {title : 'Form' , active : true } ,
-                ] ,
-                pageTitle : 'Doctors List' ,
-                // rule : 'editor' ,
-                rule : 'editor' ,
-            }
-        },
 
-        // {
-        //     path: '/apps/hospital/hospital-list',
-        //     name: 'app-hospital-list',
-        //     component: () => import('@/views/apps/hospital/hospital-list/HospitalList.vue'),
-        //     meta: {
-        //         breadcrumb: [
-        //             { title: 'Home', url: '/' },
-        //             { title: 'Hospital' },
-        //             { title: 'List', active: true },
-        //         ],
-        //         pageTitle: 'Hospital List',
-        //         rule: 'editor'
-        //     },
-        // },
-        // {
-        //     path: '/apps/hospital/hospital-view/:id',
-        //     name: 'app-hospital-view',
-        //     component: () => import('@/views/apps/hospital/HospitalView.vue'),
-        //     meta: {
-        //         breadcrumb: [
-        //             { title: 'Home', url: '/' },
-        //             { title: 'Hospital' },
-        //             { title: 'View', active: true },
-        //         ],
-        //         pageTitle: 'Hospital View',
-        //         rule: 'editor'
-        //     },
+                        breadcrumb: [
+                            { title: 'Home', url: '/' },
+                            { title: 'Hospitals', active: true },
+                        ],
+                        pageTitle: 'Hospital List',
+                        rule: 'editor',
+                        authRequired: true,
+                    },
+                },
+                {
+                    path: '/doctors',
+                    name: 'doctor-list',
+                    component: () => import('@/views/apps/doctors/index.vue'),
+                    meta: {
 
-        // },   
-        // ===============================PATIENT===================//
-        {
-            path : '/apps/patients/',
-            name :'patient-list',   
-            component : () => import('@/views/apps/patient/List.vue'),
-            meta: {
-                
-                
-                breadcrumb: [
-                    { title: 'Home', url: '/' },
-                    { title: 'Patient' },
-                    // { title: 'List', active: true },
-                ],
-                pageTitle: 'Patient List',
-                rule: 'editor'
-            },
-        },    
-        // ===============================DOCTOR====================//
 
-        // {
-        //     path: '/apps/doctor/doctor-list',
-        //     name: 'app-doctor-list',
-        //     component: () => import('@/views/apps/doctor/app-list/AppList.vue'),
-        //     meta: {
-        //         breadcrumb: [
-        //             { title: 'Home', url: '/' },
-        //             { title: 'Doctor' },
-        //             { title: 'List', active: true },
-        //         ],
-        //         pageTitle: 'Doctor List',
-        //         rule: 'editor'
-        //     },
-        // },
-        // {
-        //     path: '/apps/doctor/doctor-view/:id',
-        //     name: 'app-doctor-view',
-        //     component: () => import('@/views/apps/doctor/AppView.vue'),
-        //     meta: {
-        //         breadcrumb: [
-        //             { title: 'Home', url: '/' },
-        //             { title: 'Doctor' },
-        //             { title: 'View', active: true },
-        //         ],
-        //         pageTitle: 'Doctor View',
-        //         rule: 'editor'
-        //     },
+                        breadcrumb: [
+                            { title: 'Home', url: '/' },
+                            { title: 'Doctors List', active: true },
+                        ],
+                        pageTitle: 'Doctors List',
+                        // rule : 'editor' ,
+                        rule: 'editor',
+                    }
+                },
+                {
+                    path: '/doctors/form',
+                    name: 'doctor-form',
+                    component: () => import('@/views/apps/doctors/DoctorForm.vue'),
+                    meta: {
 
-        // },       
-        // {   
-        //     path: '/apps/doctor/doctor-edit/:id',
-        //     name: 'app-doctor-edit',
-        //     component: () => import('@/views/apps/doctor/app-edit/AppEdit.vue'),
-        //     meta: {
-        //         breadcrumb: [
-        //             { title: 'Home', url: '/' },
-        //             { title: 'Doctor' },
-        //             { title: 'Edit', active: true },
-        //         ],
-        //         pageTitle: 'doctor Edit',
-        //         rule: 'editor'
-        //     },
-        // },  
-        {
-            path : '/doctor/appointment/list' ,
-            name : 'doctor-appointment-list' ,
-            component : () => import('@/views/apps/appointments/List.vue') ,
-            meta: {
-                
-                
-                breadcrumb: [
-                    { title: 'Home', url: '/' },
-                    { title: 'Doctor' },
-                    { title: 'Appointment' },
-                    { title: 'List', active: true },
-                ],
-                pageTitle: 'Doctor Appointment List',
-                rule: 'editor'
-            },
-        },
-        
-        
-        {
-            path : '/doctor/appointment/setting' ,
-            name : 'doctor-appointment-setting' ,
-            component : () => import('@/views/apps/appointments/Settings.vue') ,
-            meta: {
-                
-                
-                breadcrumb: [
-                    { title: 'Home', url: '/' },
-                    { title: 'Setting' },
-                    { title: 'Appointment',active: true },
-                ],
-                pageTitle: 'Doctor Appointment Setting',
-                rule: 'editor'
-            },
-        },
-        {
-            path : '/settings/profile' ,
-            name : 'profile-setting' ,
-            component : () => import('@/views/apps/profile/index.vue') ,
-            meta: {
-                
-                
-                breadcrumb: [
-                    { title: 'Home', url: '/' },
-                    { title: 'Settings' },
-                    { title: 'Profile', active: true },
-                ],
-                pageTitle: 'Profile Setting',
-                rule: 'editor'
-            },
-        },
-        // =========================== role =======================
-        {
-            path: '/apps/role/role-list',
-            name: 'app-role-list',
-            component: () => import('@/views/apps/role/app-list/AppList.vue'),
-            meta: {
-                
-                
-                breadcrumb: [
-                    { title: 'Home', url: '/' },
-                    { title: 'Role' },
-                    { title: 'List', active: true },
-                ],
-                pageTitle: 'Role List',
-                rule: 'editor'
-            },
-        },
-        {
-            path : '/apps/role/role-view/:id',
-            name : 'app-role-view',
-            component: () => import('@/views/apps/role/AppView.vue'),
-            meta: {
-                
-                
-                breadcrumb: [
-                    { title: 'Home', url: '/' },
-                    { title: 'Role' },
-                    { title: 'View', active: true },
-                ],
-                pageTitle: 'Role View',
-                rule: 'editor'
-            },
-        },
-        {
-            path : '/apps/role/role-edit/:id',
-            name : 'app-role-edit',
-            component: () => import('@/views/apps/role/app-edit/AppEdit.vue'),
-            meta: {
-                
-                
-                breadcrumb: [
-                    { title: 'Home', url: '/' },
-                    { title: 'Role' },
-                    { title: 'Edit', active: true },
-                ],
-                pageTitle: 'Role Edit',
-                rule: 'editor'
-            },
-        },
-        {
-            path : '/apps/role/role-create',
-            name : 'app-role-create',
-            component: () => import('@/views/apps/role/app-edit/AppCreate.vue'),
-            meta: {
-                
-                
-                breadcrumb: [
-                    { title: 'Home', url: '/' },
-                    { title: 'Role' },
-                    { title: 'Create', active: true },
-                ],
-                pageTitle: 'Role Create',
-                rule: 'editor'
-            },
-        },
-        {
-            path: '/apps/user/list',
-            name : 'user-list' ,
-            component : () => import('@/views/apps/userx/index.vue') ,
-            meta : {
-                
-                
-                breadcrumb : [
-                    { title: 'Home', url: '/' },
-                    { title: 'User' },
-                    { title: 'List', active: true },
-                ] ,
-                pageTitle : 'User List' ,
-                rule : 'editor' ,
-            }
-        },       
-        {
-            path: '/apps/user/detail',
-            name : 'user-list' ,
-            component : () => import('@/views/apps/userx/detail.vue') ,
-            meta : {
-                
-                
-                breadcrumb : [] ,
-                pageTitle : 'User List' ,
-                rule : 'editor' ,
-            }
-        },       
-        {
-            path: '/apps/settings',
-            name : 'settings' ,
-            component : () => import('@/views/apps/settings/index.vue') ,
-            meta : {
-                
-                
-                breadcrumb : [
-                    { title: 'Home', url: '/' },
-                    { title: 'Settings', active: true },
-                ] ,
-                pageTitle : 'Settings' ,
-                rule : 'editor' ,
-            }
-        },       
-        // =========================== user 2 =======================
-        // {
-        //     path: '/apps/user/user-list',
-        //     name: 'app-user-list',
-        //     component: () => import('@/views/apps/user/app-list/AppList.vue'),
-        //     meta: {
-        //         breadcrumb: [
-        //             { title: 'Home', url: '/' },
-        //             { title: 'User' },
-        //             { title: 'List', active: true },
-        //         ],
-        //         pageTitle: 'User List',
-        //         rule: 'editor'
-        //     },
-        // },
 
-        // {
-        //     path : '/apps/user/user-view/:id',
-        //     name : 'app-user-view',
-        //     component: () => import('@/views/apps/user/AppView.vue'),
-        //     meta: {
-        //         breadcrumb: [
-        //             { title: 'Home', url: '/' },
-        //             { title: 'User' },
-        //             { title: 'View' },
-        //         ],
-        //         pageTitle: 'User View',
-        //         rule: 'editor'
-        //     },
-        // },
-        // {
-        //     path : '/apps/user/user-edit/:id',
-        //     name : 'app-user-edit',
-        //     component: () => import('@/views/apps/user/app-edit/AppEdit.vue'),
-        //     meta: {
-        //         breadcrumb: [
-        //             { title: 'Home', url: '/' },
-        //             { title: 'User ' },
-        //             { title: 'Edit'},
-        //         ],
-        //         pageTitle: 'User Edit',
-        //         rule: 'editor'
-        //     },
-        // },
-        // {
-        //     path : '/apps/user/user-create',
-        //     name : 'app-user-create',
-        //     component: () => import('@/views/apps/user/app-edit/AppCreate.vue'),
-        //     meta: {
-        //         breadcrumb: [
-        //             { title: 'Home', url: '/' },
-        //             { title: 'User' },
-        //             { title: 'Create', active: true },
-        //         ],
-        //         pageTitle: 'User Create',
-        //         rule: 'editor'
-        //     },
-        // },
-        // =============================================================================
-        // UI ELEMENTS
-        // =============================================================================
+                        breadcrumb: [
+                            { title: 'Home', url: '/' },
+                            { title: 'Doctors ', url: '/doctors' },
+                            { title: 'Form', active: true },
+                        ],
+                        pageTitle: 'Doctors List',
+                        // rule : 'editor' ,
+                        rule: 'editor',
+                    }
+                },
+
+                // {
+                //     path: '/apps/hospital/hospital-list',
+                //     name: 'app-hospital-list',
+                //     component: () => import('@/views/apps/hospital/hospital-list/HospitalList.vue'),
+                //     meta: {
+                //         breadcrumb: [
+                //             { title: 'Home', url: '/' },
+                //             { title: 'Hospital' },
+                //             { title: 'List', active: true },
+                //         ],
+                //         pageTitle: 'Hospital List',
+                //         rule: 'editor'
+                //     },
+                // },
+                // {
+                //     path: '/apps/hospital/hospital-view/:id',
+                //     name: 'app-hospital-view',
+                //     component: () => import('@/views/apps/hospital/HospitalView.vue'),
+                //     meta: {
+                //         breadcrumb: [
+                //             { title: 'Home', url: '/' },
+                //             { title: 'Hospital' },
+                //             { title: 'View', active: true },
+                //         ],
+                //         pageTitle: 'Hospital View',
+                //         rule: 'editor'
+                //     },
+
+                // },   
+                // ===============================PATIENT===================//
+                {
+                    path: '/apps/patients/',
+                    name: 'patient-list',
+                    component: () => import('@/views/apps/patient/List.vue'),
+                    meta: {
+
+
+                        breadcrumb: [
+                            { title: 'Home', url: '/' },
+                            { title: 'Patient' },
+                            // { title: 'List', active: true },
+                        ],
+                        pageTitle: 'Patient List',
+                        rule: 'editor'
+                    },
+                },
+                // ===============================DOCTOR====================//
+
+                // {
+                //     path: '/apps/doctor/doctor-list',
+                //     name: 'app-doctor-list',
+                //     component: () => import('@/views/apps/doctor/app-list/AppList.vue'),
+                //     meta: {
+                //         breadcrumb: [
+                //             { title: 'Home', url: '/' },
+                //             { title: 'Doctor' },
+                //             { title: 'List', active: true },
+                //         ],
+                //         pageTitle: 'Doctor List',
+                //         rule: 'editor'
+                //     },
+                // },
+                // {
+                //     path: '/apps/doctor/doctor-view/:id',
+                //     name: 'app-doctor-view',
+                //     component: () => import('@/views/apps/doctor/AppView.vue'),
+                //     meta: {
+                //         breadcrumb: [
+                //             { title: 'Home', url: '/' },
+                //             { title: 'Doctor' },
+                //             { title: 'View', active: true },
+                //         ],
+                //         pageTitle: 'Doctor View',
+                //         rule: 'editor'
+                //     },
+
+                // },       
+                // {   
+                //     path: '/apps/doctor/doctor-edit/:id',
+                //     name: 'app-doctor-edit',
+                //     component: () => import('@/views/apps/doctor/app-edit/AppEdit.vue'),
+                //     meta: {
+                //         breadcrumb: [
+                //             { title: 'Home', url: '/' },
+                //             { title: 'Doctor' },
+                //             { title: 'Edit', active: true },
+                //         ],
+                //         pageTitle: 'doctor Edit',
+                //         rule: 'editor'
+                //     },
+                // },  
+                {
+                    path: '/doctor/appointment/list',
+                    name: 'doctor-appointment-list',
+                    component: () => import('@/views/apps/appointments/List.vue'),
+                    meta: {
+
+
+                        breadcrumb: [
+                            { title: 'Home', url: '/' },
+                            { title: 'Doctor' },
+                            { title: 'Appointment' },
+                            { title: 'List', active: true },
+                        ],
+                        pageTitle: 'Doctor Appointment List',
+                        rule: 'editor'
+                    },
+                },
+
+
+                {
+                    path: '/doctor/appointment/setting',
+                    name: 'doctor-appointment-setting',
+                    component: () => import('@/views/apps/appointments/Settings.vue'),
+                    meta: {
+
+
+                        breadcrumb: [
+                            { title: 'Home', url: '/' },
+                            { title: 'Setting' },
+                            { title: 'Appointment', active: true },
+                        ],
+                        pageTitle: 'Doctor Appointment Setting',
+                        rule: 'editor'
+                    },
+                },
+                {
+                    path: '/settings/profile',
+                    name: 'profile-setting',
+                    component: () => import('@/views/apps/profile/index.vue'),
+                    meta: {
+
+
+                        breadcrumb: [
+                            { title: 'Home', url: '/' },
+                            { title: 'Settings' },
+                            { title: 'Profile', active: true },
+                        ],
+                        pageTitle: 'Profile Setting',
+                        rule: 'editor'
+                    },
+                },
+                // =========================== role =======================
+                {
+                    path: '/apps/role/role-list',
+                    name: 'app-role-list',
+                    component: () => import('@/views/apps/role/app-list/AppList.vue'),
+                    meta: {
+
+
+                        breadcrumb: [
+                            { title: 'Home', url: '/' },
+                            { title: 'Role' },
+                            { title: 'List', active: true },
+                        ],
+                        pageTitle: 'Role List',
+                        rule: 'editor'
+                    },
+                },
+                {
+                    path: '/apps/role/role-view/:id',
+                    name: 'app-role-view',
+                    component: () => import('@/views/apps/role/AppView.vue'),
+                    meta: {
+
+
+                        breadcrumb: [
+                            { title: 'Home', url: '/' },
+                            { title: 'Role' },
+                            { title: 'View', active: true },
+                        ],
+                        pageTitle: 'Role View',
+                        rule: 'editor'
+                    },
+                },
+                {
+                    path: '/apps/role/role-edit/:id',
+                    name: 'app-role-edit',
+                    component: () => import('@/views/apps/role/app-edit/AppEdit.vue'),
+                    meta: {
+
+
+                        breadcrumb: [
+                            { title: 'Home', url: '/' },
+                            { title: 'Role' },
+                            { title: 'Edit', active: true },
+                        ],
+                        pageTitle: 'Role Edit',
+                        rule: 'editor'
+                    },
+                },
+                {
+                    path: '/apps/role/role-create',
+                    name: 'app-role-create',
+                    component: () => import('@/views/apps/role/app-edit/AppCreate.vue'),
+                    meta: {
+
+
+                        breadcrumb: [
+                            { title: 'Home', url: '/' },
+                            { title: 'Role' },
+                            { title: 'Create', active: true },
+                        ],
+                        pageTitle: 'Role Create',
+                        rule: 'editor'
+                    },
+                },
+                {
+                    path: '/apps/user/list',
+                    name: 'user-list',
+                    component: () => import('@/views/apps/userx/index.vue'),
+                    meta: {
+
+
+                        breadcrumb: [
+                            { title: 'Home', url: '/' },
+                            { title: 'User' },
+                            { title: 'List', active: true },
+                        ],
+                        pageTitle: 'User List',
+                        rule: 'editor',
+                    }
+                },
+                {
+                    path: '/apps/user/detail',
+                    name: 'user-list',
+                    component: () => import('@/views/apps/userx/detail.vue'),
+                    meta: {
+
+
+                        breadcrumb: [],
+                        pageTitle: 'User List',
+                        rule: 'editor',
+                    }
+                },
+                {
+                    path: '/apps/settings',
+                    name: 'settings',
+                    component: () => import('@/views/apps/settings/index.vue'),
+                    meta: {
+
+
+                        breadcrumb: [
+                            { title: 'Home', url: '/' },
+                            { title: 'Settings', active: true },
+                        ],
+                        pageTitle: 'Settings',
+                        rule: 'editor',
+                    }
+                },
+                // =========================== user 2 =======================
+                // {
+                //     path: '/apps/user/user-list',
+                //     name: 'app-user-list',
+                //     component: () => import('@/views/apps/user/app-list/AppList.vue'),
+                //     meta: {
+                //         breadcrumb: [
+                //             { title: 'Home', url: '/' },
+                //             { title: 'User' },
+                //             { title: 'List', active: true },
+                //         ],
+                //         pageTitle: 'User List',
+                //         rule: 'editor'
+                //     },
+                // },
+
+                // {
+                //     path : '/apps/user/user-view/:id',
+                //     name : 'app-user-view',
+                //     component: () => import('@/views/apps/user/AppView.vue'),
+                //     meta: {
+                //         breadcrumb: [
+                //             { title: 'Home', url: '/' },
+                //             { title: 'User' },
+                //             { title: 'View' },
+                //         ],
+                //         pageTitle: 'User View',
+                //         rule: 'editor'
+                //     },
+                // },
+                // {
+                //     path : '/apps/user/user-edit/:id',
+                //     name : 'app-user-edit',
+                //     component: () => import('@/views/apps/user/app-edit/AppEdit.vue'),
+                //     meta: {
+                //         breadcrumb: [
+                //             { title: 'Home', url: '/' },
+                //             { title: 'User ' },
+                //             { title: 'Edit'},
+                //         ],
+                //         pageTitle: 'User Edit',
+                //         rule: 'editor'
+                //     },
+                // },
+                // {
+                //     path : '/apps/user/user-create',
+                //     name : 'app-user-create',
+                //     component: () => import('@/views/apps/user/app-edit/AppCreate.vue'),
+                //     meta: {
+                //         breadcrumb: [
+                //             { title: 'Home', url: '/' },
+                //             { title: 'User' },
+                //             { title: 'Create', active: true },
+                //         ],
+                //         pageTitle: 'User Create',
+                //         rule: 'editor'
+                //     },
+                // },
+                // =============================================================================
+                // UI ELEMENTS
+                // =============================================================================
                 {
                     path: '/ui-elements/data-list/list-view',
                     name: 'data-list-list-view',
@@ -562,7 +581,7 @@ const router = new Router({
                     meta: {
                         breadcrumb: [
                             { title: 'Home', url: '/' },
-                            { title: 'Data List'},
+                            { title: 'Data List' },
                             { title: 'List View', active: true },
                         ],
                         pageTitle: 'List View',
@@ -576,7 +595,7 @@ const router = new Router({
                     meta: {
                         breadcrumb: [
                             { title: 'Home', url: '/' },
-                            { title: 'Data List'},
+                            { title: 'Data List' },
                             { title: 'Thumb View', active: true },
                         ],
                         pageTitle: 'Thumb View',
@@ -590,7 +609,7 @@ const router = new Router({
                     meta: {
                         breadcrumb: [
                             { title: 'Home', url: '/' },
-                            { title: 'Grid'},
+                            { title: 'Grid' },
                             { title: 'Vuesax', active: true },
                         ],
                         pageTitle: 'Grid',
@@ -604,7 +623,7 @@ const router = new Router({
                     meta: {
                         breadcrumb: [
                             { title: 'Home', url: '/' },
-                            { title: 'Grid'},
+                            { title: 'Grid' },
                             { title: 'Tailwind', active: true },
                         ],
                         pageTitle: 'Tailwind Grid',
@@ -721,9 +740,9 @@ const router = new Router({
                     },
                 },
 
-        // =============================================================================
-        // COMPONENT ROUTES
-        // =============================================================================
+                // =============================================================================
+                // COMPONENT ROUTES
+                // =============================================================================
                 {
                     path: '/components/alert',
                     name: 'component-alert',
@@ -1034,12 +1053,12 @@ const router = new Router({
                 },
 
 
-        // =============================================================================
-        // FORMS
-        // =============================================================================
-            // =============================================================================
-            // FORM ELEMENTS
-            // =============================================================================
+                // =============================================================================
+                // FORMS
+                // =============================================================================
+                // =============================================================================
+                // FORM ELEMENTS
+                // =============================================================================
                 {
                     path: '/forms/form-elements/select',
                     name: 'form-element-select',
@@ -1138,7 +1157,7 @@ const router = new Router({
                         rule: 'editor'
                     },
                 },
-        // -------------------------------------------------------------------------------------------------------------------------------------------
+                // -------------------------------------------------------------------------------------------------------------------------------------------
                 {
                     path: '/forms/form-layouts',
                     name: 'forms-form-layouts',
@@ -1182,23 +1201,23 @@ const router = new Router({
                     },
                 },
                 {
-                  path: '/forms/form-input-group',
-                  name: 'extra-component-form-input-group',
-                  component: () => import('@/views/forms/form-input-group/FormInputGroup.vue'),
-                  meta: {
-                      breadcrumb: [
-                          { title: 'Home', url: '/' },
-                          { title: 'Extra Components' },
-                          { title: 'Form Input Group', active: true },
-                      ],
-                      pageTitle: 'Form Input Group',
-                      rule: 'editor'
-                  },
+                    path: '/forms/form-input-group',
+                    name: 'extra-component-form-input-group',
+                    component: () => import('@/views/forms/form-input-group/FormInputGroup.vue'),
+                    meta: {
+                        breadcrumb: [
+                            { title: 'Home', url: '/' },
+                            { title: 'Extra Components' },
+                            { title: 'Form Input Group', active: true },
+                        ],
+                        pageTitle: 'Form Input Group',
+                        rule: 'editor'
+                    },
                 },
 
-        // =============================================================================
-        // Pages Routes
-        // =============================================================================
+                // =============================================================================
+                // Pages Routes
+                // =============================================================================
                 {
                     path: '/pages/profile',
                     name: 'page-profile',
@@ -1315,9 +1334,9 @@ const router = new Router({
                     },
                 },
 
-        // =============================================================================
-        // CHARTS & MAPS
-        // =============================================================================
+                // =============================================================================
+                // CHARTS & MAPS
+                // =============================================================================
                 {
                     path: '/charts-and-maps/charts/apex-charts',
                     name: 'extra-component-charts-apex-charts',
@@ -1377,9 +1396,9 @@ const router = new Router({
 
 
 
-        // =============================================================================
-        // EXTENSIONS
-        // =============================================================================
+                // =============================================================================
+                // EXTENSIONS
+                // =============================================================================
                 {
                     path: '/extensions/select',
                     name: 'extra-component-select',
@@ -1609,16 +1628,16 @@ const router = new Router({
                 },
             ],
         },
-    // =============================================================================
-    // FULL PAGE LAYOUTS
-    // =============================================================================
+        // =============================================================================
+        // FULL PAGE LAYOUTS
+        // =============================================================================
         {
             path: '',
             component: () => import('@/layouts/full-page/FullPage.vue'),
             children: [
-        // =============================================================================
-        // PAGES
-        // =============================================================================
+                // =============================================================================
+                // PAGES
+                // =============================================================================
                 {
                     path: '/callback',
                     name: 'auth-callback',
@@ -1718,8 +1737,8 @@ const router = new Router({
 })
 
 router.afterEach(() => {
-  // Remove initial loading
-  const appLoading = document.getElementById('loading-bg')
+    // Remove initial loading
+    const appLoading = document.getElementById('loading-bg')
     if (appLoading) {
         appLoading.style.display = "none";
     }
@@ -1745,10 +1764,10 @@ router.beforeEach((to, from, next) => {
         // }
 
         // If auth required, check login. If login fails redirect to login page
-        if(to.meta.authRequired) {
-          if (!(auth.isAuthenticated() || firebaseCurrentUser)) {
-            router.push({ path: '/pages/login', query: { to: to.path } })
-          }
+        if (to.meta.authRequired) {
+            if (!(auth.isAuthenticated() || firebaseCurrentUser)) {
+                router.push({ path: '/pages/login', query: { to: to.path } })
+            }
         }
 
         return next()
