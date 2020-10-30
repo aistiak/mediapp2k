@@ -1,7 +1,11 @@
 <template>
   <!-- <section class="blog_details_section section_padding"> -->
     <div class="container">
-
+      <div class="row" style="margin-top:10px;">
+        <div class="col">
+           <h2 style="margin-left:12px;margin-bottom:20px;"> {{hospitalDetail.name}}</h2>
+        </div>
+      </div>
       <!-- <div class="row" style="margin-top:5%">
           <div class="col-md-12" align="">  
                 <img v-if="hospitalDetail.avater" :src="hospitalDetail.avater.path" alt="team 1" style="width:83vw;height:61vh;">
@@ -9,7 +13,17 @@
           </div>
       </div> -->
       <!-- vue-easy-slider start  -->
-      <div class="row" style="margin-top:5% ; margin-bottom : 5% ; border:1px solid ; box-shadow: 5px 5px 5px ;">
+      <div style="border:2px solid ">
+        <v-carousel v-model="model" :height="350">
+          <v-carousel-item
+            v-for="(slide, i) in sliders"
+            :src="slide.path"
+            :key="i">
+          </v-carousel-item>
+        </v-carousel>
+      </div>
+      <!-- vutify slider end  -->
+      <!-- <div class="row" style="margin-top:5% ; margin-bottom : 5% ; border:1px solid ; box-shadow: 5px 5px 5px ;">
         <slider animation="fade">
           <slider-item
             v-for="(v, index) in sliders"
@@ -20,7 +34,7 @@
             <p style="line-height: 280px; font-size: 5rem; text-align: center;">Page{{ index + 1 }}</p>
           </slider-item>
         </slider>
-      </div>
+      </div> -->
 
       <!-- vue-easy-slider end  -->
 
@@ -35,14 +49,11 @@
       <div class="hospital-service-list">
         
       </div>
-      <div class="row" style="margin-top:10px;">
-        <div class="col">
-           <h2 style="margin-left:12px;margin-bottom:20px;"> {{hospitalDetail.name}}</h2>
-        </div>
-      </div>
+
       <div class="row" style="margin-top:10px;margin-left:5px;">
         <div class="col">
-           <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus, totam facere. Minus, recusandae fuga nihil beatae debitis dignissimos vitae possimus vero rem pariatur odit excepturi molestiae unde accusantium molestias reiciendis. </p>
+          <span v-html="hospitalDetail.about" class="modification"></span>
+           <!-- <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus, totam facere. Minus, recusandae fuga nihil beatae debitis dignissimos vitae possimus vero rem pariatur odit excepturi molestiae unde accusantium molestias reiciendis. </p> -->
         </div>
       </div>
 
@@ -74,7 +85,7 @@
         </div><!--end .col-md-3-->
       </div><!--end .row-->
     </div>
-  </section>
+  <!-- </section> -->
 </template>
 
 <script>
@@ -94,6 +105,7 @@ export default {
     },
     data(){
         return {
+           model : '' ,
            detail : {} ,
            counter : 1 ,
            sliders : [] ,
@@ -110,7 +122,7 @@ export default {
     mounted() {
 
         this.getHospitalDetail() 
-        this.startSlider() 
+        // this.startSlider() 
     },
     methods :{ 
         ...mapActions({
@@ -135,6 +147,9 @@ export default {
 }
 </script>
 
-<style scoped>
-
+<style >
+.modification {
+  all: initial ;
+  font-family : inherit ;
+}
 </style>

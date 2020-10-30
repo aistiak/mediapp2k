@@ -12,6 +12,7 @@ import { createStore } from './store.js'
 
 /* Plugins */
 
+import nuxt_plugin_plugin_3f051b4e from 'nuxt_plugin_plugin_3f051b4e' // Source: .\\vuetify\\plugin.js (mode: 'all')
 import nuxt_plugin_axios_24c28789 from 'nuxt_plugin_axios_24c28789' // Source: .\\axios.js (mode: 'all')
 import nuxt_plugin_foo_67584b32 from 'nuxt_plugin_foo_67584b32' // Source: ..\\plugins\\foo.js (mode: 'all')
 import nuxt_plugin_plugin_70e6ec78 from 'nuxt_plugin_plugin_70e6ec78' // Source: .\\auth\\plugin.js (mode: 'all')
@@ -61,7 +62,7 @@ async function createApp (ssrContext) {
   // here we inject the router and store to all child components,
   // making them available everywhere as `this.$router` and `this.$store`.
   const app = {
-    head: {"title":"loazzne","meta":[{"charset":"utf-8"},{"name":"viewport","content":"width=device-width, initial-scale=1"},{"hid":"description","name":"description","content":"Loazzne - Vue Nuxt Heating &amp; Air Conditioning Services Template"}],"link":[{"rel":"icon","type":"image\u002Fpng","href":"\u002Fassets\u002Flogos\u002Ficon-01.png"},{"rel":"stylesheet","href":"https:\u002F\u002Ffonts.googleapis.com\u002Fcss?family=Josefin+Sans:100,300,400,600,600i,700"},{"rel":"stylesheet","href":"\u002Fassets\u002Fcss\u002Fbootstrap.min.css"},{"rel":"stylesheet","href":"\u002Fassets\u002Fcss\u002Ffont-awesome.min.css"},{"rel":"stylesheet","href":"\u002Fassets\u002Fcss\u002Fowl.carousel.min.css"},{"rel":"stylesheet","href":"\u002Fassets\u002Fcss\u002Ffontello.css"},{"rel":"stylesheet","href":"\u002Fassets\u002Fcss\u002Fanimate.css"},{"rel":"stylesheet","href":"\u002Fassets\u002Fcss\u002Fstyle.css"},{"rel":"stylesheet","href":"\u002Fassets\u002Fcss\u002Fresponsive.css"}],"script":[{"src":"\u002Fassets\u002Fjs\u002Fjquery.min.js","type":"text\u002Fjavascript","body":true},{"src":"\u002Fassets\u002Fjs\u002Fbootstrap.min.js","type":"text\u002Fjavascript","body":true},{"src":"\u002Fassets\u002Fjs\u002Fowl.carousel.min.js","type":"text\u002Fjavascript","body":true},{"src":"\u002Fassets\u002Fjs\u002Fjquery.magnific-popup.min.js","type":"text\u002Fjavascript","body":true},{"src":"\u002Fassets\u002Fjs\u002Fwaypoint.js","type":"text\u002Fjavascript","body":true},{"src":"\u002Fassets\u002Fjs\u002Fjquery.counterup.min.js","type":"text\u002Fjavascript","body":true},{"src":"\u002Fassets\u002Fjs\u002Fcustom-map.js","type":"text\u002Fjavascript","body":true},{"src":"https:\u002F\u002Fmaps.googleapis.com\u002Fmaps\u002Fapi\u002Fjs?key=AIzaSyA_Agsvf36du-7l_mp8iu1a-rXoKcWfs2I","type":"text\u002Fjavascript","body":true}],"style":[]},
+    head: {"title":"loazzne","meta":[{"charset":"utf-8"},{"name":"viewport","content":"width=device-width, initial-scale=1"},{"hid":"description","name":"description","content":"Loazzne - Vue Nuxt Heating &amp; Air Conditioning Services Template"}],"link":[{"rel":"icon","type":"image\u002Fpng","href":"\u002Fassets\u002Flogos\u002Ficon-01.png"},{"rel":"stylesheet","href":"https:\u002F\u002Ffonts.googleapis.com\u002Fcss?family=Josefin+Sans:100,300,400,600,600i,700"},{"rel":"stylesheet","href":"\u002Fassets\u002Fcss\u002Fbootstrap.min.css"},{"rel":"stylesheet","href":"\u002Fassets\u002Fcss\u002Ffont-awesome.min.css"},{"rel":"stylesheet","href":"\u002Fassets\u002Fcss\u002Fowl.carousel.min.css"},{"rel":"stylesheet","href":"\u002Fassets\u002Fcss\u002Ffontello.css"},{"rel":"stylesheet","href":"\u002Fassets\u002Fcss\u002Fanimate.css"},{"rel":"stylesheet","href":"\u002Fassets\u002Fcss\u002Fstyle.css"},{"rel":"stylesheet","href":"\u002Fassets\u002Fcss\u002Fresponsive.css"},{"rel":"stylesheet","type":"text\u002Fcss","href":"https:\u002F\u002Ffonts.googleapis.com\u002Fcss?family=Roboto:100,300,400,500,700,900&display=swap"},{"rel":"stylesheet","type":"text\u002Fcss","href":"https:\u002F\u002Fcdn.jsdelivr.net\u002Fnpm\u002F@mdi\u002Ffont@latest\u002Fcss\u002Fmaterialdesignicons.min.css"}],"script":[{"src":"\u002Fassets\u002Fjs\u002Fjquery.min.js","type":"text\u002Fjavascript","body":true},{"src":"\u002Fassets\u002Fjs\u002Fbootstrap.min.js","type":"text\u002Fjavascript","body":true},{"src":"\u002Fassets\u002Fjs\u002Fowl.carousel.min.js","type":"text\u002Fjavascript","body":true},{"src":"\u002Fassets\u002Fjs\u002Fjquery.magnific-popup.min.js","type":"text\u002Fjavascript","body":true},{"src":"\u002Fassets\u002Fjs\u002Fwaypoint.js","type":"text\u002Fjavascript","body":true},{"src":"\u002Fassets\u002Fjs\u002Fjquery.counterup.min.js","type":"text\u002Fjavascript","body":true},{"src":"\u002Fassets\u002Fjs\u002Fcustom-map.js","type":"text\u002Fjavascript","body":true},{"src":"https:\u002F\u002Fmaps.googleapis.com\u002Fmaps\u002Fapi\u002Fjs?key=AIzaSyA_Agsvf36du-7l_mp8iu1a-rXoKcWfs2I","type":"text\u002Fjavascript","body":true}],"style":[]},
 
     store,
     router,
@@ -175,6 +176,10 @@ async function createApp (ssrContext) {
   }
 
   // Plugin execution
+
+  if (typeof nuxt_plugin_plugin_3f051b4e === 'function') {
+    await nuxt_plugin_plugin_3f051b4e(app.context, inject)
+  }
 
   if (typeof nuxt_plugin_axios_24c28789 === 'function') {
     await nuxt_plugin_axios_24c28789(app.context, inject)

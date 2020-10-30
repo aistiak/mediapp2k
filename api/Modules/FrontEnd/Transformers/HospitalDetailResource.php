@@ -26,6 +26,7 @@ class HospitalDetailResource extends Resource
             
             'id' => $this->id ,
             'name' => $this->name ,
+            'about' => $this->about ,
             'address' => $this->address , 
             'avater' => $avater ,
             'doctors' =>  DoctorListResource::collection( $this->doctors ) ,

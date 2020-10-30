@@ -1,5 +1,6 @@
 <template>
   <section class="team_member_area section_padding text-center search-result">
+      
       <VclBulletList v-if="isLoading"/>
       <div v-else>
         

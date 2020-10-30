@@ -53,6 +53,7 @@ class ProfileController extends Controller
             $hospital->name = $request->name ;
             $hospital->address = $request->address ;
             $hospital->phone_no = $request->phone_no ;
+            $hospital->about = $request->about ;
             // $hospital->name = $request->name ;
             $hospital->save() ;
             return $hospital ;
@@ -143,7 +144,26 @@ class ProfileController extends Controller
 
             return new MediaResource( $media );
         }
-	}
+    }
+    
+    public function about(Request $request) {
+        
+        $request->validate([
+            'about' => 'required' 
+        ]) ;
+
+        $user = auth()->user() ;
+        $role = $user->role->slug ;
+        
+        if($role == 'hospital'){
+            
+            $user->hospital->update( ['about' => $request->about ]) ;
+        }else if( $role == 'doctor' ) {
+            // $user->doctor->update( ['about' => $request->about ]) ;
+        }
+
+        return response()->json(['data' => 'success'],200);
+    }
 
 	public function delFile($id){
 

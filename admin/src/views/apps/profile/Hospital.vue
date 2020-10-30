@@ -7,6 +7,8 @@
                         <vs-input label="Phone No." placeholder="Phone No." v-model="form_data.phone_no"/>
                         <vs-input label="Name " placeholder="Hospital Name" v-model="form_data.name" style="width:50vw"/>
                         <vs-textarea label="Address" placeholder="Hospital Address" v-model="form_data.address" style="margin-top:20px"/>
+                        <label for="">About</label>
+                        <AboutHospital  :parent="self" :key="test_key"/>
                         <vs-button color="#5f845f"  @click="submitProfile">Save</vs-button>
                     </div>
                 </vs-tab>
@@ -39,7 +41,8 @@
                     </div>
                 </vs-tab>
                 <vs-tab label="services">
-                    <Services/>
+                    <!-- <AboutHospital :parent="self" /> -->
+                    <!-- <vs-button color="#5f845f" @click="changeAbout">save</vs-button> -->
                 </vs-tab>
             
             </vs-tabs>
@@ -54,9 +57,11 @@ export default {
     components:{
         // Services : () => import('./Services') ,
         Services : () => import('@/components/hospital/Services') ,
+        AboutHospital : () => import('@/components/hospital/AboutHospital') ,
     } ,
     data(){
         return {
+            self : this , 
             slider  : [] ,
             sliders : [] ,
             form_data : {
@@ -64,13 +69,15 @@ export default {
                 phone_no: '',
                 address : '' ,
                 password : '' ,
+                about : '' ,
                 media : {
                    path : '' ,      
                 },
                 
             },
             avatar : `` ,
-
+            test_key : 1 ,
+ 
         }   
     },  
     mounted (){
@@ -89,7 +96,13 @@ export default {
 
             this.slider = e.target.files 
         },
+        async changeAbout() {
+          
+            let {data ,errors } = await axios.post('api/profile/about',this.form_data) 
+            console.log(data)
+            console.log(errors)
 
+        } ,
         async getSliders() {
 
             let {data,errors} = await axios.get(`hospital/slider`)
@@ -142,6 +155,7 @@ export default {
                 this.form_data.address = response.data.address
                 this.form_data.phone_no = response.data.phone_no
                 this.form_data.media = response.data.media
+                this.form_data.about = response.data.about
             }catch(e){console.log(e)}
             this.$vs.loading.close()
         },

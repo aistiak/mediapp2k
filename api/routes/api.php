@@ -111,6 +111,7 @@ Route::prefix('api/profile')->middleware(['auth:api'])->group(function(){
 	Route::put('/','ProfileController@store');
 	Route::put('/security','ProfileController@security');
 	Route::post('/avatar','ProfileController@avatar');
+	Route::post('/about','ProfileController@about');
 });
 
 
