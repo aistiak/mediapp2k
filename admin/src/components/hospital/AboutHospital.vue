@@ -23,7 +23,8 @@ export default {
         }
     },
     mounted(){
-        
+
+        // this.parent.temprarySoln()
     },
     computed :{
         data : {

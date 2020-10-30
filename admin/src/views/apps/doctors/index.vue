@@ -42,7 +42,7 @@
                 </div>
             </div>
             <div>
-                pagination 
+                 
                 <pagination  :data="doctors.meta" @pagination-change-page="getList" />
             </div>
         </div>
@@ -105,5 +105,22 @@ export default {
     margin:10px ;
     border : 2px solid lightgray ;
 
+}
+</style>
+
+<style >
+.page-item{
+    display: inline;
+    padding: 9px;
+    background-color: rgb(219, 248, 175);
+    margin: 3px;
+}
+.pagination > .active {
+    background-color: rgb(192, 248, 107);
+
+}
+.pagination {
+    margin-top:20px ;
+    float : right ;
 }
 </style>

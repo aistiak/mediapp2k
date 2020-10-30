@@ -37,7 +37,6 @@
                 </div>
             </div>
             <div>
-                pagination 
                 <pagination  :data="hospitals.meta" @pagination-change-page="getList" />
             </div>
         </div>

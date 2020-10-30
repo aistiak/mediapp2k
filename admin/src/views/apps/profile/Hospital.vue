@@ -96,6 +96,16 @@ export default {
 
             this.slider = e.target.files 
         },
+        async temprarySoln(){
+            console.log('calling temp soln ')
+                let response = await axios.get(`api/profile`)
+                console.log(response.data)
+                this.form_data.name = response.data.name
+                this.form_data.address = response.data.address
+                this.form_data.phone_no = response.data.phone_no
+                this.form_data.media = response.data.media
+                this.form_data.about = response.data.about
+        },
         async changeAbout() {
           
             let {data ,errors } = await axios.post('api/profile/about',this.form_data) 
