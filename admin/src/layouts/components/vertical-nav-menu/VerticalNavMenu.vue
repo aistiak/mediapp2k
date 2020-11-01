@@ -61,6 +61,7 @@
         <div class="shadow-bottom" v-show="showShadowBottom" />
         <!-- <button @click="foo">test</button> -->
         <!-- Menu Items -->
+        <button @click="foo">test</button>
         <VuePerfectScrollbar ref="verticalNavMenuPs" class="scroll-area-v-nav-menu pt-2" :settings="settings" @ps-scroll-y="psSectionScroll" :key="$vs.rtl">
           <template v-for="(item, index) in menuItemsUpdated">
             <!-- Group Header -->

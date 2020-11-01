@@ -8,7 +8,9 @@
             <div >
                 <div v-if="auth_user.id"> 
                     <div class="user" @click=" () => show_menu = !show_menu">
-                        user 
+                        <!-- user  -->
+                        <img v-if="auth_user.media"  :src="auth_user.media.path" alt="" class="auth-user" >
+                        <span v-else> user </span>
                     </div>
                     <div class="user-menu" v-show="show_menu">
                         <ul>
@@ -74,6 +76,7 @@
         <div>
             <nuxt/>
         </div>
+        <notifications group="foo" position="bottom right" />
         <Footer/>
         <!-- <div class="footer">
             this is footer section 
@@ -88,6 +91,7 @@ import auth from  "../auth/auth"
 import axios from "axios"
 import {mapActions, mapGetters , mapMutations } from "vuex"
 export default {
+    name : 'Layout1',
     components:{
         Footer : () => import("~/components/FooterMediapp") ,
     },
@@ -261,5 +265,12 @@ ul > li:hover {
     }
 }
 
-
+.auth-user {
+    height: 45PX;
+    width: 45px;
+    border-radius: 50%;
+    POSITION: RELATIVE;
+    left: -6px;
+    top: -5px;
+}
 </style>

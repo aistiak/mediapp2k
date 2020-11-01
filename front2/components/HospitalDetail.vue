@@ -59,7 +59,12 @@
 
       <div class="row" style="margin-top:30px;">
           <div class="col-sm-12"> 
-              <h2>Doctors </h2>
+              <h2>
+                Doctors 
+                <i class="fa fa-arrow-down" v-if="showDoctors == false" @click="showDoctors=true" ></i>
+                <i class="fa fa-arrow-up" v-else @click="showDoctors=false"></i>
+              </h2>
+
           </div>
       </div>  
       <div class="row">
@@ -69,20 +74,21 @@
           </div>
 
         </div><!--end .col-md-12-->
-
-        <div class="col-md-3 col-sm-6" v-for="(item,idx) in hospitalDetail.doctors" :key="idx" @click="doctor_detail(item)">
-          <div class="team_member">
-            <!-- <img src="/assets/images/team/team-1.jpg" alt="team 1"> -->
-            <img src="/assets/images/comment-1.jpg"  alt="Cinque Terre">
-            <div class="team_details">
-              <h3>{{item.name}}<span class="skills"></span></h3>
-              <h4>{{``}}<span class="skills"></span></h4>   
-              <ul class="team_socials">
-                 <h4>{{  }}<span class="skills"></span></h4>
-              </ul>
-            </div><!--end .team_details-->
-          </div><!--end .team_member-->
-        </div><!--end .col-md-3-->
+         <div v-show="showDoctors">
+            <div class="col-md-3 col-sm-6" v-for="(item,idx) in hospitalDetail.doctors" :key="idx" @click="doctor_detail(item)">
+              <div class="team_member">
+                <!-- <img src="/assets/images/team/team-1.jpg" alt="team 1"> -->
+                <img src="/assets/images/comment-1.jpg"  alt="Cinque Terre">
+                <div class="team_details">
+                  <h3>{{item.name}}<span class="skills"></span></h3>
+                  <h4>{{``}}<span class="skills"></span></h4>   
+                  <ul class="team_socials">
+                    <h4>{{  }}<span class="skills"></span></h4>
+                  </ul>
+                </div><!--end .team_details-->
+              </div><!--end .team_member-->
+            </div><!--end .col-md-3-->
+          </div> 
       </div><!--end .row-->
     </div>
   <!-- </section> -->
@@ -110,7 +116,7 @@ export default {
            counter : 1 ,
            sliders : [] ,
            slider : `` ,
-
+           showDoctors : true ,   
            list: [
               { backgroundColor: '#3f51b5', width: '100%', height: '100%' },
               { backgroundColor: '#eee', width: '100%', height: '100%' },

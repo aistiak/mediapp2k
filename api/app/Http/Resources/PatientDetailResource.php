@@ -22,6 +22,7 @@ class PatientDetailResource extends JsonResource
 
         return [
             'name' => $this->name ,
+            'email  ' => $this->email ,
             'phone_no' => $this->patient->phone_no ,
             'address' => $this->patient->address ,
             'media' => $media ,

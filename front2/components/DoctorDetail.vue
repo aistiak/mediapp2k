@@ -14,11 +14,12 @@
                 </div>
             </div>
         </div>
-        <div @click="test">
-            <!-- test  -->
+        <div >
+             <!-- <button @click="test" > test </button>   -->
         </div>
         <div class="row has-border" style="margin-top:50px" >
-            <div class="col-md-6" align="" v-if="is_loggedin"> 
+            <!-- <div class="col-md-6" align="" v-if="is_loggedin">  -->
+            <div class="col-md-6" align="" v-if="auth_user.id"> 
                 appointment <br>
                 <no-ssr>
                     <appointment-book v-if="doctorDetail.appointment_setting" :settings="doctorDetail.appointment_setting" />
@@ -29,32 +30,41 @@
                 Login to book appointment 
             </div>
         </div>      
+        <!-- <snack-bar/> -->
+        
     </div>
-    </section>
+    
 </template>
 <script>
 import axios from "axios"
+import Notifications from 'vue-notification'
 import { mapGetters , mapActions } from "vuex"
+import Vue from 'vue'
 // import Datepicker from 'vuejs-datepicker';
 export default {
     props: ['doctor_id'],
     components :{
         // Datepicker ,
         'appointment-book' : () => import("./DateSelector") ,
+        'snack-bar' : () => import("./new/SnackBar") ,
+        Notifications ,
     },
     head(){
       return {
-        title: "Doctor Detail "
+        title: "Doctor Detail " ,
+        
       }
     },
     data(){
         return {
            detail : {} ,
+           snackbar : false ,
         }
     },
     computed: { 
         ...mapGetters('doctor',['doctorDetail']) ,
-        ...mapGetters('user.module',['is_loggedin']) 
+        ...mapGetters('user.module',['is_loggedin']) ,
+        ...mapGetters('auth_patient',['auth_user']),   
     },
     mounted() {
 
@@ -67,8 +77,12 @@ export default {
 
         test : async function(){
             // alert(`test`)
-            
-
+            this.$notify({
+                group: 'foo',
+                type : 'success' ,
+                title: '',
+                text: '<h3> appointment booked </h3>  '
+            });
         },
         doctor_detail: function({id}){
             this.$router.push(`/doctor-detail/${id}`)

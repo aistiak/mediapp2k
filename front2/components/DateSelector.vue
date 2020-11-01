@@ -77,9 +77,21 @@ export default {
         submit : async function(){
             try{
                let res = await this.$axios.post(`api/appointment`,this.appointment_form)
+               this.notify('appointment booked','success') 
             }catch(e){
-
+                console.log(e.response.data.errors)
+                let errors = Object.values( e.response.data.errors ).map( v => v[0])
+                console.log(errors)
+                errors.forEach((v) => this.notify(v,'warning')) 
             }            
+        },
+        notify(msg,status){
+            this.$notify({
+                group: 'foo',
+                type : status,
+                title: '',
+                text: `<h3> ${msg} </h3>  `
+            });
         },
         future : function(arg=30) {
             let date = new Date();

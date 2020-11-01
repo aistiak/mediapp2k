@@ -15,6 +15,7 @@ import { createStore } from './store.js'
 import nuxt_plugin_plugin_3f051b4e from 'nuxt_plugin_plugin_3f051b4e' // Source: .\\vuetify\\plugin.js (mode: 'all')
 import nuxt_plugin_axios_24c28789 from 'nuxt_plugin_axios_24c28789' // Source: .\\axios.js (mode: 'all')
 import nuxt_plugin_foo_67584b32 from 'nuxt_plugin_foo_67584b32' // Source: ..\\plugins\\foo.js (mode: 'all')
+import nuxt_plugin_notifications_15a88b85 from 'nuxt_plugin_notifications_15a88b85' // Source: ..\\plugins\\notifications.js (mode: 'client')
 import nuxt_plugin_plugin_70e6ec78 from 'nuxt_plugin_plugin_70e6ec78' // Source: .\\auth\\plugin.js (mode: 'all')
 
 // Component: <ClientOnly>
@@ -187,6 +188,10 @@ async function createApp (ssrContext) {
 
   if (typeof nuxt_plugin_foo_67584b32 === 'function') {
     await nuxt_plugin_foo_67584b32(app.context, inject)
+  }
+
+  if (process.client && typeof nuxt_plugin_notifications_15a88b85 === 'function') {
+    await nuxt_plugin_notifications_15a88b85(app.context, inject)
   }
 
   if (typeof nuxt_plugin_plugin_70e6ec78 === 'function') {

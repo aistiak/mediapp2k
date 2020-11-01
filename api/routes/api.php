@@ -16,6 +16,7 @@ use Illuminate\Http\Request;
 */
 
 use App\Http\Middleware\AdminMiddleware;
+use App\Http\Resources\AuthUserResource;
 
 // 	 	FOR BACKEND ADMIN PANEL 
 Route::post('api/login','RegisterLoginPasswordResetController@login');
@@ -31,7 +32,7 @@ Route::prefix('api')->middleware(['auth:api'])->group(function(){
 });
 // auth user refresh 
 Route::middleware(['auth:api'])->post('api/auth_user/refresh',function(){
-	return auth()->user() ;
+	return   new AuthUserResource (auth()->user() );
 }) ;
 
 Route::prefix('hospital')->middleware(['auth:api'])->group(function(){

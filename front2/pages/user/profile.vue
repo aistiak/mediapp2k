@@ -26,14 +26,14 @@
                     </div>
                 </div>
 
-                <!-- <div class="form-row">
+                <div class="form-row">
                     <div>
                         <label for="">Email</label>
                     </div>
                     <div>
-                        <input type="text">
+                        <input type="text" :value="form_data.email" readonly>
                     </div>
-                </div> -->
+                </div>
 
                 <div class="form-row">
                     <div>

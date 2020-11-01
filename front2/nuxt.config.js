@@ -56,6 +56,8 @@ export default {
   */
   plugins: [
     '~/plugins/foo.js',
+   
+    {src:  '~/plugins/notifications.js', ssr: false}
   ],
   /*
   ** Nuxt.js dev-modules
