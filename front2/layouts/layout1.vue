@@ -13,7 +13,7 @@
                         <span v-else> user </span>
                     </div>
                     <div class="user-menu" v-show="show_menu">
-                        <ul>
+                        <ul @click="() => show_menu = false ">
                             <li @click="mobile_map_search">Search</li>
                             <li @click="() =>  $router.push(`/`) ">Home</li>
                             <li @click="() =>  $router.push(`/user/profile`) ">profile</li>

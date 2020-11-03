@@ -31,7 +31,7 @@
                         <label for="">Email</label>
                     </div>
                     <div>
-                        <input type="text" :value="form_data.email" readonly>
+                        <input type="text" v-model="form_data.email" readonly>
                     </div>
                 </div>
 

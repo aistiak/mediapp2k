@@ -30,24 +30,25 @@
             <!-- <div   class="col-md-4" v-for="(item,idx) in item_list" :key="idx" @click="gotoDetail(item)">
               <HospitalCard :hospital="item" />
             </div>   -->
-            <div   class="col-md-3 col-sm-6" v-for="(item,idx) in item_list" :key="idx" @click="gotoDetail(item)">
+
+            <div   class="col-md-4 col-sm-6" v-for="(item,idx) in item_list" :key="idx" @click="gotoDetail(item)">
               <div class="team_member">
                 <img v-if="item.avatar" :src="item.avatar.path" alt="team 1" class="avatar">
                 <img v-else src="/assets/images/team/team-1.jpg" alt="team 1">
                 <div class="team_details">
                   <h3> {{item.name}}<span class="skills"></span></h3>
                   <h4>{{``}}<span class="skills"></span></h4>
-                  <ul class="team_socials">
+                  <p> {{item.address}} </p>
+                  <!-- <ul class="team_socials">
                     <h4> {{ item.address }} </h4>
-                    <!-- <h4>{{  type == 'hospital' ? item.address : item.hospital_name}}<span class="skills"></span></h4> -->
-                  </ul>
+                  </ul> -->
                 </div>
               </div>
             </div>
 
           </div>
           <div v-else>
-            <div   class="col-md-3 col-sm-6" v-for="(item,idx) in item_list" :key="idx" @click="gotoDetail(item)">
+            <div   class="col-md-4 col-sm-6" v-for="(item,idx) in item_list" :key="idx" @click="gotoDetail(item)">
               <div class="team_member">
                 <img v-if="item.avatar" :src="item.avatar.path" alt="team 1">
                 <img v-else src="/assets/images/team/team-1.jpg" alt="team 1">
@@ -56,10 +57,10 @@
                 <div class="team_details">
                   <h3> {{item.name}}<span class="skills"></span></h3>
                   <h2>{{``}}<span class="skills"></span></h2>
-                  <ul class="team_socials">
+                  <p> {{ item.title }} </p>
+                  <!-- <ul class="team_socials">
                     <h4> {{ item.hospital_name }} </h4>
-                    <!-- <h4>{{  type == 'hospital' ? item.address : item.hospital_name}}<span class="skills"></span></h4> -->
-                  </ul>
+                  </ul> -->
                 </div><!--end .team_details-->
               </div><!--end .team_member-->
             </div><!--end .col-md-3-->
@@ -85,7 +86,8 @@
         VclFacebook,
         VclInstagram,
         VclBulletList ,
-        HospitalCard : () => import("./new/HospitalCard")
+        HospitalCard  : () => import("./new/HospitalCard") ,
+        NewDoctorCard : () => import("./new/DoctorCard") ,
       },
       data(){
         return {
