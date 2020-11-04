@@ -64,7 +64,7 @@
         <!-- <button @click="foo">test</button> -->
         <VuePerfectScrollbar ref="verticalNavMenuPs" class="scroll-area-v-nav-menu pt-2" :settings="settings" @ps-scroll-y="psSectionScroll" :key="$vs.rtl">
           <template v-for="(item, index) in menuItemsUpdated">
-            <!-- {{ item.name == "Hospitals" }} {{ menuItemFilter.includes(item.name) }}  -->
+            <!-- {{ item.name  }}  -->
             <div :key="index" v-if="!menuItemFilter.includes(item.name)">
                 <!-- Group Header -->
                 <span v-if="item.header && !verticalNavMenuItemsMin" class="navigation-header truncate" :key="`header-${index}`">
@@ -172,10 +172,10 @@ export default {
     },
     menuItemFilter () {
       let blocked = [] ;  
-      if(this.user_role == 'super_Admin') {
-         blocked = ['Appointments'] // show everything  
+      if(this.user_role == 'super_admin') {
+         blocked = ['appointment-list'] // show everything  
       }else if( this.user_role == 'hospital'){
-         blocked = ['Patients','Hospitals','Dashboard']  
+         blocked = ['Patients','Hospitals','Dashboard','appointment-list']  
       }else if( this.user_role == 'doctor' ){
           blocked = ['Patients','Hospitals','Doctors','Dashboard']   
 

@@ -52,7 +52,7 @@
       <!-- Group Items -->
       <ul ref="items" :style="styleItems" class="vs-sidebar-group-items">
         <li v-for="(groupItem, index) in group.submenu" :key="index">
-          <!-- {{ groupItem.name  }} -->
+          <!-- -{{ groupItem.name  }}- -->
           <div :key="index" v-if="!menuItemFilter.includes(groupItem.name)">
             <!-- If item is group -->
             <v-nav-menu-group
@@ -103,11 +103,10 @@ export default {
     openItems : false
   }),
   computed: {
-      ...
-      (['user_role']) ,
+      ...mapGetters(['user_role']) ,
       menuItemFilter () {
-        let blocked = ['appointment'] ;  
-        if(this.user_role == 'super_Admin') {
+        let blocked = [] ;  
+        if(this.user_role == 'super_admin') {
           blocked = ['appointment'] // show everything  
         }else if( this.user_role == 'hospital'){
           blocked = ['approval']  
