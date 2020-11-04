@@ -78,8 +78,10 @@ class RegisterLoginPasswordResetController extends Controller
         }
     }
     public function authUser(){
-        return "ok";
-        return auth()->user()->with('media') ;
+        // return "ok";
+        $user = auth()->user() ; 
+        $user->role ;
+        return $user ;//()->with('media') ;
     }
     public function login(Request $request)
     {

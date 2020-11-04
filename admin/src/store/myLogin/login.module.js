@@ -5,6 +5,7 @@ import axios from "axios"
 import Vue from 'vue'
 import Auth from '../../packages/Auth'
 import router from '@/router'
+import { reject } from "core-js/fn/promise"
 // import router from '../router'
 Vue.use(Auth)
 let auth = new Vue()
@@ -30,6 +31,19 @@ const getters = {
 }
 
 const actions = {
+
+
+    [`REFRESH_AUTH_USER`] ({commit}) {
+        // alert(1) 
+        return new Promise( (resolve,reject) => {
+            axios.post('api/auth-user').then( response => {
+                console.log(response.data);
+                commit('REFRESH_USER_ROLE',response.data.role.slug)
+            }).catch( error => {
+
+            }) 
+        } )
+    } ,
 
     [`LOGIN_USER`]({ commit }, data) {
         return new Promise((resolve, reject) => {
@@ -66,6 +80,9 @@ const actions = {
 }
 
 const mutations = {
+    ['REFRESH_USER_ROLE'](state,payload) {
+        state.role = payload 
+    } ,
     ['SET_USER_ROLE'](state, payload) {
         state.role = payload.data.role
     },

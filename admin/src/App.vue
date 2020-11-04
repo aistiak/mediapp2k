@@ -36,6 +36,10 @@ export default {
     ...mapGetters(['is_loggedin']) ,
   },
   methods: {
+    myMethod() {
+      // alert('working') ;
+      this.$store.dispatch('REFRESH_AUTH_USER') 
+    } ,
     toggleClassInBody(className) {
       if (className == 'dark') {
         if (document.body.className.match('theme-semi-dark')) document.body.classList.remove('theme-semi-dark')
@@ -71,6 +75,8 @@ export default {
     let vh = window.innerHeight * 0.01;
     // Then we set the value in the --vh custom property to the root of the document
     document.documentElement.style.setProperty('--vh', `${vh}px`);
+
+    this.myMethod() ;
   },
   async created() {
 

@@ -52,28 +52,30 @@
       <!-- Group Items -->
       <ul ref="items" :style="styleItems" class="vs-sidebar-group-items">
         <li v-for="(groupItem, index) in group.submenu" :key="index">
+          <!-- {{ groupItem.name  }} -->
+          <div :key="index" v-if="!menuItemFilter.includes(groupItem.name)">
+            <!-- If item is group -->
+            <v-nav-menu-group
+              v-if        = "groupItem.submenu"
+              :group      = "groupItem"
+              :groupIndex = "Number(`${groupIndex}.${index+1}`)"
+              :open       = "isGroupActive(groupItem)"
+              :openHover  = "openHover" />
 
-          <!-- If item is group -->
-          <v-nav-menu-group
-            v-if        = "groupItem.submenu"
-            :group      = "groupItem"
-            :groupIndex = "Number(`${groupIndex}.${index+1}`)"
-            :open       = "isGroupActive(groupItem)"
-            :openHover  = "openHover" />
-
-          <!-- Else: Item -->
-          <v-nav-menu-item
-            v-else
-            icon-small
-            :index  = "groupIndex + '.' + index"
-            :to="groupItem.slug !== 'external' ? groupItem.url : null"
-            :href="groupItem.slug === 'external' ? groupItem.url : null"
-            :icon   = "itemIcon(groupIndex + '.' + index)"
-            :slug   = "groupItem.slug"
-            :target = "groupItem.target">
-              <span class="truncate">{{ $t(groupItem.i18n) || groupItem.name }}</span>
-              <vs-chip class="ml-auto" :color="groupItem.tagColor" v-if="groupItem.tag">{{ groupItem.tag }}</vs-chip>
-          </v-nav-menu-item>
+            <!-- Else: Item -->
+            <v-nav-menu-item
+              v-else
+              icon-small
+              :index  = "groupIndex + '.' + index"
+              :to="groupItem.slug !== 'external' ? groupItem.url : null"
+              :href="groupItem.slug === 'external' ? groupItem.url : null"
+              :icon   = "itemIcon(groupIndex + '.' + index)"
+              :slug   = "groupItem.slug"
+              :target = "groupItem.target">
+                <span class="truncate">{{ $t(groupItem.i18n) || groupItem.name }}</span>
+                <vs-chip class="ml-auto" :color="groupItem.tagColor" v-if="groupItem.tag">{{ groupItem.tag }}</vs-chip>
+            </v-nav-menu-item>
+          </div>
 
         </li>
       </ul>
@@ -84,7 +86,7 @@
 
 <script>
 import VNavMenuItem from './VerticalNavMenuItem.vue'
-
+import {mapGetters} from "vuex" 
 export default {
   name  : 'v-nav-menu-group',
   props : {
@@ -101,6 +103,21 @@ export default {
     openItems : false
   }),
   computed: {
+      ...
+      (['user_role']) ,
+      menuItemFilter () {
+        let blocked = ['appointment'] ;  
+        if(this.user_role == 'super_Admin') {
+          blocked = ['appointment'] // show everything  
+        }else if( this.user_role == 'hospital'){
+          blocked = ['approval']  
+        }else if( this.user_role == 'doctor' ){
+          blocked = ['approval']  
+        }
+
+        return blocked
+    
+    } ,
     verticalNavMenuItemsMin() { return this.$store.state.verticalNavMenuItemsMin },
     styleItems() {
       return { maxHeight: this.maxHeight }

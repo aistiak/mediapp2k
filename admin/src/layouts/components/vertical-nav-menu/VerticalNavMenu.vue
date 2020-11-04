@@ -59,43 +59,46 @@
 
         <!-- Header Shadow -->
         <div class="shadow-bottom" v-show="showShadowBottom" />
-        <!-- <button @click="foo">test</button> -->
+        <!-- <button @click="foo">test {{ user_role }} </button> -->
         <!-- Menu Items -->
-        <button @click="foo">test</button>
+        <!-- <button @click="foo">test</button> -->
         <VuePerfectScrollbar ref="verticalNavMenuPs" class="scroll-area-v-nav-menu pt-2" :settings="settings" @ps-scroll-y="psSectionScroll" :key="$vs.rtl">
           <template v-for="(item, index) in menuItemsUpdated">
-            <!-- Group Header -->
-            <span v-if="item.header && !verticalNavMenuItemsMin" class="navigation-header truncate" :key="`header-${index}`">
-              {{ $t(item.i18n) || item.header }}
-            </span>
-            <!-- /Group Header -->
+            <!-- {{ item.name == "Hospitals" }} {{ menuItemFilter.includes(item.name) }}  -->
+            <div :key="index" v-if="!menuItemFilter.includes(item.name)">
+                <!-- Group Header -->
+                <span v-if="item.header && !verticalNavMenuItemsMin" class="navigation-header truncate" :key="`header-${index}`">
+                  {{ $t(item.i18n) || item.header }}
+                </span>
+                <!-- /Group Header -->
 
-            <template v-else-if="!item.header">
-              <!-- Nav-Item -->
-              <v-nav-menu-item
-                v-if="!item.submenu"
-                :key="`item-${index}`"
-                :index="index"
-                :to="item.slug !== 'external' ? item.url : null"
-                :href="item.slug === 'external' ? item.url : null"
-                :icon="item.icon" :target="item.target"
-                :isDisabled="item.isDisabled"
-                :slug="item.slug">
-                  <span v-show="!verticalNavMenuItemsMin" class="truncate">{{ $t(item.i18n) || item.name }}</span>
-                  <vs-chip class="ml-auto" :color="item.tagColor" v-if="item.tag && (isMouseEnter || !reduce)">{{ item.tag }}</vs-chip>
-              </v-nav-menu-item>
+                <template v-else-if="!item.header">
+                  <!-- Nav-Item -->
+                  <v-nav-menu-item
+                    v-if="!item.submenu"
+                    :key="`item-${index}`"
+                    :index="index"
+                    :to="item.slug !== 'external' ? item.url : null"
+                    :href="item.slug === 'external' ? item.url : null"
+                    :icon="item.icon" :target="item.target"
+                    :isDisabled="item.isDisabled"
+                    :slug="item.slug">
+                      <span v-show="!verticalNavMenuItemsMin" class="truncate">{{ $t(item.i18n) || item.name }}</span>
+                      <vs-chip class="ml-auto" :color="item.tagColor" v-if="item.tag && (isMouseEnter || !reduce)">{{ item.tag }}</vs-chip>
+                  </v-nav-menu-item>
 
-              <!-- Nav-Group -->
-              <template v-else>
-                <v-nav-menu-group
-                  :key="`group-${index}`"
-                  :openHover="openGroupHover"
-                  :group="item"
-                  :groupIndex="index"
-                  :open="isGroupActive(item)" />
-              </template>
-              <!-- /Nav-Group -->
-            </template>
+                  <!-- Nav-Group -->
+                  <template v-else>
+                    <v-nav-menu-group
+                      :key="`group-${index}`"
+                      :openHover="openGroupHover"
+                      :group="item"
+                      :groupIndex="index"
+                      :open="isGroupActive(item)" />
+                  </template>
+                  <!-- /Nav-Group -->
+                </template>
+            </div>
           </template>
         </VuePerfectScrollbar>
         <!-- /Menu Items -->
@@ -118,7 +121,7 @@ import VNavMenuGroup from './VerticalNavMenuGroup.vue'
 import VNavMenuItem from './VerticalNavMenuItem.vue'
 
 import Logo from "../Logo.vue"
-
+import { mapGetters } from "vuex"
 export default {
   name: 'v-nav-menu',
   components: {
@@ -148,6 +151,7 @@ export default {
     showShadowBottom    : false,
   }),
   computed: {
+    ...mapGetters(['user_role']) ,
     isGroupActive() {
       return (item) => {
         const path        = this.$route.fullPath
@@ -166,6 +170,20 @@ export default {
         return open
       }
     },
+    menuItemFilter () {
+      let blocked = [] ;  
+      if(this.user_role == 'super_Admin') {
+         blocked = ['Appointments'] // show everything  
+      }else if( this.user_role == 'hospital'){
+         blocked = ['Patients','Hospitals','Dashboard']  
+      }else if( this.user_role == 'doctor' ){
+          blocked = ['Patients','Hospitals','Doctors','Dashboard']   
+
+      }
+
+      return blocked
+    
+    } ,
     menuItemsUpdated() {
       let clone = this.navMenuItems.slice()
 
@@ -210,6 +228,9 @@ export default {
     windowWidth()  { this.setVerticalNavMenuWidth() }
   },
   methods: {
+    toLower(arg) {
+      return arg.toLowerCase()
+    } ,
     foo(){
       console.log(this.menuItemsUpdated)
       console.log(this.navMenuItems)
