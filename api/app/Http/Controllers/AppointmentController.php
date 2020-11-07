@@ -100,7 +100,7 @@ class AppointmentController extends Controller
         $auth_user = auth()->user() ;
         $role = auth()->user()->role->slug ; 
 
-        if ( $role == "patient" ){
+        if ( $role == "patient" ) {
             // return "appointment created";
             $appointment                = new \App\Appointment ;
             $appointment->user_id       = $auth_user->id ;

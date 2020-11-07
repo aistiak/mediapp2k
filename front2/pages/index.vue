@@ -1,7 +1,8 @@
 <template>
     <div >
         <div class="medi-map">
-            <Map/>
+            <OpenMap/>
+            <!-- <Map/> -->
         </div>
         <div class="medi-search">
            <!-- <SearchBar/> -->
@@ -32,7 +33,8 @@ export default {
         TeamMediapp ,
         NewSearchBar : () => import("~/components/new/SearchBar"),
         SearchResult : () => import("~/components/new/SearchResult"),
-        Services : () => import("~/components/new/Benefits") 
+        Services : () => import("~/components/new/Benefits") ,
+        OpenMap  : () => import("~/components/map/OpenMap") , 
     },
     data(){
         return {
@@ -48,7 +50,7 @@ export default {
    top : 0 ;
    right : 0 ;
    width : 45%;
-   height : 102vh ;
+   height : 10vh ;
    /* background-color: red; */
    border : 2px solid lightgrey ;
    z-index: -1;
@@ -78,6 +80,8 @@ export default {
    }
    .medi-search{
        width: 100%;
+       margin-top: 133%;
+       
    }
    .flex-container{
        background-color:lightgreen;

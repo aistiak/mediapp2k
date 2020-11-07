@@ -10,6 +10,8 @@ import {
 import NuxtLoading from './components/nuxt-loading.vue'
 import NuxtBuildIndicator from './components/nuxt-build-indicator'
 
+import '..\\node_modules\\leaflet\\dist\\leaflet.css'
+
 import '..\\node_modules\\vuetify\\dist\\vuetify.css'
 
 import _77180f1e from '..\\layouts\\blank.vue'

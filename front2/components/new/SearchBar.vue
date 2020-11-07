@@ -137,11 +137,27 @@ export default {
       flex-wrap: wrap;
       justify-content: space-around;
     }
+    
 }
 </style>
 <style >
-#app-seatch-bar {
-    padding-right: 4%;
-    text-align: center;
-}
+    #app-seatch-bar {
+        padding-right: 4%;
+        text-align: center;
+    }
+    @media only screen and (max-width : 780px){
+
+        #app-seatch-bar{
+            margin-right:6% ;
+            
+        }  
+    }
+
+    @media only screen and (max-width : 375px ){
+
+        #app-seatch-bar{
+            margin-right:6% ;
+            margin-top:100px;
+        }  
+    }
 </style>

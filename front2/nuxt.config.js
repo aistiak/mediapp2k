@@ -72,6 +72,7 @@ export default {
     '@nuxtjs/axios',
     '@nuxtjs/proxy',
     '@nuxtjs/auth' ,
+    'nuxt-leaflet' ,
   ],
 
   auth: {
@@ -147,6 +148,6 @@ export default {
   },
 
   router: {
-    mode: 'hash'
+    mode: 'history'
   }
 }

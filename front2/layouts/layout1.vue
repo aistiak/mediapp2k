@@ -195,7 +195,7 @@ body{
 }
 .user-menu {
     position: absolute;
-    background-color: rgb(136 115 115);
+    background-color: rgb(47 59 89) ;
     text-align: center;
     width: 15vw;
     right: 1%;
@@ -263,6 +263,10 @@ ul > li:hover {
             font-size: 23px;
 
     }
+    /* #map-wrap {
+        margin-top : 0% ;
+        height: 85vh;
+    } */
 }
 
 .auth-user {

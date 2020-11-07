@@ -13,6 +13,7 @@ import { createStore } from './store.js'
 /* Plugins */
 
 import nuxt_plugin_plugin_3f051b4e from 'nuxt_plugin_plugin_3f051b4e' // Source: .\\vuetify\\plugin.js (mode: 'all')
+import nuxt_plugin_nuxtleaflet_608ba5c8 from 'nuxt_plugin_nuxtleaflet_608ba5c8' // Source: .\\nuxt-leaflet.js (mode: 'client')
 import nuxt_plugin_axios_24c28789 from 'nuxt_plugin_axios_24c28789' // Source: .\\axios.js (mode: 'all')
 import nuxt_plugin_foo_67584b32 from 'nuxt_plugin_foo_67584b32' // Source: ..\\plugins\\foo.js (mode: 'all')
 import nuxt_plugin_notifications_15a88b85 from 'nuxt_plugin_notifications_15a88b85' // Source: ..\\plugins\\notifications.js (mode: 'client')
@@ -180,6 +181,10 @@ async function createApp (ssrContext) {
 
   if (typeof nuxt_plugin_plugin_3f051b4e === 'function') {
     await nuxt_plugin_plugin_3f051b4e(app.context, inject)
+  }
+
+  if (process.client && typeof nuxt_plugin_nuxtleaflet_608ba5c8 === 'function') {
+    await nuxt_plugin_nuxtleaflet_608ba5c8(app.context, inject)
   }
 
   if (typeof nuxt_plugin_axios_24c28789 === 'function') {
