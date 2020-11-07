@@ -11,7 +11,7 @@
           }}
           available
         </h4>
-        <span>
+        <!-- <span>
           <a href="javascript:;" @click="prev" v-show="page > 1"> prev </a>
         </span>
         <span>&nbsp;&nbsp;</span>
@@ -19,7 +19,7 @@
           <a href="javascript:;" @click="next" v-show="page < last_page">
             next
           </a>
-        </span>
+        </span> -->
       </div>
       <!-- <div class="container"> -->
 
@@ -257,6 +257,7 @@ export default {
       //      alert(`error`)
       //   })
     },
+    
   },
 };
 </script>

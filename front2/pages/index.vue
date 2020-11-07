@@ -11,7 +11,7 @@
            <Hospitals/>
         </div>
         <div class="others">
-            <Services/>
+            <Services :observer="observer" />
         </div>
         <!-- <TeamMediapp/> -->
     </div>
@@ -38,9 +38,35 @@ export default {
     },
     data(){
         return {
-
+            observer : {} ,
         }
     },
+    mounted() {
+        this.initObserver()
+    } ,
+    methods:{
+
+        initObserver(){
+          let options = {
+            root : null ,
+            rootMargin : '0px' ,
+            threshold : 0 ,
+          }
+          let callback = function(element){
+            element.forEach(v => {
+              console.log(v)
+              if(v.isIntersecting)
+                document.querySelector(".medi-map").style.zIndex = "-1"
+              else 
+                document.querySelector(".medi-map").style.zIndex = "2"
+            });
+
+          }
+          this.observer = new IntersectionObserver(callback,options)
+          // let target  = document.querySelector('#benifits')
+        //   observer.observe(this.$el)
+        }        
+    }
 }
 </script>
 
@@ -53,7 +79,8 @@ export default {
    height : 10vh ;
    /* background-color: red; */
    border : 2px solid lightgrey ;
-   z-index: -1;
+   z-index: 2;
+   padding-right: 1%;
 }
 .medi-search{
   width: 55%;

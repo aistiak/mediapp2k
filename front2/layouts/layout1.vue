@@ -145,6 +145,7 @@ export default {
           this.$router.push('/')
       },
       mobile_map_search : function() {
+          this.$router.push(`/`) 
           var elmnt = document.getElementById("app-seatch-bar");
           elmnt.scrollIntoView();
         //   this.show_floating_search = true 
@@ -214,7 +215,7 @@ ul > li:hover {
 }
 .footer {
     width:100% ;
-    height  : 100vh ;
+    height  : 80vh ;
     background-color : #2F3B59 ;
 }
 .login_register{
@@ -278,5 +279,10 @@ ul > li:hover {
     POSITION: RELATIVE;
     left: -6px;
     top: -5px;
+}
+</style>
+<style >
+html{
+    overflow: auto;
 }
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <section class="service_benefits_area text-center section_border section_padding">
+  <section class="service_benefits_area text-center section_border section_padding" id="benifits">
     <div class="container">
       <div class="row">
         <div class="col-md-12">
@@ -43,7 +43,39 @@
 
 <script>
     export default {
-      name: "Benefits"
+      name: "Benefits" ,
+      props: ['observer'] ,
+      data(){
+        return {
+
+        }
+      },
+      mounted(){
+        // this.initObserver()
+        this.observer.observe(this.$el)
+      },
+      methods:{
+        // initObserver(){
+        //   let options = {
+        //     root : null ,
+        //     rootMargin : '0px' ,
+        //     threshold : 0 ,
+        //   }
+        //   let callback = function(element){
+        //     element.forEach(v => {
+        //       console.log(v)
+        //       if(v.isIntersecting)
+        //         document.querySelector(".medi-map").style.zIndex = "-1"
+        //       else 
+        //         document.querySelector(".medi-map").style.zIndex = "2"
+        //     });
+
+        //   }
+        //   let observer = new IntersectionObserver(callback,options)
+        //   // let target  = document.querySelector('#benifits')
+        //   observer.observe(this.$el)
+        // }
+      }
     }
 </script>
 
