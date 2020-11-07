@@ -126,7 +126,8 @@ export default {
       }),  
       ...mapActions({
         'refreshAuth' : 'auth_patient/refreshAuth',
-        'getAuthUser' : 'auth_patient/getAuthUser'
+        'getAuthUser' : 'auth_patient/getAuthUser' ,
+        'logout'      : 'user.module/logout' ,
       }),
       fetchAuthUser() {
           this.refreshAuth()
@@ -141,6 +142,8 @@ export default {
           this.set_login_status(false)
           // clear auth user 
           this.commit_auth_user({})
+
+          this.logout() 
 
           this.$router.push('/')
       },

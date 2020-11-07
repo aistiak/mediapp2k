@@ -51,30 +51,12 @@
         }
       },
       mounted(){
-        // this.initObserver()
-        this.observer.observe(this.$el)
+
+        if(this.observer)
+           this.observer.observe(this.$el)
       },
       methods:{
-        // initObserver(){
-        //   let options = {
-        //     root : null ,
-        //     rootMargin : '0px' ,
-        //     threshold : 0 ,
-        //   }
-        //   let callback = function(element){
-        //     element.forEach(v => {
-        //       console.log(v)
-        //       if(v.isIntersecting)
-        //         document.querySelector(".medi-map").style.zIndex = "-1"
-        //       else 
-        //         document.querySelector(".medi-map").style.zIndex = "2"
-        //     });
-
-        //   }
-        //   let observer = new IntersectionObserver(callback,options)
-        //   // let target  = document.querySelector('#benifits')
-        //   observer.observe(this.$el)
-        // }
+ 
       }
     }
 </script>

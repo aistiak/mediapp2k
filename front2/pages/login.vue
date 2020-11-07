@@ -99,7 +99,7 @@
                 // auth.loginHelper(response.data)
                 this.login(response.data)
                 this.set_login_status(true)
-                this.$router.push('/mediapp')
+                this.$router.push('/')
                 
                 
             }).catch( error => {

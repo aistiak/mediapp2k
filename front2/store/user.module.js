@@ -23,6 +23,10 @@ export const actions = {
             })
         })
     },
+
+    logout({commit}){
+        commit('logout_user') 
+    },
 }
 
 export const mutations ={
@@ -36,6 +40,13 @@ export const mutations ={
 
     set_user(state,payload){
         state.user = payload 
+    },
+
+    logout_user(state){
+        this.$axios.defaults.headers.common["Authorization"] = '' 
+        localStorage.setItem('token','')
+        localStorage.setItem('tokenExpiryKey','')
+        state.is_loggedin = false 
     }
 }
 

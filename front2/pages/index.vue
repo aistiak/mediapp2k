@@ -11,7 +11,9 @@
            <Hospitals/>
         </div>
         <div class="others">
-            <Services :observer="observer" />
+            <div v-if="observer">
+                <Services :observer="observer" />
+            </div>
         </div>
         <!-- <TeamMediapp/> -->
     </div>
@@ -38,7 +40,7 @@ export default {
     },
     data(){
         return {
-            observer : {} ,
+            observer : null ,
         }
     },
     mounted() {
@@ -47,24 +49,21 @@ export default {
     methods:{
 
         initObserver(){
+          console.log('call init observer ')  
           let options = {
             root : null ,
             rootMargin : '0px' ,
             threshold : 0 ,
           }
-          let callback = function(element){
+          let callback = element => {
             element.forEach(v => {
-              console.log(v)
-              if(v.isIntersecting)
-                document.querySelector(".medi-map").style.zIndex = "-1"
-              else 
+              v.isIntersecting ?
+                document.querySelector(".medi-map").style.zIndex = "-1" :
                 document.querySelector(".medi-map").style.zIndex = "2"
             });
-
           }
           this.observer = new IntersectionObserver(callback,options)
-          // let target  = document.querySelector('#benifits')
-        //   observer.observe(this.$el)
+
         }        
     }
 }

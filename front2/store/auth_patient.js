@@ -12,6 +12,7 @@ export const getters = {
       }  
 }
 export const actions = {
+
     login({commit},payload){    
          
         commit('setup_login',payload)
@@ -52,5 +53,6 @@ export const mutations = {
         localStorage.setItem('token',arg.access_token)
         localStorage.setItem('tokenExpiryKey',arg.expires_at.date)
         // alert(this.$axios.defaults.headers.common["Authorization"] )
-    }
+    },
+
 }
