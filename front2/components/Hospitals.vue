@@ -1,22 +1,7 @@
 <template>
-  <section class="team_member_area section_padding text-center search-result">
+  <section class="team_member_area section_padding text-center search-result" >
     <!-- <VclBulletList v-if="isLoading"/> -->
-    <div v-if="isLoading">
-      <vue-content-loading :width="300" :height="800">
-        <rect x="0" y="0" rx="4" ry="4" width="90" height="100" />
-        <rect x="110" y="0" rx="4" ry="4" width="90" height="100" />
-        <rect x="210" y="0" rx="4" ry="4" width="90" height="100" />
-
-        <rect x="0" y="110" rx="4" ry="4" width="90" height="100" />
-        <rect x="110" y="110" rx="4" ry="4" width="90" height="100" />
-        <rect x="210" y="110" rx="4" ry="4" width="90" height="100" />
-
-        <rect x="0" y="220" rx="4" ry="4" width="90" height="100" />
-        <rect x="110" y="220" rx="4" ry="4" width="90" height="100" />
-        <rect x="210" y="220" rx="4" ry="4" width="90" height="100" />
-      </vue-content-loading>
-    </div>
-    <div style="margin-top:-6%">
+    <div style="margin-top:-6%" >
       <div>
         <!-- <span>{{windowWidth}}</span> -->
         <h4>
@@ -38,7 +23,7 @@
       </div>
       <!-- <div class="container"> -->
 
-      <div>
+      <div class="search-result-box" >
         <div class="row" style="margin-top: 5%">
           <!-- <div class="col-md-12">
             <div class="hero-section-title text-center">
@@ -103,9 +88,33 @@
           </div>
         </div>
         <!--end .row-->
+       
       </div>
       <!--end .container-->
+
     </div>
+    <div v-if="isLoading">
+      <vue-content-loading :width="300" :height="800">
+        <rect x="0" y="0" rx="4" ry="4" width="90" height="100" />
+        <rect x="110" y="0" rx="4" ry="4" width="90" height="100" />
+        <rect x="210" y="0" rx="4" ry="4" width="90" height="100" />
+
+        <rect x="0" y="110" rx="4" ry="4" width="90" height="100" />
+        <rect x="110" y="110" rx="4" ry="4" width="90" height="100" />
+        <rect x="210" y="110" rx="4" ry="4" width="90" height="100" />
+
+        <rect x="0" y="220" rx="4" ry="4" width="90" height="100" />
+        <rect x="110" y="220" rx="4" ry="4" width="90" height="100" />
+        <rect x="210" y="220" rx="4" ry="4" width="90" height="100" />
+      </vue-content-loading>
+    </div> 
+    <div class="load-more">
+      <span>
+        <h1 @click="next" v-show="page < last_page" style="display:block">
+          load more 
+        </h1>
+      </span>
+    </div>        
   </section>
 </template>
 
@@ -189,7 +198,8 @@ export default {
       this.getItems(this.page);
     },
     next() {
-      this.page = this.page < this.last_page ? this.page + 1 : this.page;
+      // this.page = this.page < this.last_page ? this.page + 1 : this.page;
+      this.page += 1 
       this.getItems(this.page);
     },
 
@@ -207,7 +217,11 @@ export default {
           }
         )
         .then((response) => {
-          this.item_list = response.data?.data;
+          let temp = response.data?.data 
+          if(  Array.isArray(temp)) {
+            this.item_list = [...this.item_list, ...temp] 
+          }
+          // this.item_list = response.data?.data;
           this.total = response.data?.meta?.total;
           this.last_page = response.data?.meta?.last_page;
           this.current_page = response.data?.meta?.current_page;
@@ -221,6 +235,7 @@ export default {
         });
     },
     respondToSearchFilterChange() {
+      this.item_list = [] 
       this.type = this.search_info.selected_type;
       this.division_id = this.search_info.selected_division;
       this.district_id = this.search_info.selected_district;
@@ -267,4 +282,17 @@ export default {
   height : 250px; 
   width :  282px;
 } */
+.search-result-box {
+    /* overflow-y: scroll;
+    overflow-x: hidden;
+    direction: rtl;
+    padding-left: 20px; */
+}
+
+</style>
+<style >
+.load-more h1 {
+  /* all : initial ; */
+  display: block;
+}
 </style>

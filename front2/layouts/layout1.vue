@@ -145,8 +145,10 @@ export default {
           this.$router.push('/')
       },
       mobile_map_search : function() {
-          this.show_floating_search = true 
-          this.show_menu = false 
+          var elmnt = document.getElementById("app-seatch-bar");
+          elmnt.scrollIntoView();
+        //   this.show_floating_search = true 
+        //   this.show_menu = false 
       },
     }    
 }

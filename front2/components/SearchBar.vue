@@ -1,5 +1,5 @@
 <template>
-    <div class="container-fluid">
+    <div class="container-fluid" id="search-bar-filter">
         <!-- {{districts}} -->
         <div class="row"> 
               <div class="col-md-2" style="border:solid 1px">
