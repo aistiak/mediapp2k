@@ -11,6 +11,8 @@ $factory->define(App\Doctor::class, function (Faker $faker) {
     $hospital = App\Hospital::orderByRaw('RAND()')->first() ;
     return [
         //
+        'name'  => $faker->name ,
+        'title' => 'MBBS  ' . $faker->country($faker->countryCode),
         'user_id' => $user->first()->id ,
         'hospital_id' => $hospital->id,
         'is_active' => 1 ,

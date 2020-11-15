@@ -6,6 +6,7 @@
         </div>
         <div class="medi-search">
            <!-- <SearchBar/> -->
+           <!-- <button @click="foo" >test</button> -->
            <NewSearchBar/>
            <!-- <SearchResult/> -->
            <Hospitals/>
@@ -47,7 +48,9 @@ export default {
         this.initObserver()
     } ,
     methods:{
-
+        foo(){
+            console.log(this.$axios)
+        },  
         initObserver(){
           console.log('call init observer ')  
           let options = {

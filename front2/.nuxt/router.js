@@ -3,26 +3,26 @@ import Router from 'vue-router'
 import { interopDefault } from './utils'
 import scrollBehavior from './router.scrollBehavior.js'
 
-const _9eb0f24c = () => interopDefault(import('..\\pages\\about.vue' /* webpackChunkName: "pages_about" */))
-const _80827136 = () => interopDefault(import('..\\pages\\blog.vue' /* webpackChunkName: "pages_blog" */))
-const _e7b8854c = () => interopDefault(import('..\\pages\\blog-details.vue' /* webpackChunkName: "pages_blog-details" */))
-const _275e0cad = () => interopDefault(import('..\\pages\\contact.vue' /* webpackChunkName: "pages_contact" */))
-const _307a6704 = () => interopDefault(import('..\\pages\\index-2.vue' /* webpackChunkName: "pages_index-2" */))
-const _01f0a80e = () => interopDefault(import('..\\pages\\index-old.vue' /* webpackChunkName: "pages_index-old" */))
-const _cbf1f694 = () => interopDefault(import('..\\pages\\login.vue' /* webpackChunkName: "pages_login" */))
-const _0f4ac7f1 = () => interopDefault(import('..\\pages\\mediapp\\index.vue' /* webpackChunkName: "pages_mediapp_index" */))
-const _0743b351 = () => interopDefault(import('..\\pages\\mediapp2\\index.vue' /* webpackChunkName: "pages_mediapp2_index" */))
-const _f97c3548 = () => interopDefault(import('..\\pages\\register\\index.vue' /* webpackChunkName: "pages_register_index" */))
-const _9c05467c = () => interopDefault(import('..\\pages\\service.vue' /* webpackChunkName: "pages_service" */))
-const _11d9a5b7 = () => interopDefault(import('..\\pages\\service-details.vue' /* webpackChunkName: "pages_service-details" */))
-const _ff54f2fe = () => interopDefault(import('..\\pages\\user\\appointment.vue' /* webpackChunkName: "pages_user_appointment" */))
-const _cfffd6ea = () => interopDefault(import('..\\pages\\user\\profile.vue' /* webpackChunkName: "pages_user_profile" */))
-const _754762ba = () => interopDefault(import('..\\pages\\register\\components\\HospitalForm.vue' /* webpackChunkName: "pages_register_components_HospitalForm" */))
-const _372269fd = () => interopDefault(import('..\\pages\\register\\components\\PatientForm.vue' /* webpackChunkName: "pages_register_components_PatientForm" */))
-const _67909ef4 = () => interopDefault(import('..\\pages\\register\\components\\TypeSelection.vue' /* webpackChunkName: "pages_register_components_TypeSelection" */))
-const _3580c0de = () => interopDefault(import('..\\pages\\doctor-detail\\_id.vue' /* webpackChunkName: "pages_doctor-detail__id" */))
-const _47ac8939 = () => interopDefault(import('..\\pages\\hospital-detail\\_id.vue' /* webpackChunkName: "pages_hospital-detail__id" */))
-const _5f413cc2 = () => interopDefault(import('..\\pages\\index.vue' /* webpackChunkName: "pages_index" */))
+const _17d14a8c = () => interopDefault(import('..\\pages\\about.vue' /* webpackChunkName: "pages_about" */))
+const _6714f785 = () => interopDefault(import('..\\pages\\blog.vue' /* webpackChunkName: "pages_blog" */))
+const _4a50650c = () => interopDefault(import('..\\pages\\blog-details.vue' /* webpackChunkName: "pages_blog-details" */))
+const _4e28688d = () => interopDefault(import('..\\pages\\contact.vue' /* webpackChunkName: "pages_contact" */))
+const _5744c2e4 = () => interopDefault(import('..\\pages\\index-2.vue' /* webpackChunkName: "pages_index-2" */))
+const _c6aae04e = () => interopDefault(import('..\\pages\\index-old.vue' /* webpackChunkName: "pages_index-old" */))
+const _45124ed4 = () => interopDefault(import('..\\pages\\login.vue' /* webpackChunkName: "pages_login" */))
+const _fd895fde = () => interopDefault(import('..\\pages\\mediapp\\index.vue' /* webpackChunkName: "pages_mediapp_index" */))
+const _5937a19e = () => interopDefault(import('..\\pages\\mediapp2\\index.vue' /* webpackChunkName: "pages_mediapp2_index" */))
+const _4f62613c = () => interopDefault(import('..\\pages\\register\\index.vue' /* webpackChunkName: "pages_register_index" */))
+const _4e708ebc = () => interopDefault(import('..\\pages\\service.vue' /* webpackChunkName: "pages_service" */))
+const _440bbcd2 = () => interopDefault(import('..\\pages\\service-details.vue' /* webpackChunkName: "pages_service-details" */))
+const _7372eb3e = () => interopDefault(import('..\\pages\\user\\appointment.vue' /* webpackChunkName: "pages_user_appointment" */))
+const _1fce086b = () => interopDefault(import('..\\pages\\user\\profile.vue' /* webpackChunkName: "pages_user_profile" */))
+const _64c29ada = () => interopDefault(import('..\\pages\\register\\components\\HospitalForm.vue' /* webpackChunkName: "pages_register_components_HospitalForm" */))
+const _0d4faddd = () => interopDefault(import('..\\pages\\register\\components\\PatientForm.vue' /* webpackChunkName: "pages_register_components_PatientForm" */))
+const _67b90734 = () => interopDefault(import('..\\pages\\register\\components\\TypeSelection.vue' /* webpackChunkName: "pages_register_components_TypeSelection" */))
+const _a49f8e04 = () => interopDefault(import('..\\pages\\doctor-detail\\_id.vue' /* webpackChunkName: "pages_doctor-detail__id" */))
+const _71de7959 = () => interopDefault(import('..\\pages\\hospital-detail\\_id.vue' /* webpackChunkName: "pages_hospital-detail__id" */))
+const _13cf357f = () => interopDefault(import('..\\pages\\index.vue' /* webpackChunkName: "pages_index" */))
 
 // TODO: remove in Nuxt 3
 const emptyFn = () => {}
@@ -42,83 +42,83 @@ export const routerOptions = {
 
   routes: [{
     path: "/about",
-    component: _9eb0f24c,
+    component: _17d14a8c,
     name: "about"
   }, {
     path: "/blog",
-    component: _80827136,
+    component: _6714f785,
     name: "blog"
   }, {
     path: "/blog-details",
-    component: _e7b8854c,
+    component: _4a50650c,
     name: "blog-details"
   }, {
     path: "/contact",
-    component: _275e0cad,
+    component: _4e28688d,
     name: "contact"
   }, {
     path: "/index-2",
-    component: _307a6704,
+    component: _5744c2e4,
     name: "index-2"
   }, {
     path: "/index-old",
-    component: _01f0a80e,
+    component: _c6aae04e,
     name: "index-old"
   }, {
     path: "/login",
-    component: _cbf1f694,
+    component: _45124ed4,
     name: "login"
   }, {
     path: "/mediapp",
-    component: _0f4ac7f1,
+    component: _fd895fde,
     name: "mediapp"
   }, {
     path: "/mediapp2",
-    component: _0743b351,
+    component: _5937a19e,
     name: "mediapp2"
   }, {
     path: "/register",
-    component: _f97c3548,
+    component: _4f62613c,
     name: "register"
   }, {
     path: "/service",
-    component: _9c05467c,
+    component: _4e708ebc,
     name: "service"
   }, {
     path: "/service-details",
-    component: _11d9a5b7,
+    component: _440bbcd2,
     name: "service-details"
   }, {
     path: "/user/appointment",
-    component: _ff54f2fe,
+    component: _7372eb3e,
     name: "user-appointment"
   }, {
     path: "/user/profile",
-    component: _cfffd6ea,
+    component: _1fce086b,
     name: "user-profile"
   }, {
     path: "/register/components/HospitalForm",
-    component: _754762ba,
+    component: _64c29ada,
     name: "register-components-HospitalForm"
   }, {
     path: "/register/components/PatientForm",
-    component: _372269fd,
+    component: _0d4faddd,
     name: "register-components-PatientForm"
   }, {
     path: "/register/components/TypeSelection",
-    component: _67909ef4,
+    component: _67b90734,
     name: "register-components-TypeSelection"
   }, {
     path: "/doctor-detail/:id?",
-    component: _3580c0de,
+    component: _a49f8e04,
     name: "doctor-detail-id"
   }, {
     path: "/hospital-detail/:id?",
-    component: _47ac8939,
+    component: _71de7959,
     name: "hospital-detail-id"
   }, {
     path: "/",
-    component: _5f413cc2,
+    component: _13cf357f,
     name: "index"
   }],
 

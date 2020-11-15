@@ -5,6 +5,9 @@ use App\Http\Resources\AppointmentSettingResource;
 use Exception;
 use Illuminate\Http\Resources\Json\Resource;
 use App\Http\Resources\MediaResource ;
+use App\Http\Resources\MockMediaResource ;
+use stdClass;
+
 class DoctorListResource extends Resource
 {
     /**
@@ -17,7 +20,8 @@ class DoctorListResource extends Resource
     {
         $avatar = "" ;
         try{
-            $avatar = new MediaResource($this->user->media);
+            // $avatar = new MediaResource($this->user->media);
+            $avatar = new MockMediaResource(new stdClass);
         }catch(Exception $e){}
         return [
             'id'   =>  $this->id ,
@@ -26,6 +30,7 @@ class DoctorListResource extends Resource
             'hospital_name' =>  $this->hospital->name ,
             'appointment_setting' => new AppointmentSettingResource( $this->appointment_setting ),
             'avatar' => $avatar , 
+            'mock'   => 'mock'   
         ];
     }
 }

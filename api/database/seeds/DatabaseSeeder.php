@@ -27,7 +27,7 @@ class DatabaseSeeder extends Seeder
         //     'user_id' => 1, 'completed' => 1 ,'code' => 1
         // ]);
         // $this->call(HospitalSeeder::class);
-        // $this->call(DoctorSeeder::class);
+        $this->call(DoctorSeeder::class);
         // $this->call(PatientSeeder::class);
 
 
