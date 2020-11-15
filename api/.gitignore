@@ -4,7 +4,7 @@
 /storage/*.key
 /vendor
 .idea
-
+.zip 
 .phpunit.result.cache
 Homestead.json
 Homestead.yaml
