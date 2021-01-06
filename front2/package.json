@@ -15,7 +15,7 @@
     "@nuxtjs/auth": "^4.9.1",
     "@nuxtjs/axios": "^5.12.1",
     "@nuxtjs/proxy": "^2.0.0",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "dotenv": "^8.2.0",
     "nuxt": "^2.0.0",
     "nuxt-leaflet": "0.0.22",
