@@ -17,7 +17,7 @@
     "@nuxtjs/proxy": "^2.0.0",
     "axios": "^0.19.2",
     "dotenv": "^8.2.0",
-    "nuxt": "^2.0.0",
+    "nuxt": "^2.15.8",
     "nuxt-leaflet": "0.0.22",
     "vue": "^2.6.11",
     "vue-content-loading": "^1.6.0",
